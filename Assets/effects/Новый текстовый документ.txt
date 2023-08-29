@@ -1,0 +1,3 @@
+Transform Effekt1Instance = (Transform)Instantiate (effekt1, mob.transform.position, transform.rotation);
+				Effekt1Instance.transform.position = new Vector3 (Effekt1Instance.transform.position.x, Effekt1Instance.transform.position.y + 0.4f, Effekt1Instance.transform.position.z);
+				Effekt1Instance.transform.rotation = Quaternion.FromToRotation (Vector3.up, transform.forward);
