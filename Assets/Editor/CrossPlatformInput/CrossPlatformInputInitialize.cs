@@ -91,7 +91,7 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
                // BuildTargetGroup.WebPlayer,
                 BuildTargetGroup.Android,
                 BuildTargetGroup.iOS,
-                BuildTargetGroup.WP8,
+             //  BuildTargetGroup.WP8,
                 BuildTargetGroup.BlackBerry
             };
 
