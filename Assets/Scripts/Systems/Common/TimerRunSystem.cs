@@ -3,7 +3,7 @@ using LeopotamGroup.Globals;
 
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public sealed class TimerRunSystem : IEcsRunSystem, IEcsInitSystem
     {

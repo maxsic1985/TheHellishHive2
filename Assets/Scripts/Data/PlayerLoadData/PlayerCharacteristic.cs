@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     [Serializable]
     public sealed class PlayerCharacteristic
@@ -19,13 +19,11 @@ namespace HalfDiggers.Runner
         [SerializeField] private int _baseScore;
         [SerializeField] private int _currentScore;
 
-        [SerializeField] private PlayerWrenchCharacteristic _playerWrenchCharacteristic;
-        [SerializeField] private PlayerLivesCharacteristic _playerLivesCharacteristic;
+     
 
 
         public int GetCurrentCoins => _currentCoins;
-        public PlayerWrenchCharacteristic GetWrench => _playerWrenchCharacteristic;
-        public PlayerLivesCharacteristic GetLives => _playerLivesCharacteristic;
+
 
 
         public PlayerCharacteristic(PlayerCharacteristic playerCharacteristic)
@@ -37,8 +35,7 @@ namespace HalfDiggers.Runner
             _baseSpeed = playerCharacteristic._baseSpeed;
 
             _baseCoins = playerCharacteristic._baseCoins;
-            _playerLivesCharacteristic = playerCharacteristic._playerLivesCharacteristic;
-            _playerWrenchCharacteristic = playerCharacteristic._playerWrenchCharacteristic;
+
         }
 
 
@@ -69,8 +66,6 @@ namespace HalfDiggers.Runner
         {
             _currentCoins = _baseCoins;
             _currentScore = _baseScore;
-            _playerWrenchCharacteristic.LoadInitValue();
-            _playerLivesCharacteristic.LoadInitValue();
         }
     }
 }

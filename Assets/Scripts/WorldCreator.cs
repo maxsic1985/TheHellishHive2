@@ -2,7 +2,7 @@ using Leopotam.EcsLite;
 
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public class WorldCreator
     {

@@ -1,19 +1,18 @@
 using Leopotam.EcsLite;
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     internal class InitializeAllSystem
     {
-        public InitializeAllSystem(EcsSystems systems, IPoolService poolService, IPatternService patternService,
+        public InitializeAllSystem(
+            EcsSystems systems,
+            IPoolService poolService,
             bool isMainMenu)
         {
 
-            new ServicesSystems(systems, poolService, patternService);
+            new ServicesSystems(systems, poolService);
             new LoadResoursesSystems(systems);
             new CommonSystems(systems);
-
-            if (isMainMenu)  new MainMenuSystems(systems);
-            if (isMainMenu) return;
             new GameRuntimeSystems(systems);
         }
     }
@@ -23,15 +22,7 @@ namespace HalfDiggers.Runner
     {
         public GameRuntimeSystems(EcsSystems systems)
         {
-            new TreadMillSystems(systems);
-            new PlayerSystems(systems);
             new CameraSystems(systems);
-            new PauseMenuSystems(systems);
-            new PostProcessingSystems(systems);
-            new SoundSystems(systems);
-            new DataManagerSystems(systems);
-            new DeathSystems(systems);
-            new TriggerSystems(systems);
         }
     }
 }

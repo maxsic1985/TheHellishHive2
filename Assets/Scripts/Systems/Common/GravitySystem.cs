@@ -2,7 +2,7 @@
 using LeopotamGroup.Globals;
 using UnityEngine;
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public class GravitySystem : IEcsInitSystem, IEcsRunSystem
     {

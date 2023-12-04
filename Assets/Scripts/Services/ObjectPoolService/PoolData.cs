@@ -2,7 +2,7 @@
 using UnityEngine.AddressableAssets;
 using UnityEngine.Serialization;
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     [CreateAssetMenu(menuName = "Pool/PoolData", fileName = "New PoolData", order = 51)]
     public class PoolData : ScriptableObject

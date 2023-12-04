@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public struct LoadPrefabComponent
     {

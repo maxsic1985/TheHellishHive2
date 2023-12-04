@@ -2,7 +2,7 @@ using Leopotam.EcsLite;
 
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     internal class CommonSystems
     {
@@ -10,7 +10,6 @@ namespace HalfDiggers.Runner
         {
             systems.Add(new TransformMovingSystem());
             systems.Add(new SynchronizeTransformAndPositionSystem());
-            systems.Add(new RestartSystem());
             systems.Add(new TimerRunSystem());
             systems.Add(new OnGroundSystem());
             systems.Add(new GravitySystem());

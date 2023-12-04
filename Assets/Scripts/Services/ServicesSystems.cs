@@ -1,14 +1,14 @@
 ﻿using Leopotam.EcsLite;
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     internal class ServicesSystems
     {
-        public ServicesSystems(EcsSystems systems,IPoolService poolService, IPatternService patternService)
+        public ServicesSystems(EcsSystems systems,IPoolService poolService)
         {
             systems
-                .Add(new InitializeServiceSystem(poolService, patternService));
+                .Add(new InitializeServiceSystem(poolService));
         }
     }
 }

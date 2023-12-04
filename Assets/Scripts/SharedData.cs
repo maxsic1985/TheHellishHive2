@@ -5,7 +5,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public sealed class SharedData
     {

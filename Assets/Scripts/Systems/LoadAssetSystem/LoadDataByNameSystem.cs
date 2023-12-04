@@ -2,7 +2,7 @@ using Leopotam.EcsLite;
 using LeopotamGroup.Globals;
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public sealed class LoadDataByNameSystem : IEcsInitSystem, IEcsRunSystem
     {

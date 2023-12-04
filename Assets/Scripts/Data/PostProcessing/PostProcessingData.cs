@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     [CreateAssetMenu(fileName = nameof(PostProcessingData),
         menuName = EditorMenuConstants.CREATE_DATA_MENU_NAME + nameof(PostProcessingData))]

@@ -1,4 +1,4 @@
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public static class EditorMenuConstants
     {

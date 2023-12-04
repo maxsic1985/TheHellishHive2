@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public struct PostProcessingComponent
     {

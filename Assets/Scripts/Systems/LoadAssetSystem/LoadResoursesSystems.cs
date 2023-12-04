@@ -1,7 +1,7 @@
 using Leopotam.EcsLite;
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     internal class LoadResoursesSystems
     {

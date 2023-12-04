@@ -2,7 +2,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public class OnGroundSystem : IEcsInitSystem, IEcsRunSystem
     {
@@ -52,7 +52,6 @@ namespace HalfDiggers.Runner
         {
             int count = Physics.OverlapBoxNonAlloc(transformComponent.Value.position, new Vector3(.5f, .5f, .5f), _colliders, Quaternion.identity, GroundLayerMask);
             return count > 0;
-            //return Physics.CheckBox(transformComponent.Value.position, , GroundLayerMask);
         }
         
     }

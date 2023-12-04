@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace HalfDiggers {
+namespace HellishHive2 {
 
   public struct IsSettingMenu
   {

@@ -2,7 +2,7 @@
 
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public sealed class TestSmoothMovingCheckArrivalSystem : IEcsInitSystem, IEcsRunSystem
     {

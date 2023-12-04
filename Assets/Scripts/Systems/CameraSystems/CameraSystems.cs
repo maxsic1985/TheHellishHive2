@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public sealed class CameraSystems
     {
@@ -9,8 +9,8 @@ namespace HalfDiggers.Runner
             systems
                 .Add(new CameraSystem())
                 .Add(new CameraInitSystem())
-                .Add(new CameraBuildSystem())
-                .Add(new CameraFollowSystem());
+                .Add(new CameraBuildSystem());
+
         }
     }
 }

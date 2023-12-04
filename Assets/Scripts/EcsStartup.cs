@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Scripting;
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public sealed class EcsStartup : MonoBehaviour
     {
@@ -25,13 +25,10 @@ namespace HalfDiggers.Runner
             IPoolService poolService = new PoolService();
             await poolService.Initialize();
 
-            IPatternService patternService = new PatternService();
-            await patternService.Initialize();
-
             var world = new EcsWorld();
             Systems = new EcsSystems(world,shared);
 
-            new InitializeAllSystem(Systems, poolService, patternService,isMainMenu);
+            new InitializeAllSystem(Systems, poolService,isMainMenu);
 
             Systems
                 .AddWorld (new EcsWorld (), WorldsNamesConstants.EVENTS)

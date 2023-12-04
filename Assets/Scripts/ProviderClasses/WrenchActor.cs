@@ -1,6 +1,6 @@
 ﻿using LeopotamGroup.Globals;
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public class WrenchActor : Actor
     {

@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using UnityEngine;
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public static class Extensions
     {

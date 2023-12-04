@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public abstract class BaseView : MonoBehaviour
     {

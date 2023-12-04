@@ -3,7 +3,7 @@ using System.Security.AccessControl;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     [Serializable]
     public struct Resource

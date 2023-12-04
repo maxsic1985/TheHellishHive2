@@ -3,17 +3,16 @@ using LeopotamGroup.Globals;
 using UnityEngine;
 
 
-namespace HalfDiggers.Runner
+namespace HellishHive2
 {
     public sealed class InitializeServiceSystem : IEcsInitSystem
     {
         private readonly IPoolService _poolService;
-        private readonly IPatternService _patternService;
+      
 
-        public InitializeServiceSystem(IPoolService poolService, IPatternService patternService)
+        public InitializeServiceSystem(IPoolService poolService)
         {
             _poolService = poolService;
-            _patternService = patternService;
         }
 
         public void Init(IEcsSystems systems)
@@ -28,7 +27,6 @@ namespace HalfDiggers.Runner
                 Service<IInputService>.Set(new SwipeService());
 
             Service<IPoolService>.Set(_poolService);
-            Service<IPatternService>.Set(_patternService);
         }
     }
 }
