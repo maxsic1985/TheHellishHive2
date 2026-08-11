@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Services;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.CrossPlatformInput;
@@ -25,8 +26,15 @@ public class LV1Dialog : MonoBehaviour {
 	public bool ontrigger=false;
 
 	public int triggSave = 0;
+	private FirstPersonController _fps;
 
-   IEnumerator TimerText()//метод печати текста по буквам
+
+	private void Awake()
+	{
+		_fps = GetComponent<FirstPersonController>();
+	}
+
+	IEnumerator TimerText()//метод печати текста по буквам
 	{
 		
 			while (1 == 1)
@@ -49,19 +57,26 @@ public class LV1Dialog : MonoBehaviour {
 	{
 		if (col2.CompareTag ("Dialog") &&  triggSave==0) 
 		{
-			StartCoroutine(TimerText());
 			QuestPanel2.SetActive (true);//отобразить панель НПС
-		    GetComponent<FirstPersonController> ().m_RunSpeed = 0;//скорость хотьбы 0
-			b1.GetComponent<Button> ().interactable = false;//интерфейс игрока отключить
-			b2.GetComponent<Button>().interactable=false;//инвентарь отключить
-			b3.GetComponent<Button>().interactable=false;//настройки отключить
-			b4.GetComponent<Button>().interactable=false;//настройки отключить
-			GetComponent<FirstPersonController> ().m_MouseLook.XSensitivity=0;
-			GetComponent<FirstPersonController> ().m_MouseLook.YSensitivity = 0;
+			
+			SetMenuInteractble(false);
+			ControlsService.LockControls(_fps);
+			StartCoroutine(TimerText());
 
 		}
 	
     }
+
+	private void SetMenuInteractble(bool interactble)
+	{
+		b1.GetComponent<Button>().interactable = interactble; //интерфейс игрока отключить
+		b2.GetComponent<Button>().interactable = interactble; //инвентарь отключить
+		b3.GetComponent<Button>().interactable = interactble; //настройки отключить
+		b4.GetComponent<Button>().interactable = interactble; //настройки отключить
+	}
+
+	
+
 	public void nextbutt2()
 	{
 
@@ -87,17 +102,10 @@ public class LV1Dialog : MonoBehaviour {
 			charIndex2 = 0;
 			Destroy (GameObject.Find ("TriggerDialog"));
 			triggSave = 1;
-			GetComponent<FirstPersonController> ().m_RunSpeed = 1.8f;//скорость хотьбы  норма
 			GetComponent<randomMob> ().cnt=0;
 			GetComponent<randomMob> ().enter=false;
-			b1.GetComponent<Button> ().interactable = true;//интерфейс игрока 
-			b2.GetComponent<Button> ().interactable = true;
-			b3.GetComponent<Button>().interactable=true;//настройки
-			b4.GetComponent<Button> ().interactable = true;
-			GetComponent<FirstPersonController> ().m_MouseLook.XSensitivity=2.5f;
-			GetComponent<FirstPersonController> ().m_MouseLook.YSensitivity = 2.5f;
-
-
+			SetMenuInteractble(true);
+			ControlsService.UnLockControls(_fps);
 		}
 		if (stringIndex2 == 1)
 
@@ -107,7 +115,8 @@ public class LV1Dialog : MonoBehaviour {
         else PEMEHb.SetBool ("PEMBool",false) ;
 
 	}
-		
+
+	
 
 
 	// Use this for initialization
@@ -120,11 +129,5 @@ public class LV1Dialog : MonoBehaviour {
 		}
 	
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
 
-	
-	}
 }

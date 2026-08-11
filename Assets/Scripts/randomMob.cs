@@ -9,13 +9,14 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityStandardAssets.Characters.FirstPerson;
 using System.Collections;
+using Services;
 
 public class randomMob : MonoBehaviour
 {
     public Transform effekt1;
     public Transform effekt2;
     public Transform effekt3;
-
+    private FirstPersonController _fps;
 
     public AudioSource audioSource1;//для звука битвы.
     private int mu;//для звука битвы.
@@ -403,6 +404,8 @@ public class randomMob : MonoBehaviour
     }
     void Start()
     {
+        _fps = GetComponent<FirstPersonController>();
+        
         MM = new MenuManager();
         if (PlayerPrefs.GetInt("IKillBoss") == 1)
         {
@@ -567,6 +570,7 @@ public class randomMob : MonoBehaviour
         MenuBattle.SetActive(false);
         hideButtonEndRound();
         MenuBattleBool = false;
+        ControlsService.LockControls(_fps);
     }
     public void HideMenuNoBattle()
     {
