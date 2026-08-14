@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class SetSFX : MonoBehaviour {
 
     public GameObject buttSetting;
-	public GameObject RZ;
     public AudioSource butSet;
     public AudioClip buttSet;
 
@@ -40,11 +39,6 @@ public class SetSFX : MonoBehaviour {
         butSet.GetComponent<AudioSource>().PlayOneShot(buttSet);
 
     }
-	public void RZcancel()//отключает панель авторы
-	{
-
-		RZ.SetActive (false);
-
-	}
+	
 }//ГЛОБАЛЬНЫЕ НАСТРОЙКИ ЗВУКА!!!!!!!!!!
 

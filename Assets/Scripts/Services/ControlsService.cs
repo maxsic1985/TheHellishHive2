@@ -12,6 +12,7 @@ namespace Services
             _fps.m_MouseLook.XSensitivity = 0;
             _fps.m_MouseLook.YSensitivity = 0;
             _fps.m_MouseLook.SetCursorLock(false);
+         
         } 
         
         public static void UnLockControls(FirstPersonController _fps)
