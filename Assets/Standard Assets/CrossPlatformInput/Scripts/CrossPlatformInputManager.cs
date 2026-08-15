@@ -29,14 +29,12 @@ namespace UnityStandardAssets.CrossPlatformInput
             
             if (Application.platform == RuntimePlatform.WebGLPlayer && Application.isMobilePlatform)
             {
-                Debug.Log("Это мобильное устройство.");
-                var testtext = GameObject.Find("TestText1").GetComponent<Text>().text = "test1_Mobile";
+               // Debug.Log("Это мобильное устройство.");
                 activeInput = s_TouchInput;
             }
             else
             {
-                Debug.Log("Это не мобильное устройство (или ПК).");
-                var testtext = GameObject.Find("TestText1").GetComponent<Text>().text = "test1_PC";
+              //  Debug.Log("Это не мобильное устройство (или ПК).");
                 activeInput = s_HardwareInput;
             }
             
