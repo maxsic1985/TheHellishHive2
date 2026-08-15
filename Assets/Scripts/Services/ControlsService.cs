@@ -11,7 +11,7 @@ namespace Services
             _fps.m_RunSpeed = 0; //скорость хотьбы 0
             _fps.m_MouseLook.XSensitivity = 0;
             _fps.m_MouseLook.YSensitivity = 0;
-            _fps.m_MouseLook.SetCursorLock(false);
+         //   _fps.m_MouseLook.SetCursorLock(false);
          
         } 
         
@@ -21,7 +21,12 @@ namespace Services
             _fps.m_MouseLook.YSensitivity = 1.5f;
             _fps.m_WalkSpeed = 2.0f;
             _fps.m_RunSpeed = 1.8f; //скорость хотьбы  норма
-            _fps.m_MouseLook.SetCursorLock(true);
+           // _fps.m_MouseLook.SetCursorLock(true);
+        }
+
+        public static void UnLockCursor(FirstPersonController _fps, bool locked)
+        {
+            _fps.m_MouseLook.SetCursorLock(locked);
         }
     }
 }

@@ -556,6 +556,8 @@ public class randomMob : MonoBehaviour
         MenuNoBattle.SetActive(false);
         MenuBattle.SetActive(true);
         MenuBattleBool = true;
+       
+        ControlsService.UnLockCursor(_fps,false);
     }
     public void hideMenuBattle()
     {
@@ -570,7 +572,7 @@ public class randomMob : MonoBehaviour
         MenuBattle.SetActive(false);
         hideButtonEndRound();
         MenuBattleBool = false;
-        ControlsService.LockControls(_fps);
+       
     }
     public void HideMenuNoBattle()
     {

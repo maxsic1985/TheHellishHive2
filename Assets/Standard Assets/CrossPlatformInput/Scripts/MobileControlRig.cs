@@ -3,6 +3,7 @@ using System;
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace UnityStandardAssets.CrossPlatformInput
@@ -21,18 +22,21 @@ namespace UnityStandardAssets.CrossPlatformInput
 	{
 		CheckEnableControlRig();
 	}
-	#endif
+#endif
 
         private void Start()
         {
 #if UNITY_EDITOR
-            if (Application.isPlaying) //if in the editor, need to check if we are playing, as start is also called just after exiting play
+            if (Application
+                .isPlaying) //if in the editor, need to check if we are playing, as start is also called just after exiting play
 #endif
             {
-                UnityEngine.EventSystems.EventSystem system = GameObject.FindObjectOfType<UnityEngine.EventSystems.EventSystem>();
+                UnityEngine.EventSystems.EventSystem system =
+                    GameObject.FindObjectOfType<UnityEngine.EventSystems.EventSystem>();
 
                 if (system == null)
-                {//the scene have no event system, spawn one
+                {
+                    //the scene have no event system, spawn one
                     GameObject o = new GameObject("EventSystem");
 
                     o.AddComponent<UnityEngine.EventSystems.EventSystem>();
@@ -66,11 +70,16 @@ namespace UnityStandardAssets.CrossPlatformInput
 
         private void CheckEnableControlRig()
         {
-#if MOBILE_INPUT
-		EnableControlRig(true);
-		#else
-            EnableControlRig(false);
-#endif
+            if (Application.platform == RuntimePlatform.WebGLPlayer && Application.isMobilePlatform)
+            {
+                EnableControlRig(true);
+                var testtext = GameObject.Find("TestText").GetComponent<Text>().text = "test_Mobile";
+            }
+            else
+            {
+                EnableControlRig(false);
+                var testtext = GameObject.Find("TestText").GetComponent<Text>().text = "test_PC";
+            }
         }
 
 
