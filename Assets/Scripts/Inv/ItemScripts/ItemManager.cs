@@ -53,7 +53,7 @@ public class ItemManager : MonoBehaviour
 
         // FileStream fs = new FileStream(Path.Combine(Application.streamingAssetsPath, "Items.xml"), FileMode.Open);
 
-        Stream fs = new FileStream(Application.dataPath + "/Resources/Items.xml", FileMode.Open,  FileAccess.ReadWrite);
+        Stream fs = new FileStream(Application.dataPath + "/Resources/ItemsEn.xml", FileMode.Open,  FileAccess.ReadWrite);
 
         XmlSerializer serializer = new XmlSerializer(typeof(ItemContainer), itemTypes);
 
@@ -81,7 +81,7 @@ public class ItemManager : MonoBehaviour
                 break;
         }
 
-        fs = new FileStream(Application.dataPath + "/Resources/Items.xml", FileMode.Create, FileAccess.ReadWrite);
+        fs = new FileStream(Application.dataPath + "/Resources/ItemsEn.xml", FileMode.Create, FileAccess.ReadWrite);
         serializer.Serialize(fs, itemContainer);
         fs.Close();
     }

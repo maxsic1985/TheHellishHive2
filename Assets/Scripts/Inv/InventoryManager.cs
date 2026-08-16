@@ -5,6 +5,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System.Xml.Serialization;
 using System.IO;
+using YG;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -174,10 +175,24 @@ public class InventoryManager : MonoBehaviour
     private ItemContainer itemCont = new ItemContainer();
     public void Start()
     {
+        var xmlPath = "";
+        switch (YG2.envir.language)
+        {
+            case "ru":
+                xmlPath = "Items";
+                break;
+            case "en":
+                xmlPath = "ItemsEn";
+                break;
+            default:
+                xmlPath = "Items";
+                break;
+        } 
+        
         Type[] itemTypes = { typeof(Equipment), typeof(Weapon), typeof(Consumeable), typeof(Magic) };
 
         XmlSerializer serializer = new XmlSerializer(typeof(ItemContainer), itemTypes);
-        TextAsset levelXML = (TextAsset)Resources.Load("Items", typeof(TextAsset));
+        TextAsset levelXML = (TextAsset)Resources.Load(xmlPath, typeof(TextAsset));
         var stream = new MemoryStream(levelXML.bytes);
         StreamReader textReader = new StreamReader(stream);
         //  TextReader textreader = new StreamReader("jar:file://" + Application.dataPath + "!/assets/Items");
