@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using YG;
 
 public abstract class Item
 {
@@ -73,8 +74,19 @@ public abstract class Item
                 color = "red";
                 break;
         }
-       
-        return string.Format("<color=" + color + "><size=16>{0}</size></color><size=14><i><color=lime>" + newLine + "{1}</color></i>\n{3}</size>", ItemName, Description, ItemType.ToString().ToLower(), "Цена: "+ Price.ToString());
+        switch (YG2.envir.language)
+        {
+            case "ru":
+                return string.Format("<color=" + color + "><size=16>{0}</size></color><size=14><i><color=lime>" + newLine + "{1}</color></i>\n{3}</size>", ItemName, Description, ItemType.ToString().ToLower(), "Цена: "+ Price.ToString());
+                break;
+            case "en":
+                return string.Format("<color=" + color + "><size=16>{0}</size></color><size=14><i><color=lime>" + newLine + "{1}</color></i>\n{3}</size>", ItemName, Description, ItemType.ToString().ToLower(), "Price: "+ Price.ToString());
+                break;
+            default:
+                return string.Format("<color=" + color + "><size=16>{0}</size></color><size=14><i><color=lime>" + newLine + "{1}</color></i>\n{3}</size>", ItemName, Description, ItemType.ToString().ToLower(), "Цена: "+ Price.ToString());
+                break;
+        } 
+      
 
     }
 }
