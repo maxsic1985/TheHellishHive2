@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 using System.Collections;
 using UnityEngine.SceneManagement;
+using YG;
 
 public class PlayerHelper : MonoBehaviour
 {
@@ -517,8 +518,18 @@ public class PlayerHelper : MonoBehaviour
             this.intellect = intellect + baseIntellect;
             if (statsText)
             {
-
-                statsText.text = string.Format("Защ: {0}\nСкор: {1}\nИнт: {2}\nУрон: {3}", this.Stamina, this.Speed, this.intellect, this.Atack);
+                switch (YG2.envir.language)
+                {
+                    case "ru":
+                        statsText.text = string.Format("Защ: {0}\nСкор: {1}\nИнт: {2}\nУрон: {3}", this.Stamina, this.Speed, this.intellect, this.Atack);
+                        break;
+                    case "en":
+                        statsText.text = string.Format("Def: {0}\nSpeed: {1}\nInt: {2}\nDamage: {3}", this.Stamina, this.Speed, this.intellect, this.Atack);
+                        break;
+                    default:
+                        statsText.text = string.Format("Защ: {0}\nСкор: {1}\nИнт: {2}\nУрон: {3}", this.Stamina, this.Speed, this.intellect, this.Atack);
+                        break;
+                } 
 
             }
         }

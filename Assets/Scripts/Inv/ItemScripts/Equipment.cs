@@ -54,7 +54,8 @@ public class Equipment : Item
             stats += "\nЗащита: + " + Stamina.ToString();
         }
         string itemTip = base.GetTooltip();
-
-        return string.Format("{0}" + "<size=14>{1}</size>", itemTip, stats);
+       // return "";
+          //  return string.Format("{0}" + "<size=14>{1}</size>", itemTip, stats);
+            return string.Format("{0}", itemTip);
     }
 }
