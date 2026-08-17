@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Services;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityStandardAssets.CrossPlatformInput;
+using YG;
 
 public class LV1Dialog : MonoBehaviour {
 	
@@ -15,6 +17,8 @@ public class LV1Dialog : MonoBehaviour {
 
 	public Text textArea2; // текст 
 	public string[] srtrings2;// строки
+	public string[] srtrings2En;// строки
+	[FormerlySerializedAs("currentString2")] public string[] _NpcInputText;// строки
 
 	public GameObject QuestPanel2;//окно диалога
 
@@ -40,12 +44,12 @@ public class LV1Dialog : MonoBehaviour {
 			while (1 == 1)
 			{
 				yield return new WaitForSeconds(speed2);
-				if (charIndex2 > srtrings2[stringIndex2].Length)
+				if (charIndex2 > _NpcInputText[stringIndex2].Length)
 				{
 					continue;
 				}
 
-				textArea2.text = srtrings2[stringIndex2].Substring(0, charIndex2);
+				textArea2.text = _NpcInputText[stringIndex2].Substring(0, charIndex2);
 				charIndex2++;
 				if (QuestPanel2.activeSelf == false)
 				{
@@ -122,6 +126,20 @@ public class LV1Dialog : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+	    
+	    switch (YG2.envir.language)
+	    {
+		    case "ru":
+			    _NpcInputText = srtrings2;
+			    break;
+		    case "en":
+			    _NpcInputText = srtrings2En;
+			    break;
+		    default:
+			    _NpcInputText = srtrings2;
+			    break;
+	    } 
+	    
 		if (triggSave == 1) 
 		{
 			Destroy (GameObject.Find ("TriggerDialog"));
