@@ -385,10 +385,10 @@ public class PlayerHelper : MonoBehaviour
     
         //вывод информации о состоянии героя на UI
 
-        if (GoldText && namePlayer && texlvl && manaPlayer && hPText)
+        if (GoldText  && texlvl && manaPlayer && hPText)
         {
             GoldText.text = GoldCur.ToString();
-            namePlayer.text = namePlayerString;
+         //   namePlayer.text = namePlayerString;
 			if (LvlPlayer >= 10) {
 				texlvl2.text = "Max Lvl";
 				texlvl.text = "Max Lvl";
@@ -406,6 +406,7 @@ public class PlayerHelper : MonoBehaviour
             manaPlayer.maxValue = manaMax;
             LVLMenutext.text = "" + Exp + "/" + maxexp.ToString();
             hPText.value = HpCur;
+            Debug.Log($"HpCur:{HpCur}");
             hPText.maxValue = hpMax;
           
           
