@@ -25,7 +25,7 @@ public class Weapon : Equipment
     {
         
         string equipmentTip = base.GetTooltip();
-        return string.Format("{0}" + "\nАтака: +" + "<size=14>{1}</size>",equipmentTip,Atack);
+        return string.Format("{0}",equipmentTip);
     }
 }
  

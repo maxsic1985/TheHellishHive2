@@ -36,22 +36,22 @@ public class Equipment : Item
         //с новой строки вывести значении сила в ToolTip
         if (Strenght > 0)
         {
-            stats += "\nСкорость: + " + Strenght.ToString();
+          //  stats += "\nСкорость: + " + Strenght.ToString();
         }
         //с новой строки вывести значение интеллекта в ToolTip
         if (Intellect > 0)
         {
-            stats += "\nИнтеллект: + " + Intellect.ToString();
+         //   stats += "\nИнтеллект: + " + Intellect.ToString();
         }
         //с новой строки вывести значение ловкости в ToolTip
         if (Agility > 0)
         {
-            stats += "\nЛовкость: + " + Agility.ToString();
+         //   stats += "\nЛовкость: + " + Agility.ToString();
         }
         //с новой строки вывести значение удачи в ToolTip
         if (Stamina > 0)
         {
-            stats += "\nЗащита: + " + Stamina.ToString();
+        //    stats += "\nЗащита: + " + Stamina.ToString();
         }
         string itemTip = base.GetTooltip();
        // return "";

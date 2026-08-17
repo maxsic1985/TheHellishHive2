@@ -63,7 +63,7 @@ public class Consumeable : Item
 
         string itemTip = base.GetTooltip();
 
-        return string.Format("{0}" + "<size=14> {1}</size>", itemTip, stats);
+        return string.Format("{0}", itemTip);
     }
     /// <summary>
     /// расчет количества восполненного хп или мп после использования баночки
