@@ -93,21 +93,30 @@ public class randomMob : MonoBehaviour
     //иначе игрок в движении 
     void OnStay(int position) //при вызове метода передается координата отслеживаемого объекта (игрока)
     {
-        if (position == previusValue) //предыдущее положение равно текущему?
+        // if (position == previusValue) //предыдущее положение равно текущему?
+        // {
+        //     previusValue = position; //если да то увеличиваем counter на 1 
+        //     counter += 1; //до тех пор пока она не более либо равен 50
+        //     if (counter >= 50)
+        //     {
+        //         stay = true; //игрок стоит!
+        //     }
+        // }
+        // else
+        // {
+        //     stay = false;
+        //     counter = 0;
+        //     previusValue = position;
+        // }
+        if (Input.GetAxis("Horizontal")==0 && Input.GetAxis("Vertical")==0)
         {
-            previusValue = position; //если да то увеличиваем counter на 1 
-            counter += 1; //до тех пор пока она не более либо равен 50
-            if (counter >= 50)
-            {
-                stay = true; //игрок стоит!
-            }
+            stay = true;
         }
         else
         {
-            stay = false;
-            counter = 0;
-            previusValue = position;
+            stay = false; //игрок стоит!
         }
+        
     }
 
     //инициализация отсчета времени до вставки моба в триггере

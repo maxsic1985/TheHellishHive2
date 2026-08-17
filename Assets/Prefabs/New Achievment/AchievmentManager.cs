@@ -399,10 +399,10 @@ public class AchievmentManager : MonoBehaviour
 
 
         ///Control
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            ShowMenu();
-        }
+        // if (Input.GetKeyDown(KeyCode.S))
+        // {
+        //     ShowMenu();
+        // }
     }
     
     private void GetAchevEn()
@@ -481,9 +481,9 @@ public class AchievmentManager : MonoBehaviour
 
 
         ///Control
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            ShowMenu();
-        }
+        // if (Input.GetKeyDown(KeyCode.S))
+        // {
+        //     ShowMenu();
+        // }
     }
 }
