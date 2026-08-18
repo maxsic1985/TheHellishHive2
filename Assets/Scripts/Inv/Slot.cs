@@ -144,6 +144,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         GetComponent<Image>().sprite = neutrall;
         SpriteState st = new SpriteState();
         st.highlightedSprite = hightlightt;
+        
         st.pressedSprite = neutrall;
         GetComponent<Button>().spriteState = st;
     }

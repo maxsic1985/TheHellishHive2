@@ -24,7 +24,8 @@ public class randomMob : MonoBehaviour
     public AudioClip muzon; //для звука битвы.
     private GameObject ff;
     public GameObject MobileControlCanvas;
-    private Vector3 previus;
+    private Vector3 previusPosition;
+    private Quaternion previusRotation;
     public bool enter; //флаг входа в триггер
     private string coliderzon;
     private bool chkDst;
@@ -121,7 +122,7 @@ public class randomMob : MonoBehaviour
         }
         else
         {
-            if (Input.GetAxis("Horizontal")==0 && Input.GetAxis("Vertical")==0)
+            if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
             {
                 stay = true;
             }
@@ -130,9 +131,6 @@ public class randomMob : MonoBehaviour
                 stay = false; //игрок стоит!
             }
         }
-
-      
-        
     }
 
     //инициализация отсчета времени до вставки моба в триггере
@@ -201,6 +199,14 @@ public class randomMob : MonoBehaviour
 
     private void transformToBatleField()
     {
+        // previus.position = transform.position;
+        // previus.localRotation = transform.localRotation;
+        if (isTransformToBattle == false)
+        {
+            previusPosition = gameObject.transform.position;
+            previusRotation = gameObject.transform.rotation;
+        }
+
         isTransformToBattle = true;
         Transform cc = GameObject.FindGameObjectWithTag("battle").GetComponent<Transform>();
         transform.rotation = Quaternion.FromToRotation(Vector3.up, cc.forward);
@@ -212,8 +218,8 @@ public class randomMob : MonoBehaviour
         if (isTransformToBattle)
         {
             ScreenFader.Fader(3, Color.black);
-            transform.position = previus;
-            transform.rotation = Quaternion.identity;
+            transform.position = previusPosition;
+            transform.rotation = previusRotation;
             this.GetComponent<CharacterController>().enabled = true;
             isTransformToBattle = false;
         }
@@ -385,7 +391,7 @@ public class randomMob : MonoBehaviour
         {
             mobCentr.SetActive(true);
             var posC = GameObject.Find("t2").transform.position;
-                mobCentr.transform.position = posC;
+            mobCentr.transform.position = posC;
             mobCentr.transform.localScale = Vector3.one;
             var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
                 $"$BtnsShow{mobRight.transform.localPosition}";
@@ -581,7 +587,8 @@ public class randomMob : MonoBehaviour
         }
         else
         {
-            previus = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            // previus.position = transform.position;
+            // previus.localRotation = transform.localRotation;
         }
 
         if ((GameObject.FindGameObjectWithTag("Mob") == null) && (addMob)) //убили мобов, продолжаем движение
