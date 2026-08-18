@@ -91,7 +91,7 @@ public class randomMob : MonoBehaviour
     //если в течении времени counter положение игрока не изменяется по осям x или z 
     //то устонавливается флаг stay
     //иначе игрок в движении 
-    void OnStay(int position) //при вызове метода передается координата отслеживаемого объекта (игрока)
+    void OnStay() //при вызове метода передается координата отслеживаемого объекта (игрока)
     {
         // if (position == previusValue) //предыдущее положение равно текущему?
         // {
@@ -108,14 +108,30 @@ public class randomMob : MonoBehaviour
         //     counter = 0;
         //     previusValue = position;
         // }
-        if (Input.GetAxis("Horizontal")==0 && Input.GetAxis("Vertical")==0)
+        if (Application.platform == RuntimePlatform.WebGLPlayer && Application.isMobilePlatform)
         {
-            stay = true;
+            if (_fps.GetComponent<CharacterController>().velocity.magnitude == 0)
+            {
+                stay = true;
+            }
+            else
+            {
+                stay = false; //игрок стоит!
+            }
         }
         else
         {
-            stay = false; //игрок стоит!
+            if (Input.GetAxis("Horizontal")==0 && Input.GetAxis("Vertical")==0)
+            {
+                stay = true;
+            }
+            else
+            {
+                stay = false; //игрок стоит!
+            }
         }
+
+      
         
     }
 
@@ -498,9 +514,7 @@ public class randomMob : MonoBehaviour
         }
 
         //определяем состояние игрока, движение остановлен
-        OnStay((int)this.transform.position.x +
-               (int)this.transform.position
-                   .z); //передаем в метод сумму позиции игрока по x и по z (когда игрок стоит по этим осям нет изменений)
+        OnStay(); //передаем в метод сумму позиции игрока по x и по z (когда игрок стоит по этим осям нет изменений)
         if (enter) //игрок в тригере?
         {
             if ((cnt > -1) && (!stay)) //счетчик не вышел и игрок двигается
