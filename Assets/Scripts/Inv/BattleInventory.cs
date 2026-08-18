@@ -11,8 +11,8 @@ public class BattleInventory : Inventory
     private damage d;
     private PVP _pvp;
     private damage playerDamage;
-    private hp playerHP;
-
+    
+    
     public override void CreateLayout()
     {
         GetComponentInParent<Transform>().parent.SetAsLastSibling();
@@ -60,7 +60,7 @@ public class BattleInventory : Inventory
             {
                 if ((sh.playerStep) && (rm.MenuBattleBool==true))//если ход игрока
                 {
-                    if (playerHP.HP > 0)
+                    if (PlayerHelper.Instance.HpCur > 0)
                     {
                         slot.UseItem(slot);//использовать еду или зелье
                         playerDamage.IsGo = true;
@@ -86,7 +86,7 @@ public class BattleInventory : Inventory
     void Awake()
     {
         playerDamage = GameObject.FindGameObjectWithTag("Player").GetComponent<damage>();
-        playerHP = GameObject.FindGameObjectWithTag("Player").GetComponent<hp>();
+       
         _pvp = FindObjectOfType<PVP>();
         d = FindObjectOfType<damage>();
         rm = FindObjectOfType<randomMob>();

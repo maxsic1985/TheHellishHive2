@@ -36,7 +36,7 @@ public class Mob : MonoBehaviour
     /// </summary>
     public int IQ;
 
-    hp _hp;
+    EnemyHP _enemyHp;
     #endregion
     #region Properties
     /// <summary>
@@ -66,14 +66,14 @@ public class Mob : MonoBehaviour
     #region Voids
     void Start()
     {
-        _hp = GetComponent<hp>();
+        _enemyHp = GetComponent<EnemyHP>();
     }
     void Update()
     {
         //убить моба если хп меньше нуля
-        if (_hp.HP <= 0)
+        if (_enemyHp.HP <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,1);
         }
 
     }

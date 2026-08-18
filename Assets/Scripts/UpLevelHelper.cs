@@ -25,7 +25,7 @@ public class UpLevelHelper : MonoBehaviour
                     playerHelper.baseStamina += 0;
                     playerHelper.baseIntellect += 1;
                     playerHelper.ManaCur = playerHelper.ManaMax;
-                    GetComponent<hp>().HP = playerHelper.HpMax;
+                    playerHelper.HpCur = playerHelper.HpMax;
                     playerHelper.GetLVL = false;
                     print("Speed"+playerHelper.baseSpeed +","+ "Atack"+playerHelper.baseAtack + "," + "Stamina"+playerHelper.baseStamina + "," +"Intellect"+playerHelper.Intelect);
                     SaveBaseAttribut(playerHelper.baseSpeed, playerHelper.baseAtack, playerHelper.baseStamina, playerHelper.baseIntellect);
@@ -40,7 +40,7 @@ public class UpLevelHelper : MonoBehaviour
                     playerHelper.baseAtack += 2;
                     playerHelper.baseStamina += 1;
                     playerHelper.ManaCur = playerHelper.ManaMax;
-                    GetComponent<hp>().HP = playerHelper.HpMax;
+                    playerHelper.HpCur = playerHelper.HpMax;
                     playerHelper.GetLVL = false;
                     SaveBaseAttribut(playerHelper.baseSpeed, playerHelper.baseAtack, playerHelper.baseStamina, playerHelper.baseIntellect);
                     CharactersPanel.Instance.CalcStats();
@@ -55,7 +55,7 @@ public class UpLevelHelper : MonoBehaviour
                     playerHelper.baseStamina += 1;
                     playerHelper.baseIntellect += 1;
                     playerHelper.ManaCur = playerHelper.ManaMax;
-                    GetComponent<hp>().HP = playerHelper.HpMax;
+                    playerHelper.HpCur = playerHelper.HpMax;
                     playerHelper.GetLVL = false;
                     SaveBaseAttribut(playerHelper.baseSpeed, playerHelper.baseAtack, playerHelper.baseStamina, playerHelper.baseIntellect);
                     CharactersPanel.Instance.CalcStats();
@@ -70,7 +70,7 @@ public class UpLevelHelper : MonoBehaviour
                     playerHelper.baseStamina += 0;
                     playerHelper.baseIntellect += 1;
                     playerHelper.ManaCur = playerHelper.ManaMax;
-                    GetComponent<hp>().HP = playerHelper.HpMax;
+                    playerHelper.HpCur = playerHelper.HpMax;
                     playerHelper.GetLVL = false;
                     SaveBaseAttribut(playerHelper.baseSpeed, playerHelper.baseAtack, playerHelper.baseStamina, playerHelper.baseIntellect);
                     CharactersPanel.Instance.CalcStats();
@@ -85,7 +85,7 @@ public class UpLevelHelper : MonoBehaviour
                     playerHelper.baseStamina += 1;
                     playerHelper.baseIntellect += 1;
                     playerHelper.ManaCur = playerHelper.ManaMax;
-                    GetComponent<hp>().HP = playerHelper.HpMax;
+                    playerHelper.HpCur = playerHelper.HpMax;
                     playerHelper.GetLVL = false;
                     SaveBaseAttribut(playerHelper.baseSpeed, playerHelper.baseAtack, playerHelper.baseStamina, playerHelper.baseIntellect);
 
@@ -101,7 +101,7 @@ public class UpLevelHelper : MonoBehaviour
                     playerHelper.baseStamina += 1;
                     playerHelper.baseIntellect += 1;
                     playerHelper.ManaCur = playerHelper.ManaMax;
-                    GetComponent<hp>().HP = playerHelper.HpMax;
+                    playerHelper.HpCur = playerHelper.HpMax;
                     playerHelper.GetLVL = false;
                     SaveBaseAttribut(playerHelper.baseSpeed, playerHelper.baseAtack, playerHelper.baseStamina, playerHelper.baseIntellect);
 
@@ -117,7 +117,7 @@ public class UpLevelHelper : MonoBehaviour
                     playerHelper.baseStamina += 1;
                     playerHelper.baseIntellect += 1;
                     playerHelper.ManaCur = playerHelper.ManaMax;
-                    GetComponent<hp>().HP = playerHelper.HpMax;
+                    playerHelper.HpCur = playerHelper.HpMax;
                     playerHelper.GetLVL = false;
                     SaveBaseAttribut(playerHelper.baseSpeed, playerHelper.baseAtack, playerHelper.baseStamina, playerHelper.baseIntellect);
 
@@ -133,7 +133,7 @@ public class UpLevelHelper : MonoBehaviour
                     playerHelper.baseStamina += 1;
                     playerHelper.baseIntellect += 1;
                     playerHelper.ManaCur = playerHelper.ManaMax;
-                    GetComponent<hp>().HP = playerHelper.HpMax;
+                    playerHelper.HpCur = playerHelper.HpMax;
                     playerHelper.GetLVL = false;
                     SaveBaseAttribut(playerHelper.baseSpeed, playerHelper.baseAtack, playerHelper.baseStamina, playerHelper.baseIntellect);
 
@@ -149,7 +149,7 @@ public class UpLevelHelper : MonoBehaviour
                     playerHelper.baseStamina += 1;
                     playerHelper.baseIntellect += 1;
                     playerHelper.ManaCur = playerHelper.ManaMax;
-                    GetComponent<hp>().HP = playerHelper.HpMax;
+                    playerHelper.HpCur = playerHelper.HpMax;
                     playerHelper.GetLVL = false;
                     SaveBaseAttribut(playerHelper.baseSpeed, playerHelper.baseAtack, playerHelper.baseStamina, playerHelper.baseIntellect);
 

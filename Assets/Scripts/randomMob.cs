@@ -294,11 +294,11 @@ public class randomMob : MonoBehaviour
         {
             if (this.GetComponent<damage>().typeAttack == 1)
             {
-                GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<hp>().ImpactDamageOnMob(effekt1);
+                GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
             }
             else if (this.GetComponent<damage>().typeAttack == 2)
             {
-                GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<hp>().ImpactDamageOnMob(effekt2);
+                GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt2);
             }
 
             this.GetComponent<damage>().IsGo = true;
@@ -315,11 +315,11 @@ public class randomMob : MonoBehaviour
         {
             if (this.GetComponent<damage>().typeAttack == 1)
             {
-                GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<hp>().ImpactDamageOnMob(effekt1);
+                GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
             }
             else if (this.GetComponent<damage>().typeAttack == 2)
             {
-                GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<hp>().ImpactDamageOnMob(effekt2);
+                GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt2);
             }
 
             this.GetComponent<damage>().IsGo = true;
@@ -336,11 +336,11 @@ public class randomMob : MonoBehaviour
         {
             if (this.GetComponent<damage>().typeAttack == 1)
             {
-                GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<hp>().ImpactDamageOnMob(effekt1);
+                GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
             }
             else if (this.GetComponent<damage>().typeAttack == 2)
             {
-                GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<hp>().ImpactDamageOnMob(effekt2);
+                GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt2);
             }
 
             print("Centr");
@@ -603,7 +603,8 @@ public class randomMob : MonoBehaviour
             ShowMenuNoBattle();
             EnbBattle = true;
             // MobileControlCanvas.GetComponentInChildren<Canvas>().enabled = true;
-            //показать меню боя    
+            //показать меню боя   
+            SaveHalper.Instance.Save();
         }
 
         if (GameObject.FindGameObjectWithTag("Mob") == null)

@@ -560,7 +560,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();//анмация урона Бар запуск анимации
                             yield return new WaitForSeconds(pauseTime);//ждем пол секунды 
                             mob.GetComponent<Animation>().Play("IdelSliz");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -575,7 +575,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelSliz");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
 
@@ -591,7 +591,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelSliz");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -612,7 +612,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime+0.1f);
                             mob.GetComponent<Animation>().Play("IdelGAD");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -627,7 +627,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime+0.1f);
                             mob.GetComponent<Animation>().Play("IdelGAD");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -642,7 +642,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime+0.1f);
                             mob.GetComponent<Animation>().Play("IdelGAD");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -663,7 +663,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelGom");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -678,7 +678,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelGom");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -693,7 +693,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelGom");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -714,7 +714,7 @@ public class SpeedHelper : MonoBehaviour
 						_playAnimBar.PlayAnimHPBAr();
 						yield return new WaitForSeconds(pauseTime);
 						mob.GetComponent<Animation>().Play("IdelEvolG");
-						mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+						mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
 						_playAnimBar.StopAnims();
 						AnimsSetDamageIsGone = true;
 					}
@@ -729,7 +729,7 @@ public class SpeedHelper : MonoBehaviour
 						_playAnimBar.PlayAnimHPBAr();
 						yield return new WaitForSeconds(pauseTime);
 						mob.GetComponent<Animation>().Play("IdelEvolG");
-						mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+						mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
 						_playAnimBar.StopAnims();
 						AnimsSetDamageIsGone = true;
 					}
@@ -744,7 +744,7 @@ public class SpeedHelper : MonoBehaviour
 						_playAnimBar.PlayAnimHPBAr();
 						yield return new WaitForSeconds(pauseTime);
 						mob.GetComponent<Animation>().Play("IdelEvolG");
-						mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+						mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
 						_playAnimBar.StopAnims();
 						AnimsSetDamageIsGone = true;
 					}
@@ -764,7 +764,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(0.6f);
                             mob.GetComponent<Animation>().Play("IdelMyxa");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -778,7 +778,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(0.6f);
                             mob.GetComponent<Animation>().Play("IdelMyxa");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -792,7 +792,7 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(0.6f);
                             mob.GetComponent<Animation>().Play("IdelMyxa");
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
                         }
@@ -813,7 +813,7 @@ public class SpeedHelper : MonoBehaviour
 
                             yield return new WaitForSeconds(0.6f);
                             _playAnimBar.PlayAnimHPBAr();
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
 
                             yield return new WaitForSeconds(0.2f);
                             mob.GetComponent<Animation>().Play("IdelKRAB");
@@ -830,7 +830,7 @@ public class SpeedHelper : MonoBehaviour
 
                             yield return new WaitForSeconds(0.6f);
                             _playAnimBar.PlayAnimHPBAr();
-                            mob.GetComponent<hp>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
+                            mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
 
                             yield return new WaitForSeconds(0.2f);
                             mob.GetComponent<Animation>().Play("IdelKRAB");
@@ -906,7 +906,7 @@ public class SpeedHelper : MonoBehaviour
                     //   yield return new WaitForSeconds(0.6f);
 
                     yield return new WaitForSeconds(1f);
-                    mob.GetComponent<hp>().TextDamageToMob(mob, this.GetComponent<hp>().Damage.ToString(), Color.green);
+                    mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelSliz");
                     AnimsGetDamageIsGone = true;
                     GetComponent<randomMob>().hideMenuBattle();
@@ -919,7 +919,7 @@ public class SpeedHelper : MonoBehaviour
                     //     yield return new WaitForSeconds(0.6f);
 
                     yield return new WaitForSeconds(1f);
-                    mob.GetComponent<hp>().TextDamageToMob(mob, this.GetComponent<hp>().Damage.ToString(), Color.green);
+                    mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelGAD");
                     AnimsGetDamageIsGone = true;
                     GetComponent<randomMob>().hideMenuBattle();
@@ -932,7 +932,7 @@ public class SpeedHelper : MonoBehaviour
                     //     yield return new WaitForSeconds(0.6f);
 
                     yield return new WaitForSeconds(1f);
-                    mob.GetComponent<hp>().TextDamageToMob(mob, this.GetComponent<hp>().Damage.ToString(), Color.green);
+                    mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelGom");
                     AnimsGetDamageIsGone = true;
                     GetComponent<randomMob>().hideMenuBattle();
@@ -945,7 +945,7 @@ public class SpeedHelper : MonoBehaviour
 				//     yield return new WaitForSeconds(0.6f);
 
 				yield return new WaitForSeconds(1f);
-				mob.GetComponent<hp>().TextDamageToMob(mob, this.GetComponent<hp>().Damage.ToString(), Color.green);
+				mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
 				mob.GetComponent<Animation>().Play("IdelEvolG");
 				AnimsGetDamageIsGone = true;
 				GetComponent<randomMob>().hideMenuBattle();
@@ -958,7 +958,7 @@ public class SpeedHelper : MonoBehaviour
                     //    yield return new WaitForSeconds(0.6f);
 
                     yield return new WaitForSeconds(1f);
-                    mob.GetComponent<hp>().TextDamageToMob(mob, this.GetComponent<hp>().Damage.ToString(), Color.green);
+                    mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelMyxa");
                     AnimsGetDamageIsGone = true;
                     GetComponent<randomMob>().hideMenuBattle();
@@ -971,7 +971,7 @@ public class SpeedHelper : MonoBehaviour
                     //   yield return new WaitForSeconds(0.6f);
                     print("giveDamage");
                     yield return new WaitForSeconds(1f);
-                    mob.GetComponent<hp>().TextDamageToMob(mob, this.GetComponent<hp>().Damage.ToString(), Color.green);
+                    mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelKRAB");
                     AnimsGetDamageIsGone = true;
                     GetComponent<randomMob>().hideMenuBattle();

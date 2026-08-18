@@ -149,7 +149,7 @@ public class damage : MonoBehaviour, Idamage
             {
                 checkMassAttack = true;
                 damToMob = GetComponent<PlayerHelper>().Intelect+GetComponent<PlayerHelper>().Atack;
-                mobs[i].GetComponent<hp>().ImpactDamageOnMob(rm.effekt3);
+                mobs[i].GetComponent<EnemyHP>().ImpactDamageOnMob(rm.effekt3);
                 print(ImpactDamageToMob());
                 yield return new WaitForSeconds(0.3f);
             }

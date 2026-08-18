@@ -42,6 +42,7 @@ public class Consumeable : Item
             default:
                 break;
         }
+        SaveHalper.Instance.Save();
     }
     /// <summary>
     /// Перезагруженный м-т вывода информации об итеме при выборе итема

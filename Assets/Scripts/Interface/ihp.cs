@@ -8,7 +8,6 @@ public interface ihp
     /// <summary>
     /// Флаг отсутствия ХП
     /// </summary>
-    bool IsDead { get; }
     /// <summary>
     /// Метод расчета конечного урона по мобу с учетом защиты моба и шанса крита
     /// </summary>
