@@ -315,7 +315,7 @@ public class RayHitScript : MonoBehaviour
 		if (hit.transform.tag == "ni4ka") 
 		{
 			print (hit.transform.name);
-			PlayerPrefs.SetInt (hit.transform.name + "tmp", 1);
+			PlayerPrefs.SetInt (hit.transform.name, 1);
 			hit.transform.gameObject.SetActive (false);
 			_palyerHalper.GoldCur += Random.Range (90, 150);
 		}  

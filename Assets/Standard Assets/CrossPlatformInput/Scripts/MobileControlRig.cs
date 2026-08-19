@@ -73,12 +73,12 @@ namespace UnityStandardAssets.CrossPlatformInput
             if (Application.platform == RuntimePlatform.WebGLPlayer && Application.isMobilePlatform)
             {
                 EnableControlRig(true);
-                var testtext = GameObject.Find("TestText").GetComponent<Text>().text = "test_Mobile";
+           //     var testtext = GameObject.Find("TestText").GetComponent<Text>().text = "test_Mobile";
             }
             else
             {
                 EnableControlRig(false);
-                var testtext = GameObject.Find("TestText").GetComponent<Text>().text = "test_PC";
+              //  var testtext = GameObject.Find("TestText").GetComponent<Text>().text = "test_PC";
             }
         }
 

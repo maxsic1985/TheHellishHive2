@@ -113,7 +113,7 @@ public class PlayerHelper : MonoBehaviour
     /// <summary>
     /// def
     /// </summary>
-    public int HpCur { get; set; }
+    public int HpCur;
 
     public int Stamina
     {
