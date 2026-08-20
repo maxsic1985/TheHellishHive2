@@ -373,8 +373,8 @@ public class randomMob : MonoBehaviour
             var posL = GameObject.Find("t1").transform.position;
             mobLeft.transform.position = posL;
             mobLeft.transform.localScale = Vector3.one;
-            var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
-                $"$BtnsShow{mobLeft.transform.localPosition}";
+           // var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
+           //   $"$BtnsShow{mobLeft.transform.localPosition}";
         }
 
         if (R.GetComponentInChildren<Mob>() != null)
@@ -383,8 +383,8 @@ public class randomMob : MonoBehaviour
             var posR = GameObject.Find("t3").transform.position;
             mobRight.transform.position = posR;
             mobRight.transform.localScale = Vector3.one;
-            var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
-                $"$BtnsShow{mobCentr.transform.localPosition}";
+           // var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
+             //   $"$BtnsShow{mobCentr.transform.localPosition}";
         }
 
         if (C.GetComponentInChildren<Mob>() != null)
@@ -393,8 +393,8 @@ public class randomMob : MonoBehaviour
             var posC = GameObject.Find("t2").transform.position;
             mobCentr.transform.position = posC;
             mobCentr.transform.localScale = Vector3.one;
-            var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
-                $"$BtnsShow{mobRight.transform.localPosition}";
+          //  var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
+            //    $"$BtnsShow{mobRight.transform.localPosition}";
         }
     }
 

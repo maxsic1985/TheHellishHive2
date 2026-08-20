@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
+
 public class RayHitScript : MonoBehaviour
 {
 	
@@ -206,7 +209,9 @@ public class RayHitScript : MonoBehaviour
                     PlaceInBox(chest, InventoryManager.Instance.ItemCont.Consumeables[5]);
                     PlaceInBox(chest, InventoryManager.Instance.ItemCont.Consumeables[6]);
                     PlayerPrefs.SetInt("KeyLvl1", 1);
-                    textNoKey.GetComponent<Text>().text = "Найден ключ";
+                    var msgTxt= YG2.envir.language == "en" ? "Key found":"Найден ключ";
+
+                    textNoKey.GetComponent<Text>().text = msgTxt;
                     textNoKey.SetActive(true);
                     keystate = 1;
                 }
@@ -299,7 +304,9 @@ public class RayHitScript : MonoBehaviour
                 }
                 else
                 {
-                    textNoKey.GetComponent<Text>().text = "Необходим ключ";
+                    var msgTxt= YG2.envir.language == "en" ? "Need the key":"Необходим ключ";
+
+                    textNoKey.GetComponent<Text>().text = msgTxt;
                     textNoKey.SetActive(true);//показать надпись о том, что необходим ключ
                     OpenPlit2.GetComponent<AudioSource>().PlayOneShot(Openresh);
                 }
@@ -322,12 +329,13 @@ public class RayHitScript : MonoBehaviour
     }
 	private void StopZ()
 	{
-		if (hit.transform.tag == "StopZone") 
-		{
+		if (hit.transform.tag == "StopZone")
+        {
 
-			textNoKey.GetComponent<Text>().text = "Не доступно в этой версии игры";
-			textNoKey.SetActive(true);
-		}  
+            SceneManager.LoadSceneAsync(4);
+            //textNoKey.GetComponent<Text>().text = "Не доступно в этой версии игры";
+            //textNoKey.SetActive(true);
+        }  
 	}
    
 }

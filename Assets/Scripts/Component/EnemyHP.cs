@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using YG;
 
 /// <summary>
 /// Класс вешается на любой игровой объект у которого имеется hp
@@ -286,22 +287,26 @@ public class EnemyHP : MonoBehaviour, ihp
         vmC = new Vector2(w / 2, h / 2);
         vmL = new Vector2(w / 3, h / 2);
         vmR = new Vector2(w * 2 / 3, h / 2);
+        
+        var msgTxt= YG2.envir.language == "en" ? "Miss":"Промах";
+
+        
         switch (mob.GetComponentInParent<Transform>().parent.name)
         {
             case "C":
                 ImpactDamageOnPlayer(mob);
                 if (!_miss) CombatTextManager.Instance.CreateText(vmC, damage.ToString(), col);
-                else CombatTextManager.Instance.CreateText(vmC, "Промах", col);
+                else CombatTextManager.Instance.CreateText(vmC, msgTxt, col);
                 break;
             case "R":
                 ImpactDamageOnPlayer(mob);
                 if (!_miss) CombatTextManager.Instance.CreateText(vmR, damage.ToString(), col);
-                else CombatTextManager.Instance.CreateText(vmR, "Промах", col);
+                else CombatTextManager.Instance.CreateText(vmR, msgTxt, col);
                 break;
             case "L":
                 ImpactDamageOnPlayer(mob);
                 if (!_miss) CombatTextManager.Instance.CreateText(vmL, damage.ToString(), col);
-                else CombatTextManager.Instance.CreateText(vmL, "Промах", col);
+                else CombatTextManager.Instance.CreateText(vmL, msgTxt, col);
                 break;
             default:
                 break;

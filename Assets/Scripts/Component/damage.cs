@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using YG;
+
 /// <summary>
 /// Класс реализует интерфейс Idamage,
 /// вешается на все то что можно дамажить 
@@ -126,7 +128,8 @@ public class damage : MonoBehaviour, Idamage
             GetComponent<PlayerHelper>().Stamina += 4;
             Attack.GetComponent<AudioSource>().PlayOneShot(AtPlay);
             print("Атака магией 1");
-            CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), "Защита Увеличена", Color.green);
+            var msgTxt= YG2.envir.language == "en" ? "Defence UP":"Защита Увеличена";
+            CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
             checkDefenceUp = true;
         }
 
