@@ -399,7 +399,7 @@ public class randomMob : MonoBehaviour
     }
 
     //вызов на сцену мобов различной сложности
-    private void AddMobsOnScene(string difficult, int minCnt) //сложность, минимальное количество
+    public void AddMobsOnScene(string difficult, int minCnt) //сложность, минимальное количество
     {
         int CntMobOnScene;
         CntMobOnScene = Random.Range(minCnt, 4);
@@ -696,7 +696,7 @@ public class randomMob : MonoBehaviour
         }
     }
 
-    private void ToBoss() //выползание босса и начало битвы
+    public void ToBoss() //выползание босса и начало битвы
     {
         if (Boss != null) //Если босс жив
         {
