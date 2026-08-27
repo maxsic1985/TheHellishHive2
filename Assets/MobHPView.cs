@@ -108,7 +108,7 @@ public class MobHPView : MonoBehaviour
         maxHealth = _enemyHp.HP;
         currentHealth = _enemyHp.HP;
         _orirginScale = healthText.rectTransform.localScale.x;
-        _damageScale = _orirginScale + (Mathf.Round(_orirginScale / 4));
+        _damageScale = _orirginScale+(_orirginScale + _orirginScale) / 3;
     }
 
 
