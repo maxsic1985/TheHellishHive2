@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using _SO;
 using UnityEngine.UI;
 /// <summary>
 /// Компонент который вешается на любого моба
 /// </summary>
 public class Mob : MonoBehaviour
 {
+    
     #region Variables
+
+    public DB_Mobs _DB;
+    
     /// <summary>
     /// награда выпадающая с моба
     /// </summary>

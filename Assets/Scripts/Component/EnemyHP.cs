@@ -98,18 +98,7 @@ public class EnemyHP : MonoBehaviour, ihp
         _playerHalper = player.GetComponent<PlayerHelper>();
         cntMob = PlayerPrefs.GetInt("KillMobs");
     }
-
-    void Update()
-    {
-       // if (gameObject.GetComponent<PlayerHelper>())
-       //    _playerHalper.HpCur = HP;
-        //нет хп удалить объект на котором весит компонент
-        //if (_hp <= 0)
-        //{
-        //    Destroy(this.gameObject);
-        //}
-        //нет хп удалить объект на котором весит компонент
-    }
+    
 
     /// <summary>
     /// Определение крита
