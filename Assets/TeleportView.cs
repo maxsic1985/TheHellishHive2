@@ -60,7 +60,7 @@ public class TeleportView : MonoBehaviour
         // Включаем всё
         distortion.enabled.Override(true);
         distortion.intensity.Override(0f);
-      //  distortion.scale.Override(-20f); 
+        //  distortion.scale.Override(-20f); 
         if (chromatic != null)
         {
             chromatic.enabled.Override(true);
@@ -92,6 +92,7 @@ public class TeleportView : MonoBehaviour
 
     public IEnumerator FullTransition()
     {
+        if (isTransitioning) yield return null;
         isTransitioning = true;
         Debug.Log("🚀 ЗАПУСК ПОЛНОГО ПЕРЕХОДА!");
         float elapsed = 0f;
@@ -104,7 +105,7 @@ public class TeleportView : MonoBehaviour
 
             // Главное искажение
             distortion.intensity.value = Mathf.Lerp(0f, distortionval, smoothT);
-           
+
             // Цветное разложение
             if (chromatic != null)
                 chromatic.intensity.value = Mathf.Lerp(0f, chromaticval, smoothT);
@@ -127,7 +128,7 @@ public class TeleportView : MonoBehaviour
         // 💥 МОМЕНТ ПЕРЕХОДА МЕЖДУ МИРАМИ
         Debug.Log("🌍 СМЕНА МИРА!");
         // Здесь ты меняешь сцену или перемещаешь игрока
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
 
         // ФАЗА 2: Возврат в норму
         elapsed = 0f;
@@ -136,16 +137,16 @@ public class TeleportView : MonoBehaviour
             float t = elapsed / duration;
             float smoothT = 1 - (1 - t) * (1 - t); // Плавное замедление
 
-            distortion.intensity.value = Mathf.Lerp(-0.9f, 0f, smoothT);
+            distortion.intensity.value = Mathf.Lerp(distortionval, 0f, smoothT);
 
             if (chromatic != null)
-                chromatic.intensity.value = Mathf.Lerp(0.8f, 0f, smoothT);
+                chromatic.intensity.value = Mathf.Lerp(chromaticval, 0f, smoothT);
 
             if (vignette != null)
-                vignette.intensity.value = Mathf.Lerp(0.8f, 0f, smoothT);
+                vignette.intensity.value = Mathf.Lerp(vignetteval, 0f, smoothT);
 
             if (bloom != null)
-                bloom.intensity.value = Mathf.Lerp(10f, 0f, smoothT);
+                bloom.intensity.value = Mathf.Lerp(bloomval, 0f, smoothT);
 
             elapsed += Time.deltaTime;
             yield return null;

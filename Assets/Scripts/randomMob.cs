@@ -199,7 +199,6 @@ public class randomMob : MonoBehaviour
 
     private void transformToBatleField()
     {
-       
         // previus.position = transform.position;
         // previus.localRotation = transform.localRotation;
         if (isTransformToBattle == false)
@@ -374,8 +373,8 @@ public class randomMob : MonoBehaviour
             var posL = GameObject.Find("t1").transform.position;
             mobLeft.transform.position = posL;
             mobLeft.transform.localScale = Vector3.one;
-           // var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
-           //   $"$BtnsShow{mobLeft.transform.localPosition}";
+            // var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
+            //   $"$BtnsShow{mobLeft.transform.localPosition}";
         }
 
         if (R.GetComponentInChildren<Mob>() != null)
@@ -384,8 +383,8 @@ public class randomMob : MonoBehaviour
             var posR = GameObject.Find("t3").transform.position;
             mobRight.transform.position = posR;
             mobRight.transform.localScale = Vector3.one;
-           // var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
-             //   $"$BtnsShow{mobCentr.transform.localPosition}";
+            // var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
+            //   $"$BtnsShow{mobCentr.transform.localPosition}";
         }
 
         if (C.GetComponentInChildren<Mob>() != null)
@@ -394,7 +393,7 @@ public class randomMob : MonoBehaviour
             var posC = GameObject.Find("t2").transform.position;
             mobCentr.transform.position = posC;
             mobCentr.transform.localScale = Vector3.one;
-          //  var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
+            //  var testtext = GameObject.Find("TestText1").GetComponent<Text>().text =
             //    $"$BtnsShow{mobRight.transform.localPosition}";
         }
     }
@@ -507,9 +506,9 @@ public class randomMob : MonoBehaviour
 
     void Update()
     {
-        if(TeleportView.Instance.isTransitioning==true) return;
-        
-        
+       // if (TeleportView.Instance.isTransitioning == true) return;
+
+
         if (addMob == true & mu == 0) //для звука битвы.
         {
             audioSource1.PlayOneShot(muzon); //для звука битвы.
@@ -540,38 +539,46 @@ public class randomMob : MonoBehaviour
 
         if (cnt < 0) //&&(chkDst))//счетчик меньше 0
         {
-            
             switch (coliderzon)
             {
                 case "TriggerMobEasy":
+                    if (!TeleportView.Instance.isTransitioning)
+                    {
+                        StartCoroutine(TeleportView.Instance.FullTransition());
+                        return;
+                    }
 
                     AddMobsOnScene("Low",
                         1); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
-                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerMobMidle":
+                    if (!TeleportView.Instance.isTransitioning)
+                    {
+                        StartCoroutine(TeleportView.Instance.FullTransition());
+                        return;
+                    }
+                    StartCoroutine(TeleportView.Instance.FullTransition());
                     AddMobsOnScene("Midle",
                         1); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
-                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerMobHard":
+                    StartCoroutine(TeleportView.Instance.FullTransition());
                     AddMobsOnScene("Hard",
                         2); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
-                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerMobHard2":
+                    StartCoroutine(TeleportView.Instance.FullTransition());
                     AddMobsOnScene("varyHard",
                         2); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
-                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerMobHard3":
+                    StartCoroutine(TeleportView.Instance.FullTransition());
                     AddMobsOnScene("vary2Hard",
                         3); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
-                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerBoss":
