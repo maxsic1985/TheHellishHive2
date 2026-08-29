@@ -199,6 +199,7 @@ public class randomMob : MonoBehaviour
 
     private void transformToBatleField()
     {
+       
         // previus.position = transform.position;
         // previus.localRotation = transform.localRotation;
         if (isTransformToBattle == false)
@@ -506,6 +507,9 @@ public class randomMob : MonoBehaviour
 
     void Update()
     {
+        if(TeleportView.Instance.isTransitioning==true) return;
+        
+        
         if (addMob == true & mu == 0) //для звука битвы.
         {
             audioSource1.PlayOneShot(muzon); //для звука битвы.
@@ -536,32 +540,38 @@ public class randomMob : MonoBehaviour
 
         if (cnt < 0) //&&(chkDst))//счетчик меньше 0
         {
+            
             switch (coliderzon)
             {
                 case "TriggerMobEasy":
 
                     AddMobsOnScene("Low",
                         1); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
+                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerMobMidle":
                     AddMobsOnScene("Midle",
                         1); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
+                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerMobHard":
                     AddMobsOnScene("Hard",
                         2); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
+                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerMobHard2":
                     AddMobsOnScene("varyHard",
                         2); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
+                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerMobHard3":
                     AddMobsOnScene("vary2Hard",
                         3); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)
+                    StartCoroutine(TeleportView.Instance.FullTransition());  
                     transformToBatleField();
                     break;
                 case "TriggerBoss":
