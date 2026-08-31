@@ -7,7 +7,7 @@ public class BattleInventory : Inventory
     public Slot[] slotsMassive;
     SpeedHelper sh;
     Inventory tmpInv;
-    randomMob rm;
+    _randomMob rm;
     private damage d;
     private PVP _pvp;
     private damage playerDamage;
@@ -89,7 +89,7 @@ public class BattleInventory : Inventory
        
         _pvp = FindObjectOfType<PVP>();
         d = FindObjectOfType<damage>();
-        rm = FindObjectOfType<randomMob>();
+        rm = FindObjectOfType<_randomMob>();
         tmpInv = GameObject.Find("Inventory").GetComponent<Inventory>();
         sh = FindObjectOfType<SpeedHelper>();
         slotsMassive = transform.parent.GetComponentsInChildren<Slot>();

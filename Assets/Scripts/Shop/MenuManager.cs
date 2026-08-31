@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
     public CanvasGroup[] panels;
     public GameObject MenuPanel;
     private bool stoping=false;
-    private randomMob RM;
+    private _randomMob RM;
     private static MenuManager instance;
     public static MenuManager Instance
     {
@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
         currentMenu = null;
         Jo = GameObject.Find("MobileControl");
         RB = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
-        RM = GameObject.FindGameObjectWithTag("Player").GetComponent<randomMob>();
+        RM = GameObject.FindGameObjectWithTag("Player").GetComponent<_randomMob>();
  
        
     }

@@ -312,7 +312,7 @@ public class SpeedHelper : MonoBehaviour
         }
         else
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<randomMob>().hideButtonEndRound();//кнопка конец хода
+            GameObject.FindGameObjectWithTag("Player").GetComponent<_randomMob>().hideButtonEndRound();//кнопка конец хода
         }
         if (EndRound1 == false && GameObject.FindGameObjectWithTag("Player").GetComponent<damage>().IsGo == true)
         {
@@ -430,10 +430,10 @@ public class SpeedHelper : MonoBehaviour
 
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<damage>().IsGo == true)
         {
-            GetComponent<randomMob>().hideMenuBattle();
+            GetComponent<_randomMob>().hideMenuBattle();
             if (mobthirst)
             {
-                GetComponent<randomMob>().hideMenuBattle();
+                GetComponent<_randomMob>().hideMenuBattle();
 
                 if (mobthirst.GetComponent<damage>().IsGo == true && mobthirst)
                 {
@@ -441,7 +441,7 @@ public class SpeedHelper : MonoBehaviour
                 }
                 else
                 {
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     MobDamage(mobthirst);
                 }
             }
@@ -459,11 +459,11 @@ public class SpeedHelper : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<damage>().IsGo == true)
         {
-            GetComponent<randomMob>().hideMenuBattle();
+            GetComponent<_randomMob>().hideMenuBattle();
             if (mobsecond)
             {
                
-                GetComponent<randomMob>().hideMenuBattle();
+                GetComponent<_randomMob>().hideMenuBattle();
                 if (mobsecond.GetComponent<damage>().IsGo == true)
                 {
                     print("2");
@@ -472,7 +472,7 @@ public class SpeedHelper : MonoBehaviour
                 else
                 {
                     print("3");
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     MobDamage(mobsecond);
                 }
             }
@@ -497,23 +497,23 @@ public class SpeedHelper : MonoBehaviour
       
         if (i==0)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<randomMob>().ShowMenuBattle();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<_randomMob>().ShowMenuBattle();
 
         }
         i += 1;
         if (GameObject.FindGameObjectWithTag("Player").GetComponent<damage>().IsGo == true)
         {
-            GetComponent<randomMob>().hideMenuBattle();
+            GetComponent<_randomMob>().hideMenuBattle();
             if (mobfirst)
             {
-                GetComponent<randomMob>().hideMenuBattle();
+                GetComponent<_randomMob>().hideMenuBattle();
                 if (mobfirst.GetComponent<damage>().IsGo == true)
                 {
                     PlayerSecond();
                 }
                 else
                 {
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     MobDamage(mobfirst);
                 }
             }
@@ -554,7 +554,7 @@ public class SpeedHelper : MonoBehaviour
                           
                             AnimsSetDamageIsGone = false;
                             yield return new WaitForSeconds(oneMobTime);//ждем 1.5 секунды после начала боя или хода игрока
-                            GetComponent<randomMob>().hideMenuBattle();
+                            GetComponent<_randomMob>().hideMenuBattle();
                             GetComponent<AudioSource>().PlayOneShot(Atmob1);//звук атаки
                             mob.GetComponent<Animation>().Play("DamageSliz", PlayMode.StopAll);//проигрывание анимации
                             _playAnimBar.PlayAnimHPBAr();//анмация урона Бар запуск анимации
@@ -568,7 +568,7 @@ public class SpeedHelper : MonoBehaviour
                         {
                             AnimsSetDamageIsGone = false;
                             yield return new WaitForSeconds(twoMobTime);
-                            GetComponent<randomMob>().hideMenuBattle();
+                            GetComponent<_randomMob>().hideMenuBattle();
 
                             GetComponent<AudioSource>().PlayOneShot(Atmob1);
                             mob.GetComponent<Animation>().Play("DamageSliz", PlayMode.StopAll);
@@ -584,7 +584,7 @@ public class SpeedHelper : MonoBehaviour
                         {
                             AnimsSetDamageIsGone = false;
                             yield return new WaitForSeconds(threeMobTime);
-                            GetComponent<randomMob>().hideMenuBattle();
+                            GetComponent<_randomMob>().hideMenuBattle();
 
                             GetComponent<AudioSource>().PlayOneShot(Atmob1);
                             mob.GetComponent<Animation>().Play("DamageSliz", PlayMode.StopAll);
@@ -605,7 +605,7 @@ public class SpeedHelper : MonoBehaviour
                         {
                             AnimsSetDamageIsGone = false;
                             yield return new WaitForSeconds(oneMobTime);
-                            GetComponent<randomMob>().hideMenuBattle();
+                            GetComponent<_randomMob>().hideMenuBattle();
 
                             GetComponent<AudioSource>().PlayOneShot(GADAttack);
                             mob.GetComponent<Animation>().Play("DamagGAD", PlayMode.StopAll);
@@ -620,7 +620,7 @@ public class SpeedHelper : MonoBehaviour
                         {
                             AnimsSetDamageIsGone = false;
                             yield return new WaitForSeconds(twoMobTime);
-                            GetComponent<randomMob>().hideMenuBattle();
+                            GetComponent<_randomMob>().hideMenuBattle();
 
                             GetComponent<AudioSource>().PlayOneShot(GADAttack);
                             mob.GetComponent<Animation>().Play("DamagGAD", PlayMode.StopAll);
@@ -635,7 +635,7 @@ public class SpeedHelper : MonoBehaviour
                         {
                             AnimsSetDamageIsGone = false;
                             yield return new WaitForSeconds(threeMobTime);
-                            GetComponent<randomMob>().hideMenuBattle();
+                            GetComponent<_randomMob>().hideMenuBattle();
 
                             GetComponent<AudioSource>().PlayOneShot(GADAttack);
                             mob.GetComponent<Animation>().Play("DamagGAD", PlayMode.StopAll);
@@ -656,7 +656,7 @@ public class SpeedHelper : MonoBehaviour
                         {
                             AnimsSetDamageIsGone = false;
                             yield return new WaitForSeconds(oneMobTime);
-                            GetComponent<randomMob>().hideMenuBattle();
+                            GetComponent<_randomMob>().hideMenuBattle();
 
                             GetComponent<AudioSource>().PlayOneShot(Atmob2);
                             mob.GetComponent<Animation>().Play("DamagGom", PlayMode.StopAll);
@@ -671,7 +671,7 @@ public class SpeedHelper : MonoBehaviour
                         {
                             AnimsSetDamageIsGone = false;
                             yield return new WaitForSeconds(twoMobTime);
-                            GetComponent<randomMob>().hideMenuBattle();
+                            GetComponent<_randomMob>().hideMenuBattle();
 
                             GetComponent<AudioSource>().PlayOneShot(Atmob2);
                             mob.GetComponent<Animation>().Play("DamagGom", PlayMode.StopAll);
@@ -686,7 +686,7 @@ public class SpeedHelper : MonoBehaviour
                         {
                             AnimsSetDamageIsGone = false;
                             yield return new WaitForSeconds(threeMobTime);
-                            GetComponent<randomMob>().hideMenuBattle();
+                            GetComponent<_randomMob>().hideMenuBattle();
 
                             GetComponent<AudioSource>().PlayOneShot(Atmob2);
                             mob.GetComponent<Animation>().Play("DamagGom", PlayMode.StopAll);
@@ -707,7 +707,7 @@ public class SpeedHelper : MonoBehaviour
 					{
 						AnimsSetDamageIsGone = false;
 						yield return new WaitForSeconds(oneMobTime);
-						GetComponent<randomMob>().hideMenuBattle();
+						GetComponent<_randomMob>().hideMenuBattle();
 
 						GetComponent<AudioSource>().PlayOneShot(Atmob2);
 						mob.GetComponent<Animation>().Play("DamagEvolG", PlayMode.StopAll);
@@ -722,7 +722,7 @@ public class SpeedHelper : MonoBehaviour
 					{
 						AnimsSetDamageIsGone = false;
 						yield return new WaitForSeconds(twoMobTime);
-						GetComponent<randomMob>().hideMenuBattle();
+						GetComponent<_randomMob>().hideMenuBattle();
 
 						GetComponent<AudioSource>().PlayOneShot(Atmob2);
 						mob.GetComponent<Animation>().Play("DamagEvolG", PlayMode.StopAll);
@@ -737,7 +737,7 @@ public class SpeedHelper : MonoBehaviour
 					{
 						AnimsSetDamageIsGone = false;
 						yield return new WaitForSeconds(threeMobTime);
-						GetComponent<randomMob>().hideMenuBattle();
+						GetComponent<_randomMob>().hideMenuBattle();
 
 						GetComponent<AudioSource>().PlayOneShot(Atmob2);
 						mob.GetComponent<Animation>().Play("DamagEvolG", PlayMode.StopAll);
@@ -901,7 +901,7 @@ public class SpeedHelper : MonoBehaviour
                 case "Slizen":
                     GetComponent<AudioSource>().PlayOneShot(Painmob2);
                     mob.GetComponent<Animation>().Play("PainSliz", PlayMode.StopAll);
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     AnimsGetDamageIsGone = false;
                     //   yield return new WaitForSeconds(0.6f);
 
@@ -909,12 +909,12 @@ public class SpeedHelper : MonoBehaviour
                     mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelSliz");
                     AnimsGetDamageIsGone = true;
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     break;
                 case "TeloGADA":
                     GetComponent<AudioSource>().PlayOneShot(GADPain);
                     mob.GetComponent<Animation>().Play("PainGAD", PlayMode.StopAll);
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     AnimsGetDamageIsGone = false;
                     //     yield return new WaitForSeconds(0.6f);
 
@@ -922,12 +922,12 @@ public class SpeedHelper : MonoBehaviour
                     mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelGAD");
                     AnimsGetDamageIsGone = true;
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     break;
                 case "TeloGamunkula":
                     GetComponent<AudioSource>().PlayOneShot(Atmob2);
                     mob.GetComponent<Animation>().Play("PainGom", PlayMode.StopAll);
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     AnimsGetDamageIsGone = false;
                     //     yield return new WaitForSeconds(0.6f);
 
@@ -935,12 +935,12 @@ public class SpeedHelper : MonoBehaviour
                     mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelGom");
                     AnimsGetDamageIsGone = true;
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     break;
 			case "EvolGomun":
 				GetComponent<AudioSource>().PlayOneShot(Atmob2);
 				mob.GetComponent<Animation>().Play("PainEvolG", PlayMode.StopAll);
-				GetComponent<randomMob>().hideMenuBattle();
+				GetComponent<_randomMob>().hideMenuBattle();
 				AnimsGetDamageIsGone = false;
 				//     yield return new WaitForSeconds(0.6f);
 
@@ -948,12 +948,12 @@ public class SpeedHelper : MonoBehaviour
 				mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
 				mob.GetComponent<Animation>().Play("IdelEvolG");
 				AnimsGetDamageIsGone = true;
-				GetComponent<randomMob>().hideMenuBattle();
+				GetComponent<_randomMob>().hideMenuBattle();
 				break;
                 case "myxa":
                     GetComponent<AudioSource>().PlayOneShot(GADDeath);
                     mob.GetComponent<Animation>().Play("PainMyxa", PlayMode.StopAll);
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     AnimsGetDamageIsGone = false;
                     //    yield return new WaitForSeconds(0.6f);
 
@@ -961,12 +961,12 @@ public class SpeedHelper : MonoBehaviour
                     mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelMyxa");
                     AnimsGetDamageIsGone = true;
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     break;
                 case "Krab":
                     GetComponent<AudioSource>().PlayOneShot(GADDeath);
                     mob.GetComponent<Animation>().Play("PainKRAB", PlayMode.StopAll);
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     AnimsGetDamageIsGone = false;
                     //   yield return new WaitForSeconds(0.6f);
                     print("giveDamage");
@@ -974,7 +974,7 @@ public class SpeedHelper : MonoBehaviour
                     mob.GetComponent<EnemyHP>().TextDamageToMob(mob, this.GetComponent<EnemyHP>().Damage.ToString(), Color.green);
                     mob.GetComponent<Animation>().Play("IdelKRAB");
                     AnimsGetDamageIsGone = true;
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
                     break;
                 default:
                   
@@ -1052,7 +1052,7 @@ public class SpeedHelper : MonoBehaviour
             {
                 if (endCorutine && !GetComponent<damage>().checkMassAttack && !GetComponent<damage>().IsGo && playerStep &&!endRound)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<randomMob>().ShowMenuBattle();
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<_randomMob>().ShowMenuBattle();
                 }
 
 
@@ -1075,7 +1075,7 @@ public class SpeedHelper : MonoBehaviour
         {
 
         }
-        if (GetComponent<randomMob>().EnbBattle)
+        if (GetComponent<_randomMob>().EnbBattle)
         {
             i = 0;
         }
@@ -1085,7 +1085,7 @@ public class SpeedHelper : MonoBehaviour
             {
                 if (!playerIsFirst && mobfirst.GetComponent<damage>().IsGo==false&& !endCorutine)
                 {
-                    GetComponent<randomMob>().hideMenuBattle();
+                    GetComponent<_randomMob>().hideMenuBattle();
 
                 }
             }

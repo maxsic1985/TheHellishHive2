@@ -99,16 +99,22 @@ public class MobHPView : MonoBehaviour
     
     private float currentHealth = 100f;
     private float maxHealth = 100f;
-    private EnemyHP _enemyHp;
+   [SerializeField] private EnemyHP _enemyHp;
     private Color targetColor=Color.white;
 
     private void Start()
     {
-        _enemyHp = GetComponentInParent<EnemyHP>();
+       
+        if(_enemyHp==null)  _enemyHp = GetComponentInParent<EnemyHP>();
         maxHealth = _enemyHp.HP;
         currentHealth = _enemyHp.HP;
         _orirginScale = healthText.rectTransform.localScale.x;
         _damageScale = _orirginScale+(_orirginScale + _orirginScale) / 3;
+        TakeDamage(0);
+        UpdateColor();
+        
+        
+        
     }
 
 

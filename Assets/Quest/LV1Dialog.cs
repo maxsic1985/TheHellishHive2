@@ -106,8 +106,8 @@ public class LV1Dialog : MonoBehaviour {
 			charIndex2 = 0;
 			Destroy (GameObject.Find ("TriggerDialog"));
 			triggSave = 1;
-			GetComponent<randomMob> ().cnt=0;
-			GetComponent<randomMob> ().enter=false;
+			GetComponent<_randomMob> ().cnt=0;
+			GetComponent<_randomMob> ().enter=false;
 			SetMenuInteractble(true);
 			ControlsService.UnLockControls(_fps);
 		}

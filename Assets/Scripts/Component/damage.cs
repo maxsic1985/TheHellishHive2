@@ -90,7 +90,7 @@ public class damage : MonoBehaviour, Idamage
     public bool checkDefenceUp { get; private set; }
     public bool checkMassAttack { get; set; }
 
-    randomMob rm;
+    _randomMob rm;
     #endregion
     #region Voids
     /// <summary>
@@ -211,7 +211,7 @@ public class damage : MonoBehaviour, Idamage
     void Start()
     {
 
-        rm = FindObjectOfType<randomMob>();
+        rm = FindObjectOfType<_randomMob>();
         sh = FindObjectOfType<SpeedHelper>();
     }
     void Update()

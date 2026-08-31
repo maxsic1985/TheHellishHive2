@@ -33,7 +33,7 @@ public class Consumeable : Item
             //для травы проверяем имеется ли на сцене объект AchievmentManager чтобы не было ошибки при использовании
             //на рынке и если используем траву в бою то открывается достижение
             case "Лечебная трава": PlayerHelper.Instance.HpCur += maxPotionUse(25, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
-                if (AchievmentManager.Instance && GameObject.FindObjectOfType<randomMob>().addMob ) { AchievmentManager.Instance.UseTrava = true; }  break;
+                if (AchievmentManager.Instance && GameObject.FindObjectOfType<_randomMob>().addMob ) { AchievmentManager.Instance.UseTrava = true; }  break;
             case "Зелье восстановления": PlayerHelper.Instance.HpCur += maxPotionUse(100, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                                           PlayerHelper.Instance.ManaCur += maxPotionUse(100, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);    
                 break;

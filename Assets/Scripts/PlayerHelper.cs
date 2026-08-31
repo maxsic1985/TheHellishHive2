@@ -93,7 +93,7 @@ public class PlayerHelper : MonoBehaviour
 
     SpeedHelper sh;
     Inventory tmpInv;
-    randomMob rm;
+    _randomMob rm;
     private damage d;
     private PVP _pvp;
 
@@ -240,7 +240,7 @@ public class PlayerHelper : MonoBehaviour
     {
         _pvp = FindObjectOfType<PVP>();
 
-        rm = FindObjectOfType<randomMob>();
+        rm = FindObjectOfType<_randomMob>();
         if (TextPobeg != null)
         {
             _textPobeg = TextPobeg.GetComponent<Text>();

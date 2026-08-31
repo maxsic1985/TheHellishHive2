@@ -23,6 +23,7 @@ public class MobPanelVew : MonoBehaviour
 
     public void ShowDescription()
     {
+        if(gameObject==null) return;
         if (gameObject.activeSelf)
         {
             gameObject.SetActive(false);

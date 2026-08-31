@@ -45,13 +45,19 @@ public class CheetScript : MonoBehaviour
 
     public void MobSpawn(int cnt)
     {
-        FindAnyObjectByType<randomMob>().AddMobsOnScene(typeMob, cnt);
+        FindAnyObjectByType<_randomMob>().AddMobsOnScene(typeMob, cnt);
     }
 
     public void Bossss()
     {
-        PlayerHelper.Instance.GameObject().transform.position = GameObject.FindGameObjectWithTag("respToBoss")
-            .GetComponent<Transform>().localPosition;
-        FindAnyObjectByType<randomMob>().ToBoss();
+        // PlayerHelper.Instance.GameObject().transform.position = GameObject.FindGameObjectWithTag("respToBoss")
+        //     .GetComponent<Transform>().localPosition;
+        // FindAnyObjectByType<randomMob>().ToBoss();
+        PlayerHelper.Instance.GameObject().transform.position = new Vector3(-43.25f, -0.375f, 90.84f);
+            // UnityEditor.TransformWorldPlacementJSON:{"position":{"x":-43.25803756713867,"y":-0.37553271651268008,"z":90.84435272216797},"rotation":{"x":0.0,"y":0.6592525839805603,"z":0.0,"w":-0.751921534538269},"scale":{"x":1.0,"y":1.0,"z":1.0}}
+        
+        
+        
+        
     }
 }
