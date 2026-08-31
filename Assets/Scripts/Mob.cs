@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using _SO;
+using Skills;
 using UnityEngine.UI;
 /// <summary>
 /// Компонент который вешается на любого моба
@@ -42,6 +43,7 @@ public class Mob : MonoBehaviour
     public int IQ;
 
     EnemyHP _enemyHp;
+    private ISkill _skill;
     #endregion
     #region Properties
     /// <summary>
@@ -72,6 +74,14 @@ public class Mob : MonoBehaviour
     void Start()
     {
         _enemyHp = GetComponent<EnemyHP>();
+        switch (_DB.MobSkill.Skill)
+        {
+            case MobSkillEnum.GROUP_IQ_KRIT:
+                _skill = gameObject.AddComponent<Skill_group_IQ>();
+              //  _skill.UseSkill();
+                break;
+        }
+        
     }
     void Update()
     {
