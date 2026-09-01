@@ -200,7 +200,7 @@ public class damage : MonoBehaviour, Idamage
     {
 
         // dmg = Random.Range(0, dmg);
-        GetDamageToPlayer(GetComponent<Mob>().MobAtack);
+        GetDamageToPlayer(GetComponent<Mob>().Atack);
         var result = damToPlayer;
 
         return result;

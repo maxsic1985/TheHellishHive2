@@ -40,7 +40,7 @@ public class MobPanelVew : MonoBehaviour
             _hp.text = "HP:" + hp._hp.ToString();
             _name.text = mob._DB.MonsterName;
             _description.text = mob._DB.MonsterDescription;
-            _atack.text = "Atack:" + mob.MobAtack.ToString();
+            _atack.text = "Atack:" + mob.Atack.ToString();
             _defence.text = "Defence:" + mob.MobDefens.ToString();
             _speed.text = "Speed:" + mob.Speed.ToString();
             _iq.text = "IQ:" + mob.IQ.ToString();

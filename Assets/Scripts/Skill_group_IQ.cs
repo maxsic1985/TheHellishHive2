@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Skills
 {
-    public class Skill_group_IQ : MonoBehaviour, ISkill,IDestroible
+    public class Skill_group_IQ : MonoBehaviour, ISkill, IDestroible
     {
         private Mob[] _mobs = new Mob[3];
 
@@ -33,9 +33,10 @@ namespace Skills
                 Debug.Log($"Group_IQ_for {_mobs.Length} was {_mobs[i].IQ} then {_mobs[i].IQ = _mobs[i].IQ - 2}");
             }
         }
-      public  void OnDestroy()
+
+        public void OnDestroy()
         {
-           ClearSkill();
+            ClearSkill();
         }
     }
 }

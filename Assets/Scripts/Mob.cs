@@ -2,6 +2,7 @@
 using System.Collections;
 using _SO;
 using Skills;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 /// <summary>
 /// Компонент который вешается на любого моба
@@ -36,7 +37,7 @@ public class Mob : MonoBehaviour
     /// <summary>
     /// Атака моба
     /// </summary>
-    public int MobAtack;
+    [FormerlySerializedAs("MobAtack")] public int Atack;
     /// <summary>
     /// Шанс крита моба
     /// </summary>
@@ -93,6 +94,7 @@ public class Mob : MonoBehaviour
                 _skill = gameObject.AddComponent<Skill_group_Speed>();
                 break;
             case MobSkillEnum.GROUP_ATTACK:
+                _skill = gameObject.AddComponent<Skill_group_Attack>();
                 break;
             case MobSkillEnum.TARGET_POISON:
                 break;
