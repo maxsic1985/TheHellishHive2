@@ -78,7 +78,27 @@ public class Mob : MonoBehaviour
         {
             case MobSkillEnum.GROUP_IQ_KRIT:
                 _skill = gameObject.AddComponent<Skill_group_IQ>();
-              //  _skill.UseSkill();
+                break;
+            case MobSkillEnum.STUNN:
+                break;
+            case MobSkillEnum.MANA_BURN:
+                break;
+            case MobSkillEnum.NO_ESCAPE:
+                break;
+            case MobSkillEnum.ATTACKX5_HP_10:
+                break;
+            case MobSkillEnum.DEB_ATTACK5:
+                break;
+            case MobSkillEnum.GROUP_SPEED:
+                _skill = gameObject.AddComponent<Skill_group_Speed>();
+                break;
+            case MobSkillEnum.GROUP_ATTACK:
+                break;
+            case MobSkillEnum.TARGET_POISON:
+                break;
+            case MobSkillEnum.ATTACKX2_HALF_HP:
+                break;
+            case MobSkillEnum.DAMAGE_REFLECTION:
                 break;
         }
         
