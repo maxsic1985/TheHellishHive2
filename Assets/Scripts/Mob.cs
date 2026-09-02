@@ -89,6 +89,7 @@ public class Mob : MonoBehaviour
             case MobSkillEnum.ATTACKX5_HP_10:
                 break;
             case MobSkillEnum.DEB_ATTACK5:
+                _skill = gameObject.AddComponent<Skill_deb_Attack>();
                 break;
             case MobSkillEnum.GROUP_SPEED:
                 _skill = gameObject.AddComponent<Skill_group_Speed>();
