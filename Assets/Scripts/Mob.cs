@@ -102,6 +102,9 @@ public class Mob : MonoBehaviour
                 break;
             case MobSkillEnum.DAMAGE_REFLECTION:
                 break;
+            case MobSkillEnum.DEB_DEFENCE:
+                _skill = gameObject.AddComponent<Skill_deb_Defence>();
+                break;
         }
         
     }
