@@ -100,11 +100,15 @@ public class Mob : MonoBehaviour
             case MobSkillEnum.TARGET_POISON:
                 break;
             case MobSkillEnum.ATTACKX2_HALF_HP:
+                _skill = gameObject.AddComponent<Skill_AttackX2>();
                 break;
             case MobSkillEnum.DAMAGE_REFLECTION:
                 break;
             case MobSkillEnum.DEB_DEFENCE:
                 _skill = gameObject.AddComponent<Skill_deb_Defence>();
+                break;
+            case MobSkillEnum.IQ_X2_HALF_HP:
+                _skill = gameObject.AddComponent<Skill_IQ_kX2>();
                 break;
         }
         
