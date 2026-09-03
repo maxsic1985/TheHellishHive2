@@ -37,7 +37,7 @@ public class Mob : MonoBehaviour
     /// <summary>
     /// Атака моба
     /// </summary>
-    [FormerlySerializedAs("MobAtack")] public int Atack;
+    public int Atack;
     /// <summary>
     /// Шанс крита моба
     /// </summary>
