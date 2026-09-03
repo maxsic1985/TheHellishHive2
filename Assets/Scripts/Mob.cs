@@ -81,6 +81,7 @@ public class Mob : MonoBehaviour
                 _skill = gameObject.AddComponent<Skill_group_IQ>();
                 break;
             case MobSkillEnum.STUNN:
+                _skill = gameObject.AddComponent<Skill_Stunn>();
                 break;
             case MobSkillEnum.MANA_BURN:
                 break;
