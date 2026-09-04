@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 using UnityEngine.SceneManagement;
 
 public class Consumeable : Item
@@ -24,49 +23,51 @@ public class Consumeable : Item
     public override void Use(Slot slot, ItemScript item)
     {
         Debug.Log("Used " + slot.CurrentItem.Item.ItemName);
+        Debug.Log("HP " + Health);
+        Debug.Log("MP " + Mana);
         slot.RemoveItem();
         switch (ItemName)
         {
             case "Корень маны":
                 PlayerHelper.Instance.ManaCur +=
-                    maxPotionUse(30, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
+                    maxPotionUse(Mana, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
                 break;
             case "Mana Root":
                 PlayerHelper.Instance.ManaCur +=
-                    maxPotionUse(30, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
+                    maxPotionUse(Mana, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
                 break;
 
             case "Зелье маны":
                 PlayerHelper.Instance.ManaCur +=
-                    maxPotionUse(80, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
+                    maxPotionUse(Mana, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
                 break;
             case "Mana Potion":
                 PlayerHelper.Instance.ManaCur +=
-                    maxPotionUse(80, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
+                    maxPotionUse(Mana, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
                 break;
 
             case "Лечебное зелье":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(80, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 break;
             case "Healing Potion":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(80, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 break;
 
             case "Бинт":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(10, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 break;
             case "Bandage":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(10, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 break;
             //для травы проверяем имеется ли на сцене объект AchievmentManager чтобы не было ошибки при использовании
             //на рынке и если используем траву в бою то открывается достижение
             case "Лечебная трава":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(25, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 if (AchievmentManager.Instance && GameObject.FindObjectOfType<_randomMob>().addMob)
                 {
                     AchievmentManager.Instance.UseTrava = true;
@@ -76,7 +77,7 @@ public class Consumeable : Item
 
             case "Healing Herb":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(25, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 if (AchievmentManager.Instance && GameObject.FindObjectOfType<_randomMob>().addMob)
                 {
                     AchievmentManager.Instance.UseTrava = true;
@@ -86,24 +87,24 @@ public class Consumeable : Item
 
             case "Зелье восстановления":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(100, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 PlayerHelper.Instance.ManaCur +=
-                    maxPotionUse(100, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
+                    maxPotionUse(Mana, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
                 break;
             case "Restoration Potion":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(100, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 PlayerHelper.Instance.ManaCur +=
-                    maxPotionUse(100, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
+                    maxPotionUse(Mana, PlayerHelper.Instance.ManaMax, PlayerHelper.Instance.ManaCur);
                 break;
 
             case "Зелье исцеления":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(20, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 break;
             case "Antidote":
                 PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(20, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 break;
 
             case "Свиток телепортации":
@@ -111,7 +112,7 @@ public class Consumeable : Item
                 LoadManager.levelName = "GameMenu";
                 SceneManager.LoadScene("LoadScene");
                 break;
-            case "Teleports to the fortress":
+            case "Scroll of Teleportation":
                 SaveHalper.Instance.Save();
                 LoadManager.levelName = "GameMenu";
                 SceneManager.LoadScene("LoadScene");
