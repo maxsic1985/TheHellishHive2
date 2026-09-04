@@ -37,7 +37,7 @@ public class ItemScript : MonoBehaviour
     }
     public void Use(Slot slot)
     {
-        item.Use(slot, this);
+        item.Use(slot, null);
     }
     public string GetToolTip()
     {
