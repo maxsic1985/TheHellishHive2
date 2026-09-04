@@ -186,7 +186,7 @@ public class _randomMob : MonoBehaviour
             coliderzon = "TriggerMobHard3";
             print(coliderzon);
         }
-        else if (other == GameObject.Find("TriggerBoss").GetComponent<Collider>())
+        else if (other == GameObject.Find("TriggerBoss")?.GetComponent<Collider>())
         {
             coliderzon = "TriggerBoss";
             cnt = 0.25f; //уменьшить cnt  чтобы не ждать все время
@@ -356,6 +356,15 @@ public class _randomMob : MonoBehaviour
             this.GetComponent<SpeedHelper>().WhoIsDamag();
             HideButtoms();
         }
+    }
+
+    public void EndRound()
+    {
+        this.GetComponent<damage>().IsGo = true;
+        this.GetComponent<SpeedHelper>().playerStep = false;
+        hideMenuBattle();
+        this.GetComponent<SpeedHelper>().WhoIsDamag();
+        HideButtoms();
     }
 
     //Спрятать кнопки Атака

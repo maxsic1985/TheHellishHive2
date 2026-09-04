@@ -152,7 +152,7 @@ public class AchievmentManager : MonoBehaviour
 
                 CreateAchievment("Warrior", "Warrior", "To kill the enemy", 10, 9);
                 CreateAchievment("Warrior", "Gladiator", "To kill ten enemies", 50, 10);
-                CreateAchievment("Warrior", "The Alchemist", "Use grass in battle", 50, 11);
+                CreateAchievment("Warrior", "Alchemist", "Use grass in battle", 50, 11);
                 CreateAchievment("Warrior", "Knight", "Kill the Boss", 150, 12);
                 CreateAchievment("Warrior", "Butcher", "Kill 100 enemies", 500, 13);
                 break;
