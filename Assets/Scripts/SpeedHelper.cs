@@ -37,8 +37,7 @@ public class SpeedHelper : MonoBehaviour
     private bool AnimsGetDamageIsGone;
     private bool endCorutine;
     private int i=0;
-
-
+    public bool IsStunned;
 
     #endregion
     #region Prop
@@ -663,6 +662,10 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelGom");
+                            if (mob.GetComponent<Skill_Stunn>() != null && !IsStunned)  
+                            {  
+                                mob.GetComponent<Skill_Stunn>().UseSkill();  
+                            }  
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
@@ -678,6 +681,10 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelGom");
+                            if (mob.GetComponent<Skill_Stunn>() != null && !IsStunned)  
+                            {  
+                                mob.GetComponent<Skill_Stunn>().UseSkill();  
+                            }  
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
@@ -693,6 +700,10 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelGom");
+                            if (mob.GetComponent<Skill_Stunn>() != null && !IsStunned)  
+                            {  
+                                mob.GetComponent<Skill_Stunn>().UseSkill();  
+                            }  
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
@@ -1047,6 +1058,18 @@ public class SpeedHelper : MonoBehaviour
         }
         else
         {
+            if (IsStunned && endCorutine)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<_randomMob>().EndRound();
+                IsStunned = false;
+                //  GameObject.FindGameObjectWithTag("Player").GetComponent<damage>().IsGo=true;
+
+                //  WhoIsGo(); 
+                //  EndRound1 = true;
+            }
+            
+            
+            
             if (AnimsSetDamageIsGone)
 
             {

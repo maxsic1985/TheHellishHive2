@@ -16,11 +16,11 @@ internal class Skill_Stunn : MonoBehaviour, ISkill, IDestroible
 
     private void Update()
     {
-        Debug.LogWarning(this.gameObject.GetComponent<damage>().IsGo);
-        if (this.gameObject.GetComponent<damage>().IsGo == true && _iSUsed == false)
-        {
-            UseSkill();
-        }
+        // Debug.LogWarning(this.gameObject.GetComponent<damage>().IsGo);
+        // if (this.gameObject.GetComponent<damage>().IsGo == true && _iSUsed == false)
+        // {
+        //     UseSkill();
+        // }
 
         // if (GetComponent<damage>().IsGo == false && _iSUsed == true)
         //     _iSUsed = false;
@@ -29,13 +29,18 @@ internal class Skill_Stunn : MonoBehaviour, ISkill, IDestroible
 
     public void UseSkill()
     {
+        
+            Debug.LogWarning("i Can Stunn");
         if (SkillServices.GetSkilСhance())
         {
             Debug.LogWarning("Stunn");
             //   CombatTextManager.Instance.CreateText("Stunn",Color.magenta);
-            GetComponent<EnemyHP>().TextDamageToPlayer(gameObject, "Stunn", Color.cyan);
-            _iSUsed = true;
-            _rm.EndRound();
+            // GetComponent<EnemyHP>().TextDamageToPlayer(gameObject, "Stunn", Color.cyan);
+            FindFirstObjectByType<SpeedHelper>().IsStunned = true; 
+                // FindFirstObjectByType<SpeedHelper>().playerIsFirst = false;
+           // FindFirstObjectByType<SpeedHelper>().playerIsFirst = false;
+                //   GameObject.FindGameObjectWithTag("Player").GetComponent<damage>().IsGo = true;
+           // _rm.EndRound();
         }
     }
 
