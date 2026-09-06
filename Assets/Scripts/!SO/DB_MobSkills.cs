@@ -9,6 +9,8 @@ namespace _SO
         public MobSkillEnum Skill;
         public string SkillName="";
         public string SkillDescription="";
+        public int Power;
+        public int Shans;
 
         [SerializeField] private string SkillNameRu="";
         [SerializeField] private string SkillNameEn="";

@@ -26,7 +26,7 @@ namespace Skills
             for (int i = 0; i < _mobs.Count; i++)
             {
                 
-                Debug.Log($"Group_IQ_for {_mobs.Count} was {_mobs[i].IQ} then {_mobs[i].IQ = _mobs[i].IQ + 2}");
+                Debug.Log($"Group_IQ_for {_mobs.Count} was {_mobs[i].IQ} then {_mobs[i].IQ = _mobs[i].IQ + _mobs[i]._DB.MobSkill.Power}");
             }
         }
 
