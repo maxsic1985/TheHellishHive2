@@ -110,9 +110,7 @@ public class EnemyHP : MonoBehaviour, ihp
         int shans = Random.Range(0, 100);
         if (shans > (100 - iq))
         {
-            GameObject tmp = Instantiate(KritText) as GameObject;
-            tmp.transform.SetParent(GameObject.Find("CanvasUI").transform);
-            tmp.transform.position = new Vector2(Screen.width / 2, Screen.height / 1.5f);
+            var tmp = GetKritText();
             krit = true;
             Destroy(tmp, 0.9f);
         }
@@ -122,6 +120,14 @@ public class EnemyHP : MonoBehaviour, ihp
         }
 
         return krit;
+    }
+
+    private GameObject GetKritText()
+    {
+        GameObject tmp = Instantiate(KritText) as GameObject;
+        tmp.transform.SetParent(GameObject.Find("CanvasUI").transform);
+        tmp.transform.position = new Vector2(Screen.width / 2, Screen.height / 1.5f);
+        return tmp;
     }
 
     /// <summary>
