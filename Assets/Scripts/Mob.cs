@@ -84,8 +84,10 @@ public class Mob : MonoBehaviour
                 _skill = gameObject.AddComponent<Skill_Stunn>();
                 break;
             case MobSkillEnum.MANA_BURN:
+                _skill = gameObject.AddComponent<Skill_ManaBurn>();
                 break;
             case MobSkillEnum.NO_ESCAPE:
+                _skill = gameObject.AddComponent<Skill_NoESC>();
                 break;
             case MobSkillEnum.ATTACKX5_HP_10:
                 break;

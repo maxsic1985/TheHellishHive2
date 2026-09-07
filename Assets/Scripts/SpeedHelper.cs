@@ -775,6 +775,12 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(0.6f);
                             mob.GetComponent<Animation>().Play("IdelMyxa");
+                          
+                            if (mob.GetComponent<Skill_ManaBurn>() != null)  
+                            {  
+                                mob.GetComponent<Skill_ManaBurn>().UseSkill();  
+                            }  
+                            
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
@@ -789,6 +795,12 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(0.6f);
                             mob.GetComponent<Animation>().Play("IdelMyxa");
+                            
+                            if (mob.GetComponent<Skill_ManaBurn>() != null)  
+                            {  
+                                mob.GetComponent<Skill_ManaBurn>().UseSkill();  
+                            }  
+                            
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
@@ -803,6 +815,12 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(0.6f);
                             mob.GetComponent<Animation>().Play("IdelMyxa");
+                           
+                            if (mob.GetComponent<Skill_ManaBurn>() != null)  
+                            {  
+                                mob.GetComponent<Skill_ManaBurn>().UseSkill();  
+                            }  
+                            
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;

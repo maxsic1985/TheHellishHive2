@@ -72,6 +72,7 @@ public class PlayerHelper : MonoBehaviour
     public int baseAtack;
     public int baseStamina;
     public int baseSpeed;
+    public bool _blockOut;
     private ihp _ihp;
     private int curLevel;
     [SerializeField] private int lvlPlayer = 1; //уровень героя
@@ -629,6 +630,15 @@ public class PlayerHelper : MonoBehaviour
     //Привязать к кнопке побега из битвы
     public void RunOutBattle()
     {
+        if (_blockOut)
+        {
+            var msgTxt = YG2.envir.language == "en" ? "Forbidden" : "Запрещено";
+
+            TextPobeg.SetActive(true);
+            _textPobeg.text = msgTxt;
+            return;
+        }
+        
         sh = GetComponent<SpeedHelper>();
         d = GetComponent<damage>();
 
@@ -662,7 +672,8 @@ public class PlayerHelper : MonoBehaviour
 
 
             TextPobeg.SetActive(true);
-            _textPobeg.text = "не повезло!";
+            var msgTxt = YG2.envir.language == "en" ? "bad luck!" : "не повезло!";
+            _textPobeg.text = msgTxt;
             playerDamage.IsGo = true;
             _pvp.selectPlayer = 0;
             _pvp.selectTypeAtack = 0;
