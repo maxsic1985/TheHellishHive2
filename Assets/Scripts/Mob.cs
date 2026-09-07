@@ -90,6 +90,7 @@ public class Mob : MonoBehaviour
                 _skill = gameObject.AddComponent<Skill_NoESC>();
                 break;
             case MobSkillEnum.ATTACKX5_HP_10:
+                _skill = gameObject.AddComponent<Skill_AttackX5>();
                 break;
             case MobSkillEnum.DEB_ATTACK5:
                 _skill = gameObject.AddComponent<Skill_deb_Attack>();
