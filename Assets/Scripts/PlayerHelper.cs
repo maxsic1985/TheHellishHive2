@@ -73,6 +73,7 @@ public class PlayerHelper : MonoBehaviour
     public int baseStamina;
     public int baseSpeed;
     public bool _blockOut;
+    public bool _hasPoison;
     private ihp _ihp;
     private int curLevel;
     [SerializeField] private int lvlPlayer = 1; //уровень героя

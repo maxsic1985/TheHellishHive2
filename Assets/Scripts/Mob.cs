@@ -102,6 +102,7 @@ public class Mob : MonoBehaviour
                 _skill = gameObject.AddComponent<Skill_group_Attack>();
                 break;
             case MobSkillEnum.TARGET_POISON:
+                _skill = gameObject.AddComponent<Skill_Poison>();  
                 break;
             case MobSkillEnum.ATTACKX2_HALF_HP:
                 _skill = gameObject.AddComponent<Skill_AttackX2>();

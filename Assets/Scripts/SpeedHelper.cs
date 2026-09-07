@@ -38,6 +38,7 @@ public class SpeedHelper : MonoBehaviour
     private bool endCorutine;
     private int i=0;
     public bool IsStunned;
+  
 
     #endregion
     #region Prop
@@ -662,10 +663,9 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelGom");
-                            if (mob.GetComponent<Skill_Stunn>() != null && !IsStunned)  
-                            {  
-                                mob.GetComponent<Skill_Stunn>().UseSkill();  
-                            }  
+
+                            CheckPossibleSkill(mob);
+
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
@@ -681,10 +681,9 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelGom");
-                            if (mob.GetComponent<Skill_Stunn>() != null && !IsStunned)  
-                            {  
-                                mob.GetComponent<Skill_Stunn>().UseSkill();  
-                            }  
+                            
+                            CheckPossibleSkill(mob);
+                            
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
@@ -700,10 +699,9 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(pauseTime);
                             mob.GetComponent<Animation>().Play("IdelGom");
-                            if (mob.GetComponent<Skill_Stunn>() != null && !IsStunned)  
-                            {  
-                                mob.GetComponent<Skill_Stunn>().UseSkill();  
-                            }  
+                            
+                            CheckPossibleSkill(mob);
+                            
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
                             AnimsSetDamageIsGone = true;
@@ -776,10 +774,7 @@ public class SpeedHelper : MonoBehaviour
                             yield return new WaitForSeconds(0.6f);
                             mob.GetComponent<Animation>().Play("IdelMyxa");
                           
-                            if (mob.GetComponent<Skill_ManaBurn>() != null)  
-                            {  
-                                mob.GetComponent<Skill_ManaBurn>().UseSkill();  
-                            }  
+                            CheckPossibleSkill(mob);
                             
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
@@ -796,10 +791,7 @@ public class SpeedHelper : MonoBehaviour
                             yield return new WaitForSeconds(0.6f);
                             mob.GetComponent<Animation>().Play("IdelMyxa");
                             
-                            if (mob.GetComponent<Skill_ManaBurn>() != null)  
-                            {  
-                                mob.GetComponent<Skill_ManaBurn>().UseSkill();  
-                            }  
+                            CheckPossibleSkill(mob);
                             
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
@@ -815,11 +807,8 @@ public class SpeedHelper : MonoBehaviour
                             _playAnimBar.PlayAnimHPBAr();
                             yield return new WaitForSeconds(0.6f);
                             mob.GetComponent<Animation>().Play("IdelMyxa");
-                           
-                            if (mob.GetComponent<Skill_ManaBurn>() != null)  
-                            {  
-                                mob.GetComponent<Skill_ManaBurn>().UseSkill();  
-                            }  
+                            
+                            CheckPossibleSkill(mob);
                             
                             mob.GetComponent<EnemyHP>().TextDamageToPlayer(mob, mob.GetComponent<damage>().ImpactDamageToPlayer().ToString(), Color.red);
                             _playAnimBar.StopAnims();
@@ -872,7 +861,27 @@ public class SpeedHelper : MonoBehaviour
                     break;
             }
         }
-    }//анимация атаки мобов
+    }
+
+    private void CheckPossibleSkill(GameObject mob)
+    {
+        if (mob.GetComponent<Skill_Stunn>() != null && !IsStunned)
+        {
+            mob.GetComponent<Skill_Stunn>().UseSkill();
+        }
+
+        if (mob.GetComponent<Skill_Poison>() != null)
+        {
+            mob.GetComponent<Skill_Poison>().UseSkill();
+        }
+        
+        if (mob.GetComponent<Skill_ManaBurn>() != null)  
+        {  
+            mob.GetComponent<Skill_ManaBurn>().UseSkill();  
+        }  
+    }
+
+    //анимация атаки мобов
     private void SetTimeMobsAnim()
     {
         if (GameObject.FindGameObjectsWithTag("Mob").Length == 3)

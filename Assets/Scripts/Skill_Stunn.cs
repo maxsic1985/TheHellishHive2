@@ -7,11 +7,7 @@ using YG;
 internal class Skill_Stunn : MonoBehaviour, ISkill, IDestroible
 {
     [SerializeField] private int stunnCnt = 0;
-
-    private void Start()
-    {
-    }
-
+    
     public void UseSkill()
     {
         if (stunnCnt < 3)
