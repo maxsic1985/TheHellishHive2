@@ -17,7 +17,7 @@ internal class Skill_IQ_kX2:MonoBehaviour, ISkill, IDestroible
 
     private void Update()
     {
-        if(_mob==null || _enemyHp==null) return;
+        if(_mob==null || _mob._DB==null || _enemyHp==null) return;
         if (_enemyHp._hp<= _initHP/2 && _iSUsed==false)
         {
             UseSkill();
@@ -31,13 +31,13 @@ internal class Skill_IQ_kX2:MonoBehaviour, ISkill, IDestroible
 
     public void UseSkill()
     {
-        _mob.IQ *= 2;
+        _mob.IQ *= _mob._DB.MobSkill.Power;
         _iSUsed = true;
     }
 
     public void ClearSkill()
     {
-        _mob.IQ /= 2;
+        _mob.IQ /= _mob._DB.MobSkill.Power;
         _iSUsed = false;
     }
 

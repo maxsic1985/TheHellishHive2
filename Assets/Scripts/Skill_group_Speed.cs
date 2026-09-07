@@ -23,7 +23,7 @@ internal class Skill_group_Speed:MonoBehaviour,ISkill,IDestroible
     {
         for (int i = 0; i < _mobs.Count; i++)
         {
-            Debug.Log($"Group_Speed_for {_mobs.Count} was {_mobs[i].Speed} then {_mobs[i].Speed = _mobs[i].Speed + 1}");
+            _mobs[i].Speed = _mobs[i].Speed + _mobs[i]._DB.MobSkill.Power;
         }
     }
 
@@ -31,7 +31,7 @@ internal class Skill_group_Speed:MonoBehaviour,ISkill,IDestroible
     {
         for (int i = 0; i < _mobs.Count; i++)
         {
-            Debug.Log($"Group_Speed_for {_mobs.Count} was {_mobs[i].Speed} then {_mobs[i].Speed = _mobs[i].Speed - 1}");
+            _mobs[i].Speed = _mobs[i].Speed - _mobs[i]._DB.MobSkill.Power;
         }
     }
 

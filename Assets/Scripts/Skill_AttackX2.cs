@@ -28,15 +28,15 @@ internal class Skill_AttackX2 : MonoBehaviour, ISkill, IDestroible
 
     public void UseSkill()
     {
-        if(_mob==null) return;
-        _mob.Atack *= 2;
+        if(_mob==null||_mob._DB==null) return;
+        _mob.Atack *= _mob._DB.MobSkill.Power;
         _iSUsed = true;
     }
 
     public void ClearSkill()
     {
-        if(_mob==null) return;
-        _mob.Atack /= 2;
+        if(_mob==null||_mob._DB==null) return;
+        _mob.Atack /= _mob._DB.MobSkill.Power;
         _iSUsed = false;
     }
 

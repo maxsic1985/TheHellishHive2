@@ -2,7 +2,7 @@
 using Skills;
 using UnityEngine;
 
-internal class Skill_group_Attack:MonoBehaviour, ISkill,IDestroible
+internal class Skill_group_Attack : MonoBehaviour, ISkill, IDestroible
 {
     private List<Mob> _mobs;
 
@@ -17,25 +17,27 @@ internal class Skill_group_Attack:MonoBehaviour, ISkill,IDestroible
 
         UseSkill();
     }
-    
+
     public void UseSkill()
     {
         for (int i = 0; i < _mobs.Count; i++)
         {
-            Debug.Log($"Group_attack_for {_mobs.Count} was {_mobs[i].Atack} then {_mobs[i].Atack = _mobs[i].Atack + 2}");
+            // Debug.Log($"Group_attack_for {_mobs.Count} was {_mobs[i].Atack} then {_mobs[i].Atack = _mobs[i].Atack + _mobs[i]._DB.MobSkill.Power}");
+            _mobs[i].Atack = _mobs[i].Atack + _mobs[i]._DB.MobSkill.Power;
         }
     }
+
 
     public void ClearSkill()
     {
         for (int i = 0; i < _mobs.Count; i++)
         {
-            Debug.Log($"Group_attack_for {_mobs.Count} was {_mobs[i].Atack} then {_mobs[i].Atack = _mobs[i].Atack - 2}");
+            _mobs[i].Atack = _mobs[i].Atack - _mobs[i]._DB.MobSkill.Power;
         }
     }
 
     public void OnDestroy()
     {
-       ClearSkill();
+        ClearSkill();
     }
 }
