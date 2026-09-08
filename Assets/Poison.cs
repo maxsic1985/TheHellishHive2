@@ -1,3 +1,5 @@
+using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class Poison : MonoBehaviour
@@ -19,7 +21,7 @@ public class Poison : MonoBehaviour
         if (!PlayerHelper.Instance._hasPoison || _rm.EnbBattle) return;
         if (_speedHelper.EndRound1 && _usedPoison == false)
         {
-            SetPoison();
+            SetDamagePoison();
             return;
         }
         else if (_speedHelper.EndRound1 == false)
@@ -31,11 +33,25 @@ public class Poison : MonoBehaviour
         _powerPoison = poison;
     }
 
-    public void SetPoison()
+    public void SetDamagePoison()
     {
         PlayerHelper.Instance.HpCur -= _powerPoison;
         _usedPoison = true;
-        CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2f, Screen.height / 2f),
-            _powerPoison.ToString(), Color.magenta);
+        // CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2f, Screen.height / 4f),
+        //     _powerPoison.ToString(), Color.gray);
+
+
+        var hpText = PlayerHelper.Instance.HPtextBAR;
+        hpText.color = Color.green;
+       
+        Sequence pulseSequence = DOTween.Sequence();
+        pulseSequence.Append(PlayerHelper.Instance.HPtextBAR.transform.DOScale(1.5f, 0.5f));
+        pulseSequence.Append(PlayerHelper.Instance.HPtextBAR.transform.DOScale(1f, 0.5f));
+        pulseSequence.Play();
+    }
+
+    public void OnDestroy()
+    {
+        PlayerHelper.Instance.HPtextBAR.color = Color.white;
     }
 }

@@ -6,7 +6,7 @@ internal class Skill_NoESC:MonoBehaviour,ISkill,IDestroible
 {
     private void Start()
     {
-        UseSkill();
+       // UseSkill();
     }
 
     public void UseSkill()

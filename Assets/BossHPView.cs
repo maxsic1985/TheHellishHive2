@@ -8,31 +8,32 @@ public class BossHPView : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private bool _bossIsEscape;
     private bool _bossIsDead;
-    private _randomMob _randomMob;
+    private _randomMob _rm;
     [SerializeField] private TMP_Text hpText;
 
     private void Start()
     {
-        _bossIsDead = AchievmentManager.Instance.KillBoss;
+        _rm = FindAnyObjectByType<_randomMob>();
+        _bossIsDead = _rm.KillBoss > 0 ? true : false;
         gameObject.SetActive(!_bossIsDead);
 
-        _randomMob = FindAnyObjectByType<_randomMob>();
-        if (_randomMob == null) return;
+        if (_rm == null) return;
 
-        _bossIsEscape = _randomMob.boosIsView;
+        _bossIsEscape = _rm.boosIsView;
         hpText.enabled = _bossIsEscape;
     }
 
     private void LateUpdate()
     {
         Debug.Log("dead" + _bossIsDead);
-        if (_bossIsDead)
+        if (_rm.KillBoss > 0)
         {
-            gameObject.SetActive(false);
+            hpText.enabled = false;
+            Destroy(gameObject);
             return;
         }
 
-        Debug.Log("boos" + _randomMob.boosIsView);
-        hpText.enabled = _randomMob.boosIsView;
+     //   Debug.Log("boos" + _rm.boosIsView);
+        hpText.enabled = _rm.boosIsView;
     }
 }

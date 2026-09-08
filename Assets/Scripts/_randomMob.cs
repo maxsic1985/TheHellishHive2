@@ -754,6 +754,7 @@ public class _randomMob : MonoBehaviour
                         Boss.tag = "Mob";
                         this.GetComponent<SpeedHelper>().GetNumberGo(Boss);
                         this.GetComponent<SpeedHelper>().WhoIsDamag();
+                        Boss.GetComponent<Skill_NoESC>().UseSkill();
                         addMob = true;
                         boosIsView = true;
                     }
