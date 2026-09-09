@@ -213,6 +213,8 @@ public class _randomMob : MonoBehaviour
             previusRotation = gameObject.transform.rotation;
         }
 
+       
+
         isTransformToBattle = true;
         Transform cc = GameObject.FindGameObjectWithTag("battle").GetComponent<Transform>();
         transform.rotation = Quaternion.FromToRotation(Vector3.up, cc.forward);
@@ -521,7 +523,7 @@ public class _randomMob : MonoBehaviour
 
     void Update()
     {
-       // if (TeleportView.Instance.isTransitioning == true) return;
+        // if (TeleportView.Instance.isTransitioning == true) return;
 
 
         if (addMob == true & mu == 0) //для звука битвы.
@@ -573,6 +575,7 @@ public class _randomMob : MonoBehaviour
                         StartCoroutine(TeleportView.Instance.FullTransition());
                         return;
                     }
+
                     StartCoroutine(TeleportView.Instance.FullTransition());
                     AddMobsOnScene("Midle",
                         1); //вызов на сцену легких мобов, в параметре указывается сложность (Low, Midle , Hard)

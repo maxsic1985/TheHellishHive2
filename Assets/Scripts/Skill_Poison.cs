@@ -39,7 +39,7 @@ internal class Skill_Poison : MonoBehaviour, ISkill, IDestroible
     {
         PlayerHelper.Instance._hasPoison = false;
         var poison = PlayerHelper.Instance.gameObject.GetComponent<Poison>();
-        Destroy(poison);
+      if(poison!=null)  Destroy(poison);
     }
 
     public void OnDestroy()

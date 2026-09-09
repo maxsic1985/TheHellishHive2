@@ -2,26 +2,25 @@
 using Skills;
 using UnityEngine;
 
-internal class Skill_NoESC:MonoBehaviour,ISkill,IDestroible
+internal class Skill_NoESC : MonoBehaviour, ISkill, IDestroible
 {
     private void Start()
     {
-       // UseSkill();
+        // UseSkill();
     }
 
     public void UseSkill()
     {
-        PlayerHelper.Instance._blockOut = true;
+        if (PlayerHelper.Instance != null) PlayerHelper.Instance._blockOut = true;
     }
 
     public void ClearSkill()
     {
-        PlayerHelper.Instance._blockOut = false;
-
+        if (PlayerHelper.Instance != null) PlayerHelper.Instance._blockOut = false;
     }
 
     public void OnDestroy()
     {
-      ClearSkill();
+        ClearSkill();
     }
 }

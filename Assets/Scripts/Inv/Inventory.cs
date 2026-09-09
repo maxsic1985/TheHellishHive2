@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using System;
+using Services;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Inventory : MonoBehaviour
 {
@@ -860,6 +862,7 @@ public class Inventory : MonoBehaviour
             isOpen = false;
             sound2.GetComponent<AudioSource>().PlayOneShot(SFX);
             MM.StartControl();
+            ControlsService.UnLockControls(FindAnyObjectByType<FirstPersonController>());
         }
         else
         {
@@ -869,6 +872,7 @@ public class Inventory : MonoBehaviour
             sound2.GetComponent<AudioSource>().PlayOneShot(SFX);
 			InventoryManager.Instance.From = null;
 			InventoryManager.Instance.To = null;
+            ControlsService.LockControls(FindAnyObjectByType<FirstPersonController>());
         }
     }
 

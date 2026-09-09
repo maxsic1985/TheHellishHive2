@@ -99,12 +99,18 @@ public class Consumeable : Item
                 break;
 
             case "Зелье исцеления":
-                PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                //   PlayerHelper.Instance.HpCur +=
+                 //   maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                PlayerHelper.Instance._hasPoison = false;
+                var poison = PlayerHelper.Instance.GetComponent<Poison>();
+                if (poison != null) GameObject.Destroy(poison);
                 break;
             case "Antidote":
-                PlayerHelper.Instance.HpCur +=
-                    maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
+                PlayerHelper.Instance._hasPoison = false;
+                 poison = PlayerHelper.Instance.GetComponent<Poison>();
+                if (poison != null) GameObject.Destroy(poison);
+                //PlayerHelper.Instance.HpCur +=
+                  //  maxPotionUse(Health, PlayerHelper.Instance.HpMax, PlayerHelper.Instance.HpCur);
                 break;
 
             case "Свиток телепортации":

@@ -7,6 +7,7 @@ namespace Services
         
         public static void LockControls(FirstPersonController _fps)
         {
+            
             _fps.m_WalkSpeed = 0;
             _fps.m_RunSpeed = 0; //скорость хотьбы 0
             _fps.m_MouseLook.XSensitivity = 0;
