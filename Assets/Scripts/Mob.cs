@@ -108,6 +108,7 @@ public class Mob : MonoBehaviour
                 _skill = gameObject.AddComponent<Skill_AttackX2>();
                 break;
             case MobSkillEnum.DAMAGE_REFLECTION:
+                _skill = gameObject.AddComponent<Skill_DamageREflection>();
                 break;
             case MobSkillEnum.DEB_DEFENCE:
                 _skill = gameObject.AddComponent<Skill_deb_Defence>();

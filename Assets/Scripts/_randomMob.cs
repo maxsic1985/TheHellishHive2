@@ -11,6 +11,7 @@ using UnityStandardAssets.Utility;
 using UnityStandardAssets.Characters.FirstPerson;
 using System.Collections;
 using Services;
+using Skills;
 
 public class _randomMob : MonoBehaviour
 {
@@ -203,7 +204,7 @@ public class _randomMob : MonoBehaviour
         print("ExitTrigger");
     }
 
-    private void transformToBatleField()
+    public void transformToBatleField()
     {
         // previus.position = transform.position;
         // previus.localRotation = transform.localRotation;
@@ -213,7 +214,12 @@ public class _randomMob : MonoBehaviour
             previusRotation = gameObject.transform.rotation;
         }
 
-       
+        var inventories = FindObjectsByType<Inventory>(FindObjectsSortMode.None);
+        foreach (var inv in inventories)
+        {
+            inv.FustCloseInventory();
+        }
+
 
         isTransformToBattle = true;
         Transform cc = GameObject.FindGameObjectWithTag("battle").GetComponent<Transform>();
@@ -298,11 +304,29 @@ public class _randomMob : MonoBehaviour
     //методы вешаются на кнопки на сцене, нанесение урона
     public void damagemobLeft()
     {
-        if (GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<Mob>() != null)
+        var mob = GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<Mob>();
+        if (mob != null)
         {
             if (this.GetComponent<damage>().typeAttack == 1)
             {
-                GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
+                if (mob.GetComponent<Skill_DamageREflection>() != null)
+                {
+                    mob.GetComponent<Skill_DamageREflection>().UseSkill();
+                    if (mob.GetComponent<Skill_DamageREflection>().IsReflect)
+                    {
+                        PlayerHelper.Instance.GetComponent<EnemyHP>().ImpactDamageOnPlayer(mob.gameObject);
+                    }
+                    else
+                    {
+                        GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<EnemyHP>()
+                            .ImpactDamageOnMob(effekt1);
+                    }
+                }
+                else
+                {
+                    GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<EnemyHP>()
+                        .ImpactDamageOnMob(effekt1);
+                }
             }
             else if (this.GetComponent<damage>().typeAttack == 2)
             {

@@ -45,7 +45,9 @@ public class CheetScript : MonoBehaviour
 
     public void MobSpawn(int cnt)
     {
-        FindAnyObjectByType<_randomMob>().AddMobsOnScene(typeMob, cnt);
+       var rm= FindAnyObjectByType<_randomMob>();
+           rm.transformToBatleField();
+           rm.AddMobsOnScene(typeMob, cnt);
     }
 
     public void Bossss()
