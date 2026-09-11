@@ -309,28 +309,11 @@ public class _randomMob : MonoBehaviour
         {
             if (this.GetComponent<damage>().typeAttack == 1)
             {
-                if (mob.GetComponent<Skill_DamageREflection>() != null)
-                {
-                    mob.GetComponent<Skill_DamageREflection>().UseSkill();
-                    if (mob.GetComponent<Skill_DamageREflection>().IsReflect)
-                    {
-                        PlayerHelper.Instance.GetComponent<EnemyHP>().ImpactDamageOnPlayer(mob.gameObject);
-                    }
-                    else
-                    {
-                        GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<EnemyHP>()
-                            .ImpactDamageOnMob(effekt1);
-                    }
-                }
-                else
-                {
-                    GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<EnemyHP>()
-                        .ImpactDamageOnMob(effekt1);
-                }
+                CheckReflection(mob, effekt1);
             }
             else if (this.GetComponent<damage>().typeAttack == 2)
             {
-                GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt2);
+                CheckReflection(mob, effekt2);
             }
 
             this.GetComponent<damage>().IsGo = true;
@@ -341,17 +324,19 @@ public class _randomMob : MonoBehaviour
         }
     }
 
+
     public void damagenobRight()
     {
-        if (GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<Mob>() != null)
+        var mob = GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<Mob>();
+        if (mob != null)
         {
             if (this.GetComponent<damage>().typeAttack == 1)
             {
-                GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
+                CheckReflection(mob, effekt1);
             }
             else if (this.GetComponent<damage>().typeAttack == 2)
             {
-                GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt2);
+                CheckReflection(mob, effekt2);
             }
 
             this.GetComponent<damage>().IsGo = true;
@@ -364,15 +349,16 @@ public class _randomMob : MonoBehaviour
 
     public void damagenobCentr()
     {
-        if (GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<Mob>() != null)
+        var mob = GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<Mob>();
+        if (mob != null)
         {
             if (this.GetComponent<damage>().typeAttack == 1)
             {
-                GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
+                CheckReflection(mob, effekt1);
             }
             else if (this.GetComponent<damage>().typeAttack == 2)
             {
-                GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt2);
+                CheckReflection(mob, effekt2);
             }
 
             print("Centr");
@@ -383,6 +369,35 @@ public class _randomMob : MonoBehaviour
             HideButtoms();
         }
     }
+
+
+    private void CheckReflection(Mob mob, Transform effect)
+    {
+        if (mob.GetComponent<Skill_DamageREflection>() != null)
+        {
+            mob.GetComponent<Skill_DamageREflection>().UseSkill();
+            if (mob.GetComponent<Skill_DamageREflection>().IsReflect)
+            {
+                int damage = PlayerHelper.Instance.Atack - mob.MobDefens;
+                // int damage = PlayerHelper.Instance.GetComponent<EnemyHP>().Damage;
+                Debug.LogWarning($"Reflect+ {damage}");
+                PlayerHelper.Instance.HpCur -= damage;
+                
+            }
+            else
+            {
+                mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effect);
+            }
+        }
+        else
+        {
+            mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effect);
+        }
+        
+        GetComponent<PVP>().selectPlayer = 0;
+        GetComponent<PVP>().selectTypeAtack = 0;
+    }
+
 
     public void EndRound()
     {

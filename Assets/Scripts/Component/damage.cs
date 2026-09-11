@@ -113,6 +113,10 @@ public class damage : MonoBehaviour, Idamage
                 Attack.GetComponent<AudioSource>().PlayOneShot(AtPlay);
                 print("Атака магией 1");
                 break;
+            case 3:
+                damToMob = 0;//GetComponent<PlayerHelper>().Intelect
+                print("Отражение");
+                break;
             default:
                 break;
         }
