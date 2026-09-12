@@ -378,16 +378,14 @@ public class _randomMob : MonoBehaviour
             mob.GetComponent<Skill_DamageREflection>().UseSkill();
             if (mob.GetComponent<Skill_DamageREflection>().IsReflect)
             {
-                int damage = PlayerHelper.Instance.Atack - mob.MobDefens;
-                // int damage = PlayerHelper.Instance.GetComponent<EnemyHP>().Damage;
-                Debug.LogWarning($"Reflect+ {damage}");
-                PlayerHelper.Instance.HpCur -= damage;
-                
+
             }
             else
             {
                 mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effect);
             }
+
+            mob.GetComponent<Skill_DamageREflection>().IsReflect = false;
         }
         else
         {
