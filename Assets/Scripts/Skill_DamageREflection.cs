@@ -27,8 +27,12 @@ namespace Skills
                     Color.cyan);
                 
                 int damage = PlayerHelper.Instance.Atack - _mob.MobDefens;
+                Debug.LogWarning($"Attt+ {PlayerHelper.Instance.Atack}");
+                Debug.LogWarning($"defff+ {_mob.MobDefens}");
                 Debug.LogWarning($"Reflect+ {damage}");
+                PlayerHelper.Instance.GetComponent<EnemyHP>().TextDamageToPlayer(gameObject,damage.ToString(),Color.red);
                 PlayerHelper.Instance.HpCur -= damage;
+                
                 
                // IsReflect = false;
             }

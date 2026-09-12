@@ -323,8 +323,7 @@ public class _randomMob : MonoBehaviour
             HideButtoms();
         }
     }
-
-
+    
     public void damagenobRight()
     {
         var mob = GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<Mob>();
@@ -373,12 +372,12 @@ public class _randomMob : MonoBehaviour
 
     private void CheckReflection(Mob mob, Transform effect)
     {
-        if (mob.GetComponent<Skill_DamageREflection>() != null)
+        if (mob.GetComponent< Skill_DamageREflection>() != null)
         {
             mob.GetComponent<Skill_DamageREflection>().UseSkill();
             if (mob.GetComponent<Skill_DamageREflection>().IsReflect)
             {
-
+               
             }
             else
             {
@@ -686,26 +685,7 @@ public class _randomMob : MonoBehaviour
             MobileControlCanvas.SetActive(true);
         }
     }
-
-    ////private bool ChkDist()
-    ////    {
-    ////        RaycastHit hit;
-    ////        RaycastHit hitR;
-    ////        Physics.Raycast(transform.position, transform.forward, out hit);
-    ////        Physics.Raycast(transform.position, transform.right, out hitR);
-    ////        float dist = Vector3.Distance(transform.position, hit.point);
-    ////        float distR = Vector3.Distance(transform.position, hitR.point);
-    ////        print(distR);
-    ////        if ((dist>5f)&&(distR>1.5f))
-    ////        {
-    ////            chkDst = true;
-    ////        }
-    ////        else
-    ////        {
-    ////            chkDst = false;
-    ////        }
-    ////        return chkDst;
-    ////    }//проверка на растояние от стены
+    
     public void ShowMenuBattle()
     {
         MenuNoBattle.SetActive(false);

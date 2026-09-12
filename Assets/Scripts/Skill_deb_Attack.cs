@@ -14,6 +14,7 @@ internal class Skill_deb_Attack : MonoBehaviour, ISkill, IDestroible
         if (_mob != null || _mob._DB != null)
         {
             _powerDebuff = _mob._DB.MobSkill.Power;
+            UseSkill();
         }
     }
 
