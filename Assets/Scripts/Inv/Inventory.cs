@@ -360,7 +360,7 @@ public class Inventory : MonoBehaviour
         {
             Slot tmp = allSlots[i].GetComponent<Slot>();
 
-            if (!tmp.isEmpty)
+            if (!tmp.isEmpty && tmp.CurrentItem!=null && tmp.CurrentItem.Item!=null)
             {
                 content += i + "-" + tmp.CurrentItem.Item.ItemName.ToString() + "-" + tmp.Items.Count.ToString() + ";";
             }
