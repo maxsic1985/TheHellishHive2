@@ -12,8 +12,8 @@ namespace _SO
         [SerializeField] private string monsterNameEn;
         [SerializeField] private string monsterDescriptionRU;
         [SerializeField] private string monsterDescriptionEN;
-        [SerializeField] private string monsterSkillsRU;
-        [SerializeField] private string monsterSkillsEN;
+      //  [SerializeField] private string monsterSkillsRU;
+      //  [SerializeField] private string monsterSkillsEN;
 
         [Header("=== SKILLS===")] [SerializeField]
         private DB_MobSkills _mobSkill;
@@ -34,17 +34,17 @@ namespace _SO
                 case "en":
                     MonsterName = monsterNameEn;
                     MonsterDescription = monsterDescriptionEN;
-                    MonsterSkills = monsterSkillsEN;
+                  //  MonsterSkills = monsterSkillsEN;
                     break;
                 case "ru":
                     MonsterName = monsterNameRU;
                     MonsterDescription = monsterDescriptionRU;
-                    MonsterSkills = monsterSkillsRU;
+                  //  MonsterSkills = monsterSkillsRU;
                     break;
                 default:
                     MonsterName = monsterNameRU;
                     MonsterDescription = monsterDescriptionRU;
-                    MonsterSkills = monsterSkillsRU;
+                  //  MonsterSkills = monsterSkillsRU;
                     break;
             }
         }

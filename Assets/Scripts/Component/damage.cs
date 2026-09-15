@@ -90,7 +90,7 @@ public class damage : MonoBehaviour, Idamage
     public bool checkDefenceUp { get; private set; }
     public bool checkMassAttack { get; set; }
 
-    randomMob rm;
+    _randomMob rm;
     #endregion
     #region Voids
     /// <summary>
@@ -112,6 +112,10 @@ public class damage : MonoBehaviour, Idamage
                 mana = GetComponent<PlayerHelper>().ManaCur -= 10;
                 Attack.GetComponent<AudioSource>().PlayOneShot(AtPlay);
                 print("Атака магией 1");
+                break;
+            case 3:
+                damToMob = 0;//GetComponent<PlayerHelper>().Intelect
+                print("Отражение");
                 break;
             default:
                 break;
@@ -200,7 +204,7 @@ public class damage : MonoBehaviour, Idamage
     {
 
         // dmg = Random.Range(0, dmg);
-        GetDamageToPlayer(GetComponent<Mob>().MobAtack);
+        GetDamageToPlayer(GetComponent<Mob>().Atack);
         var result = damToPlayer;
 
         return result;
@@ -211,7 +215,7 @@ public class damage : MonoBehaviour, Idamage
     void Start()
     {
 
-        rm = FindObjectOfType<randomMob>();
+        rm = FindObjectOfType<_randomMob>();
         sh = FindObjectOfType<SpeedHelper>();
     }
     void Update()

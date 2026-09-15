@@ -51,7 +51,7 @@ public class AchievmentManager : MonoBehaviour
     }
 
     private Scene _scene;
-    private randomMob _rmob;
+    private _randomMob _rmob;
     private PlayerHelper _ph;
     private bool useTrava = false;
     private bool chestBox = false;
@@ -152,7 +152,7 @@ public class AchievmentManager : MonoBehaviour
 
                 CreateAchievment("Warrior", "Warrior", "To kill the enemy", 10, 9);
                 CreateAchievment("Warrior", "Gladiator", "To kill ten enemies", 50, 10);
-                CreateAchievment("Warrior", "The Alchemist", "Use grass in battle", 50, 11);
+                CreateAchievment("Warrior", "Alchemist", "Use grass in battle", 50, 11);
                 CreateAchievment("Warrior", "Knight", "Kill the Boss", 150, 12);
                 CreateAchievment("Warrior", "Butcher", "Kill 100 enemies", 500, 13);
                 break;
@@ -179,7 +179,7 @@ public class AchievmentManager : MonoBehaviour
         _archBtn.Click();
 
 
-        _rmob = FindObjectOfType<randomMob>();
+        _rmob = FindObjectOfType<_randomMob>();
         _ph = FindObjectOfType<PlayerHelper>();
 
         foreach (GameObject achievmentList in
@@ -189,7 +189,7 @@ public class AchievmentManager : MonoBehaviour
         }
 
         achievmentCanvas.SetActive(false);
-        print(achievments.Count);
+            //        print(achievments.Count);
     }
 
     /// <summary>

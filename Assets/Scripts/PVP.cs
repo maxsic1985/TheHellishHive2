@@ -59,10 +59,10 @@ public class PVP : MonoBehaviour
         {
             switch (selectTypeAtack)
             {
-                case 1: GameObject.FindObjectOfType<randomMob>().GetComponent<randomMob>().ShowButtons(); BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
+                case 1: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons(); BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
                 case 2: print("Защита увеличина"); GetComponent<damage>().DefenceUp(); break;//бафнуть во время битвы без выбора моба
                 case 3: GetComponent<damage>().checkMassAttack = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
-                default: GameObject.FindObjectOfType<randomMob>().GetComponent<randomMob>().HideButtoms(); BtnRun.SetActive(true); break;
+                default: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms(); BtnRun.SetActive(true); break;
             }
         }
     }

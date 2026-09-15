@@ -23,7 +23,7 @@ public class EnemyHP : MonoBehaviour, ihp
     /// <summary>
     /// наносимый урон
     /// </summary>
-    private static int damage;
+    public static int damage;
 
     /// <summary>
     /// ширина экрана
@@ -62,6 +62,7 @@ public class EnemyHP : MonoBehaviour, ihp
     private PlayerHelper _playerHalper;
     private int cntMob;
     private bool _miss;
+    [SerializeField] public int CalcDamageToMob;
 
     #endregion
 
@@ -98,7 +99,7 @@ public class EnemyHP : MonoBehaviour, ihp
         _playerHalper = player.GetComponent<PlayerHelper>();
         cntMob = PlayerPrefs.GetInt("KillMobs");
     }
-    
+
 
     /// <summary>
     /// Определение крита
@@ -110,9 +111,7 @@ public class EnemyHP : MonoBehaviour, ihp
         int shans = Random.Range(0, 100);
         if (shans > (100 - iq))
         {
-            GameObject tmp = Instantiate(KritText) as GameObject;
-            tmp.transform.SetParent(GameObject.Find("CanvasUI").transform);
-            tmp.transform.position = new Vector2(Screen.width / 2, Screen.height / 1.5f);
+            var tmp = GetKritText();
             krit = true;
             Destroy(tmp, 0.9f);
         }
@@ -124,6 +123,14 @@ public class EnemyHP : MonoBehaviour, ihp
         return krit;
     }
 
+    private GameObject GetKritText()
+    {
+        GameObject tmp = Instantiate(KritText) as GameObject;
+        tmp.transform.SetParent(GameObject.Find("CanvasUI").transform);
+        tmp.transform.position = new Vector2(Screen.width / 2, Screen.height / 1.5f);
+        return tmp;
+    }
+
     /// <summary>
     /// Метод расчета конечного урона по мобу с учетом защиты моба и шанса крита
     /// </summary>
@@ -131,6 +138,7 @@ public class EnemyHP : MonoBehaviour, ihp
     {
         if (_playerHalper.HpCur <= 0)
         {
+            //CalcDamageToMob = 0;
             return;
         }
 
@@ -161,17 +169,21 @@ public class EnemyHP : MonoBehaviour, ihp
         if (!krit)
         {
             damage = _applyingDamage.ImpactDamageToMob() - GetComponent<Mob>().MobDefens;
+            CalcDamageToMob = damage;
             if (damage <= 0)
             {
                 damage = 1;
+                CalcDamageToMob = damage;
             }
         }
         else
         {
             damage = (_applyingDamage.ImpactDamageToMob() - GetComponent<Mob>().MobDefens) * 2;
+            CalcDamageToMob = damage;
             if (damage <= 0)
             {
                 damage = 1;
+                CalcDamageToMob = damage;
             }
         }
 
@@ -187,6 +199,7 @@ public class EnemyHP : MonoBehaviour, ihp
                 AchievmentManager.Instance.CntMob = cntMob;
             }
 
+            CalcDamageToMob = damage;
             this.GetComponent<damage>().IsGo = true;
             TextDamageToMob(this.gameObject, damage.ToString(), Color.green); //анимация смерти
             print("Dead");
@@ -196,6 +209,7 @@ public class EnemyHP : MonoBehaviour, ihp
         {
             if (damage > 0)
             {
+                CalcDamageToMob = damage;
                 HP = HP - damage;
                 StartCoroutine(player.GetComponent<SpeedHelper>().AnimsGiveDamageMob(this.gameObject));
                 player.GetComponent<PVP>().selectPlayer = 0;
@@ -205,6 +219,7 @@ public class EnemyHP : MonoBehaviour, ihp
             {
                 damage = 1;
                 HP = HP - damage;
+                CalcDamageToMob = damage;
                 StartCoroutine(player.GetComponent<SpeedHelper>().AnimsGiveDamageMob(this.gameObject));
                 player.GetComponent<PVP>().selectPlayer = 0;
                 player.GetComponent<PVP>().selectTypeAtack = 0;
@@ -269,17 +284,17 @@ public class EnemyHP : MonoBehaviour, ihp
     /// <param name="mob">позиция моба</param>
     /// <param name="txt">текст</param>
     /// <param name="col">цвет</param>
-    public void TextDamageToPlayer(GameObject mob, string txt, Color32 col) //вывод урона по игроку в виде текста
+    public void TextDamageToPlayer(GameObject mob, Color32 col) //вывод урона по игроку в виде текста
     {
         w = Screen.width;
         h = Screen.height;
         vmC = new Vector2(w / 2, h / 2);
         vmL = new Vector2(w / 3, h / 2);
         vmR = new Vector2(w * 2 / 3, h / 2);
-        
-        var msgTxt= YG2.envir.language == "en" ? "Miss":"Промах";
 
-        
+        var msgTxt = YG2.envir.language == "en" ? "Miss" : "Промах";
+
+
         switch (mob.GetComponentInParent<Transform>().parent.name)
         {
             case "C":
@@ -302,6 +317,40 @@ public class EnemyHP : MonoBehaviour, ihp
         }
     }
 
+    public void TextDamageToPlayer(GameObject mob, string txt, Color32 col) //вывод урона по игроку в виде текста
+    {
+        w = Screen.width;
+        h = Screen.height;
+        vmC = new Vector2(w / 2, h / 2);
+        vmL = new Vector2(w / 3, h / 2);
+        vmR = new Vector2(w * 2 / 3, h / 2);
+
+        var msgTxt = YG2.envir.language == "en" ? "Miss" : "Промах";
+
+
+        switch (mob.GetComponentInParent<Transform>().parent.name)
+        {
+            case "C":
+                ImpactDamageOnPlayer(mob);
+                if (!_miss) CombatTextManager.Instance.CreateText(vmC, txt.ToString(), col);
+                else CombatTextManager.Instance.CreateText(vmC, msgTxt, col);
+                break;
+            case "R":
+                ImpactDamageOnPlayer(mob);
+                if (!_miss) CombatTextManager.Instance.CreateText(vmR, txt.ToString(), col);
+                else CombatTextManager.Instance.CreateText(vmR, msgTxt, col);
+                break;
+            case "L":
+                ImpactDamageOnPlayer(mob);
+                if (!_miss) CombatTextManager.Instance.CreateText(vmL, txt.ToString(), col);
+                else CombatTextManager.Instance.CreateText(vmL, msgTxt, col);
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
     /// <summary>
     /// Вывод текста урона по мобу
     /// </summary>

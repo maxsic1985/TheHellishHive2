@@ -18,7 +18,7 @@ public class damageRandom : MonoBehaviour {
 	void Start () 
 	{
 		StartCoroutine (randomD ());
-		GetComponent<Mob> ().MobAtack = GetComponent<Mob> ().MobAtack + Random.Range (minDamage,maxDamage);
+		GetComponent<Mob> ().Atack = GetComponent<Mob> ().Atack + Random.Range (minDamage,maxDamage);
 		GetComponent<Mob> ().MobDefens = GetComponent<Mob> ().MobDefens + Random.Range (minDeff,maxDeff);
 
 	}
@@ -29,11 +29,11 @@ public class damageRandom : MonoBehaviour {
 			yield return new WaitForSeconds (4f);
 
 			GetComponent<Mob> ().MobDefens = ishodDeff;
-			GetComponent<Mob> ().MobAtack = ishod;
-			GetComponent<Mob> ().MobAtack = GetComponent<Mob> ().MobAtack + Random.Range (minDamage, maxDamage);
+			GetComponent<Mob> ().Atack = ishod;
+			GetComponent<Mob> ().Atack = GetComponent<Mob> ().Atack + Random.Range (minDamage, maxDamage);
 			GetComponent<Mob> ().MobDefens = GetComponent<Mob> ().MobDefens + Random.Range (minDeff,maxDeff);
 	
-			if (GetComponent<Mob> ().MobAtack >= ishod) {
+			if (GetComponent<Mob> ().Atack >= ishod) {
 				continue;
 			}
 	

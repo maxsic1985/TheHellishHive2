@@ -20,6 +20,8 @@ public abstract class Item
     public string Description { get; set; } 
 
     public int Price { get; set; }
+    public int Health { get; set; }
+    public int Mana { get; set; }
 
     public Item()
     {
@@ -36,6 +38,7 @@ public abstract class Item
         this.SpriteHighlighted = spriteHihglighed;
         this.MaxSize = maxSize;
         this.Price = price;
+ 
 
 
     }
