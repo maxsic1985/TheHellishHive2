@@ -40,7 +40,7 @@ public class EqiepmentHalper : MonoBehaviour {
             gaBtn.SetActive(false);
             gaGO.SetActive(false);
             MagicShop.SetActive(false);
-            MagicBtn.SetActive(false);
+//            MagicBtn.SetActive(false);
             WeaponShopBtn.SetActive(false);
             WeaponShop.SetActive(false);
 
@@ -69,7 +69,7 @@ public class EqiepmentHalper : MonoBehaviour {
             gaGO.SetActive(true);
             gaBtn.SetActive(true);
             MagicShop.SetActive(true);
-            MagicBtn.SetActive(true);
+//            MagicBtn.SetActive(true);
             WeaponShopBtn.SetActive(true);
             WeaponShop.SetActive(true);
         }

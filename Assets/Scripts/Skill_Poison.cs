@@ -1,9 +1,8 @@
-﻿using System;
+﻿
 using Services;
 using Skills;
-using UnityEditor.SceneManagement;
+
 using UnityEngine;
-using UnityEngine.UIElements;
 using YG;
 
 internal class Skill_Poison : MonoBehaviour, ISkill, IDestroible

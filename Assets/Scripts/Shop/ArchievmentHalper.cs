@@ -43,7 +43,7 @@ public class ArchievmentHalper : MonoBehaviour
         if (canvasGroup.alpha > 0)
         {
             MagicShop.SetActive(false);
-            MagicBtn.SetActive(false);
+//            MagicBtn.SetActive(false);
             WeaponShopBtn.SetActive(false);
             WeaponShop.SetActive(false);
             ga.SetActive(false);
