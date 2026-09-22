@@ -411,6 +411,7 @@ public class AchievmentManager : MonoBehaviour
         if (_scene.name == "Lvl1")
         {
             EarnAcheivment("Adventurer");
+            SaveHalper.Instance.Task3Completed = 1;
         }
 
         if (_rmob.addMob)
