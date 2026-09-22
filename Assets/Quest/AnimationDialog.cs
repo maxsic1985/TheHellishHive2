@@ -120,6 +120,7 @@ public class AnimationDialog : MonoBehaviour
         {
             bonusGold.goldCur = bonusGold.goldCur + 100;
             quest1 = 1;
+            SaveHalper.Instance.Task1Completed = 1;
             QuestPanel.SetActive(false);
             stringIndex = 0;
             charIndex = 0;

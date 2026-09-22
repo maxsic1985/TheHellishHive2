@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -32,6 +34,11 @@ public class SaveHalper : MonoBehaviour
 
     public AnimationDialog savequest;
     public LV1Dialog savequest2;
+
+    public int Task1Completed;
+    public int Task2Completed;
+    public int Task3Completed;
+    
 
     /// <summary>
     /// флаг новая игра, устанавливаетя при нажатии на кнопку новая игра, сбрасывает значение Savining в 0
@@ -95,7 +102,13 @@ public class SaveHalper : MonoBehaviour
     /// </summary>
     public void Save()
     {
-       // SaveBag();
+        // SaveBag();
+      
+            PlayerPrefs.SetInt("Task1Completed", Task1Completed);
+            PlayerPrefs.SetInt("Task2Completed", Task2Completed);
+            PlayerPrefs.SetInt("Task3Completed", Task3Completed);
+        
+
         PlayerPrefs.SetInt("quest1", savequest.quest1);
         PlayerPrefs.SetInt("triggSave", savequest2.triggSave);
 
@@ -159,6 +172,12 @@ public class SaveHalper : MonoBehaviour
     /// </summary>
     public void Load()
     {
+            Task1Completed = PlayerPrefs.GetInt("Task1Completed");
+            Task2Completed = PlayerPrefs.GetInt("Task2Completed");
+            Task3Completed = PlayerPrefs.GetInt("Task3Completed");
+        
+
+
         savequest2.triggSave = PlayerPrefs.GetInt("triggSave");
         savequest.quest1 = PlayerPrefs.GetInt("quest1");
         GameObject[] inventories = GameObject.FindGameObjectsWithTag("Inventory");
@@ -171,7 +190,7 @@ public class SaveHalper : MonoBehaviour
         foreach (GameObject _tmp in tmp)
         {
             if (PlayerPrefs.GetInt(_tmp.name) == 1)
-               _tmp.SetActive(false);
+                _tmp.SetActive(false);
         }
 
         GameObject.FindObjectOfType<PlayerHelper>().LoadPlayer();
