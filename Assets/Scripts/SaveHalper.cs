@@ -38,6 +38,7 @@ public class SaveHalper : MonoBehaviour
     public int Task1Completed;
     public int Task2Completed;
     public int Task3Completed;
+    public int BossIsTrigger;
     
 
     /// <summary>
@@ -111,6 +112,10 @@ public class SaveHalper : MonoBehaviour
 
         PlayerPrefs.SetInt("quest1", savequest.quest1);
         PlayerPrefs.SetInt("triggSave", savequest2.triggSave);
+        
+        PlayerPrefs.SetInt("TrigBoss", BossIsTrigger);
+        
+        
 
         PlayerPrefs.SetInt(gameObject.name + "Savining", Savining = 1);
         GameObject[] inventories = GameObject.FindGameObjectsWithTag("Inventory");
@@ -175,6 +180,7 @@ public class SaveHalper : MonoBehaviour
             Task1Completed = PlayerPrefs.GetInt("Task1Completed");
             Task2Completed = PlayerPrefs.GetInt("Task2Completed");
             Task3Completed = PlayerPrefs.GetInt("Task3Completed");
+            BossIsTrigger = PlayerPrefs.GetInt("TrigBoss");
         
 
 

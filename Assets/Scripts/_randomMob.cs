@@ -192,6 +192,8 @@ public class _randomMob : MonoBehaviour
             coliderzon = "TriggerBoss";
             cnt = 0.25f; //уменьшить cnt  чтобы не ждать все время
             print(coliderzon);
+            SaveHalper.Instance.BossIsTrigger = 1;
+            SaveHalper.Instance.Save();
         }
     }
 
