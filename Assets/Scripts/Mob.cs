@@ -77,43 +77,43 @@ public class Mob : MonoBehaviour
         _enemyHp = GetComponent<EnemyHP>();
         switch (_DB.MobSkill.Skill)
         {
-            case MobSkillEnum.GROUP_IQ_KRIT:
+            case SkillEnum.GROUP_IQ_KRIT:
                 _skill = gameObject.AddComponent<Skill_group_IQ>();
                 break;
-            case MobSkillEnum.STUNN:
+            case SkillEnum.STUNN:
                 _skill = gameObject.AddComponent<Skill_Stunn>();
                 break;
-            case MobSkillEnum.MANA_BURN:
+            case SkillEnum.MANA_BURN:
                 _skill = gameObject.AddComponent<Skill_ManaBurn>();
                 break;
-            case MobSkillEnum.NO_ESCAPE:
+            case SkillEnum.NO_ESCAPE:
                 _skill = gameObject.AddComponent<Skill_NoESC>();
                 break;
-            case MobSkillEnum.ATTACKX5_HP_10:
+            case SkillEnum.ATTACKX5_HP_10:
                 _skill = gameObject.AddComponent<Skill_AttackX5>();
                 break;
-            case MobSkillEnum.DEB_ATTACK5:
+            case SkillEnum.DEB_ATTACK5:
                 _skill = gameObject.AddComponent<Skill_deb_Attack>();
                 break;
-            case MobSkillEnum.GROUP_SPEED:
+            case SkillEnum.GROUP_SPEED:
                 _skill = gameObject.AddComponent<Skill_group_Speed>();
                 break;
-            case MobSkillEnum.GROUP_ATTACK:
+            case SkillEnum.GROUP_ATTACK:
                 _skill = gameObject.AddComponent<Skill_group_Attack>();
                 break;
-            case MobSkillEnum.TARGET_POISON:
+            case SkillEnum.TARGET_POISON:
                 _skill = gameObject.AddComponent<Skill_Poison>();  
                 break;
-            case MobSkillEnum.ATTACKX2_HALF_HP:
+            case SkillEnum.ATTACKX2_HALF_HP:
                 _skill = gameObject.AddComponent<Skill_AttackX2>();
                 break;
-            case MobSkillEnum.DAMAGE_REFLECTION:
+            case SkillEnum.DAMAGE_REFLECTION:
                 _skill = gameObject.AddComponent<Skill_DamageREflection>();
                 break;
-            case MobSkillEnum.DEB_DEFENCE:
+            case SkillEnum.DEB_DEFENCE:
                 _skill = gameObject.AddComponent<Skill_deb_Defence>();
                 break;
-            case MobSkillEnum.IQ_X2_HALF_HP:
+            case SkillEnum.IQ_X2_HALF_HP:
                 _skill = gameObject.AddComponent<Skill_IQ_kX2>();
                 break;
         }

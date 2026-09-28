@@ -6,7 +6,7 @@ namespace _SO
     [CreateAssetMenu(fileName = "MonsterSkills", menuName = "Monsters/MonsterSkills", order = 1)]
     public class DB_MobSkills : ScriptableObject
     {
-        public MobSkillEnum Skill;
+        public SkillEnum Skill;
         public string SkillName="";
         public string SkillDescription="";
         public int Power;

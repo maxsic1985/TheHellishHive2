@@ -1,0 +1,31 @@
+﻿namespace _SO
+{
+    public enum SkillEnum
+    {
+        GROUP_IQ_KRIT = 100,
+        GROUP_SPEED=101,
+        TARGET_POISON = 102,
+        DEB_ATTACK5 = 103,
+        DAMAGE_REFLECTION=104,
+        ATTACKX2_HALF_HP=105,
+        GROUP_ATTACK=106,
+        STUNN=107,
+        MANA_BURN=108,
+        IQ_X2_HALF_HP=109,
+        DEB_DEFENCE = 110,
+        ATTACKX5_HP_10=111,
+        NO_ESCAPE=112,
+        PLAYER_HEAL=200,
+        PLAYER_HP_TO_MANA=201,
+        PLAYER_MASS_ATTACK=202,
+        PLAYER_TARGET_MINIMAL_DAMAGE=203,
+        PLAYER_RAGE_WHEN_10HP=204,
+        PLAYER_RESIST_POISON=205,
+        PLAYER_HP_TO_ATTACK=206,
+        PLAYER_RESIST_SLEEP=207,
+        PLAYER_IQ_UP=208,
+        PLAYER_DEFENCE_UP=209,
+        PLAYER_MAGIC_ATTACK=210
+        
+    }
+}
