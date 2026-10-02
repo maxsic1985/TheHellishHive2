@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Skills;
 using YG;
 
 /// <summary>
 /// Класс реализует интерфейс Idamage,
 /// вешается на все то что можно дамажить 
 /// </summary>
+[RequireComponent(typeof(PlayerAttack))]
 public class damage : MonoBehaviour, Idamage
 
 {
@@ -102,9 +104,10 @@ public class damage : MonoBehaviour, Idamage
         {
             case 1:
 
-                damToMob = GetComponent<PlayerHelper>().Atack;
+                damToMob = PlayerAttack.Instance.SimpleAttack();
                 Attack.GetComponent<AudioSource>().PlayOneShot(AtPlay);
                 print("удар мечем");
+             //   PlayerAttack..SimpleAttack.Attack();
 
                 break;
             case 2:
