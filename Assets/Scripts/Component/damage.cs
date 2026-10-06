@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Skills;
+using UnityEngine.Serialization;
 using YG;
 
 /// <summary>
@@ -15,7 +16,7 @@ public class damage : MonoBehaviour, Idamage
     #region Variables
     public AudioClip AtPlay;
 
-    public AudioSource Attack;
+    [FormerlySerializedAs("Attack")] public AudioSource attackClipAudioSource;
 
     SpeedHelper sh;
 
@@ -105,16 +106,11 @@ public class damage : MonoBehaviour, Idamage
             case 1:
 
                 damToMob = PlayerAttack.Instance.SimpleAttack();
-                Attack.GetComponent<AudioSource>().PlayOneShot(AtPlay);
-                print("удар мечем");
-             //   PlayerAttack..SimpleAttack.Attack();
-
+                attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(AtPlay);
                 break;
             case 2:
-                damToMob = GetComponent<PlayerHelper>().Atack + (GetComponent<PlayerHelper>().Atack/2);//GetComponent<PlayerHelper>().Intelect
-                mana = GetComponent<PlayerHelper>().ManaCur -= 10;
-                Attack.GetComponent<AudioSource>().PlayOneShot(AtPlay);
-                print("Атака магией 1");
+                damToMob = PlayerAttack.Instance.SimpleMagicAttack();
+                attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(AtPlay);
                 break;
             case 3:
                 damToMob = 0;//GetComponent<PlayerHelper>().Intelect
@@ -133,7 +129,7 @@ public class damage : MonoBehaviour, Idamage
         {
             mana = GetComponent<PlayerHelper>().ManaCur -= 50;
             GetComponent<PlayerHelper>().Stamina += 4;
-            Attack.GetComponent<AudioSource>().PlayOneShot(AtPlay);
+            attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(AtPlay);
             print("Атака магией 1");
             var msgTxt= YG2.envir.language == "en" ? "Defence UP":"Защита Увеличена";
             CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
@@ -150,7 +146,6 @@ public class damage : MonoBehaviour, Idamage
     public IEnumerator MassAttack()
     {
         GameObject[] mobs = GameObject.FindGameObjectsWithTag("Mob");
-        print(checkMassAttack);
         if (!checkMassAttack)
         {
             rm.hideMenuBattle();
@@ -158,12 +153,12 @@ public class damage : MonoBehaviour, Idamage
             for (int i = 0; i < mobs.Length; i++)
             {
                 checkMassAttack = true;
-                damToMob = GetComponent<PlayerHelper>().Intelect+GetComponent<PlayerHelper>().Atack;
+                damToMob = PlayerAttack.Instance.MassAttack();
                 mobs[i].GetComponent<EnemyHP>().ImpactDamageOnMob(rm.effekt3);
                 print(ImpactDamageToMob());
                 yield return new WaitForSeconds(0.3f);
             }
-            mana = GetComponent<PlayerHelper>().ManaCur -= 30;
+         //   mana = GetComponent<PlayerHelper>().ManaCur -= 30;
 
 
          
