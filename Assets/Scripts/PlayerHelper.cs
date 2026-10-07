@@ -129,7 +129,7 @@ public class PlayerHelper : MonoBehaviour
         {
             if (instance == null)
             {
-                instance = GameObject.FindObjectOfType<PlayerHelper>();
+                instance = FindObjectOfType<PlayerHelper>();
             }
 
             return instance;
@@ -678,7 +678,7 @@ public class PlayerHelper : MonoBehaviour
             playerDamage.IsGo = true;
             _pvp.selectPlayer = 0;
             _pvp.selectTypeAtack = 0;
-            _pvp.SelectTypeAttack();
+            _pvp.SelectTypeAttack(_pvp.selectTypeAtack);
             d.typeAttack = 3;
             sh.playerStep = false;
             sh.endRound = true;

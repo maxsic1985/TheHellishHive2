@@ -9,7 +9,7 @@ using YG;
 /// Класс реализует интерфейс Idamage,
 /// вешается на все то что можно дамажить 
 /// </summary>
-[RequireComponent(typeof(PlayerAttack))]
+
 public class damage : MonoBehaviour, Idamage
 
 {

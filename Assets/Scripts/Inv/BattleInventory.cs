@@ -66,7 +66,7 @@ public class BattleInventory : Inventory
                         playerDamage.IsGo = true;
                         _pvp.selectPlayer = 0;
                         _pvp.selectTypeAtack = 0;
-                        _pvp.SelectTypeAttack();
+                        _pvp.SelectTypeAttack(_pvp.selectTypeAtack);
                         d.typeAttack = 0;
                         sh.playerStep = false;
                         rm.hideMenuBattle();

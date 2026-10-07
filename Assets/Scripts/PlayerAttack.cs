@@ -25,7 +25,7 @@ namespace Skills
             {
                 if (instance == null)
                 {
-                    instance = GameObject.FindObjectOfType<PlayerAttack>();
+                    instance = FindObjectOfType<PlayerAttack>();
                 }
 
                 return instance;
@@ -35,12 +35,17 @@ namespace Skills
         public int SimpleAttack()
         {
             print("simple");
+          //  GameObject.FindObjectOfType<PVP>().selectTypeAtack = 1;
+            //GameObject.FindObjectOfType<PVP>().SelectTypeAttack();
             return PlayerHelper.Instance.Atack;
         }
 
         public int SimpleMagicAttack()
         {
             print("simpleMagic");
+            //GameObject.FindObjectOfType<PVP>().selectTypeAtack = 1;
+          //  GameObject.FindObjectOfType<PVP>().SelectTypeAttack();
+            
             PlayerHelper.Instance.ManaCur -= SimpleMagic.Power;
             return (PlayerHelper.Instance.Atack + PlayerHelper.Instance.Intelect / 2);
         }
@@ -48,6 +53,7 @@ namespace Skills
         public int MassAttack()
         {
             print("simpleMagic");
+            //GameObject.FindObjectOfType<PVP>().selectTypeAtack = 3;
             PlayerHelper.Instance.ManaCur -= SimpleMassAttack.Power;
             return (PlayerHelper.Instance.Atack + PlayerHelper.Instance.Intelect);
         }

@@ -50,18 +50,22 @@ public class PVP : MonoBehaviour
             tattack = value;
         }
     }
-    public void SelectTypeAttack()
+    public void SelectTypeAttack(int curselectTypeAtack)
     {
         //0-ничего не выбрано,1-простая атка,2-магия,3-инвентарь, 4 уйти
         //if (selectPlayer != 0)
         //  {if
+        selectTypeAtack = curselectTypeAtack;
         if (GameObject.FindGameObjectWithTag("Mob"))
         {
             switch (selectTypeAtack)
             {
-                case 1: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons(); BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
-                case 2: print("Защита увеличина"); GetComponent<damage>().DefenceUp(); break;//бафнуть во время битвы без выбора моба
-                case 3: GetComponent<damage>().checkMassAttack = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
+                case 1: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons();
+                    GetComponent<damage>().typeAttack = 1; BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
+                case 2: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons();GetComponent<damage>().typeAttack = 2; BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
+                case 3: print("Защита увеличина"); GetComponent<damage>().DefenceUp(); break;//бафнуть во время битвы без выбора моба
+                case 4: print("Защита увеличина"); GetComponent<damage>().DefenceUp(); break;//бафнуть во время битвы без выбора моба
+                case 5: GetComponent<damage>().checkMassAttack = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
                 default: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms(); BtnRun.SetActive(true); break;
             }
         }
@@ -116,7 +120,7 @@ public class PVP : MonoBehaviour
                 mana3.GetComponent<Button>().enabled = false;
                 mana3.GetComponent<Image>().color = Color.gray;
             }
-            SelectTypeAttack();
+            SelectTypeAttack(selectTypeAtack);
         }
     }
 }
