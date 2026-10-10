@@ -3,6 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using Skills;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class PVP : MonoBehaviour
@@ -26,10 +27,12 @@ public class PVP : MonoBehaviour
     private int _manaPlayer;
     private int _expPayer;
 
-    public GameObject forther;
-    public GameObject mana1;
-    public GameObject mana2;
-    public GameObject mana3;
+    public GameObject BtnSkills;
+     public GameObject SImple;
+     public GameObject DefUp;
+    public GameObject MagicSimple;
+    public GameObject MagicMass;
+    public GameObject HealBtn;
 
     public GameObject BtnRun;
 
@@ -66,7 +69,7 @@ public class PVP : MonoBehaviour
                 case 2: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons();GetComponent<damage>().typeAttack = 2; BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
                 case 3: print("Защита увеличина"); PlayerAttack.Instance.DefenceUp(); break;//бафнуть во время битвы без выбора моба
                 case 4: GetComponent<damage>().checkMassAttack = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
-                case 5: GetComponent<damage>().checkMassAttack = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
+                case 5:  print("Heal"); PlayerAttack.Instance.HealSelf(); break;
                 default: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms(); BtnRun.SetActive(true); break;
             }
         }
@@ -84,43 +87,56 @@ public class PVP : MonoBehaviour
     void Update()
     {
         //Управление кнопками абилки
-        if (forther.activeSelf)
+        if (BtnSkills.activeSelf)
         {
             _manaPlayer = GetComponent<PlayerHelper>().ManaCur;
             _expPayer = GetComponent<PlayerHelper>().LvlPlayer;
             //простая абилка магическая
             if (_expPayer >= 2 && _manaPlayer >= 10)
             {
-                mana1.GetComponent<Button>().enabled = true;
-                mana1.GetComponent<Image>().color = Color.white;
+                MagicSimple.GetComponent<Button>().enabled = true;
+                MagicSimple.GetComponent<Image>().color = Color.white;
             }
             //Увеличение защиты
             else
             {
-                mana1.GetComponent<Button>().enabled = false;
-                mana1.GetComponent<Image>().color = Color.gray;
+                MagicSimple.GetComponent<Button>().enabled = false;
+                MagicSimple.GetComponent<Image>().color = Color.gray;
             }
+            
             if (_expPayer >= 5 && _manaPlayer >= 50 && !PlayerAttack.Instance.checkDefenceUp)
             {
-                mana2.GetComponent<Button>().enabled = true;
-                mana2.GetComponent<Image>().color = Color.white;
+                DefUp.GetComponent<Button>().enabled = true;
+                DefUp.GetComponent<Image>().color = Color.white;
             }
             //Массуха
             else
             {
-                mana2.GetComponent<Button>().enabled = false;
-                mana2.GetComponent<Image>().color = Color.gray;
+                DefUp.GetComponent<Button>().enabled = false;
+                DefUp.GetComponent<Image>().color = Color.gray;
             }
             if (_expPayer >= 7 && _manaPlayer >= 30 && !GetComponent<damage>().checkMassAttack)
             {
-                mana3.GetComponent<Button>().enabled = true;
-                mana3.GetComponent<Image>().color = Color.white;
+                MagicMass.GetComponent<Button>().enabled = true;
+                MagicMass.GetComponent<Image>().color = Color.white;
             }
             else
             {
-                mana3.GetComponent<Button>().enabled = false;
-                mana3.GetComponent<Image>().color = Color.gray;
+                MagicMass.GetComponent<Button>().enabled = false;
+                MagicMass.GetComponent<Image>().color = Color.gray;
             }
+            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.Heal.IsUse)
+            {
+                HealBtn.GetComponent<Button>().enabled = true;
+                HealBtn.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                HealBtn.GetComponent<Button>().enabled = false;
+                HealBtn.GetComponent<Image>().color = Color.gray;
+            }
+            
+            
             SelectTypeAttack(selectTypeAtack);
         }
     }

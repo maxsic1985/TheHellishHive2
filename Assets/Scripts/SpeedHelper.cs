@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Skills;
 using UnityEngine.UI;
 
 public class SpeedHelper : MonoBehaviour
@@ -308,7 +309,7 @@ public class SpeedHelper : MonoBehaviour
         if (EndRound1 == true)
         {
             print("end round!!!");
-
+            PlayerAttack.Instance.Heal.IsUse = false;
         }
         else
         {

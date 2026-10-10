@@ -8,17 +8,17 @@ namespace Skills
     public class PlayerAttack : MonoBehaviour
     {
         private static PlayerAttack instance;
-        [SerializeField] private DB_MobSkills DefUP;
-        [SerializeField] private DB_MobSkills Heal;
-        [SerializeField] private DB_MobSkills HpToAttack;
-        [SerializeField] private DB_MobSkills HpToMana;
-        [SerializeField] private DB_MobSkills IqUp;
-        [SerializeField] private DB_MobSkills SimpleMagic;
-        [SerializeField] private DB_MobSkills SimpleMassAttack;
-        [SerializeField] private DB_MobSkills MinDamageTarget;
-        [SerializeField] private DB_MobSkills Rage10Percent;
-        [SerializeField] private DB_MobSkills ResistPoison;
-        [SerializeField] private DB_MobSkills ResistStan;
+        public DB_MobSkills DefUP;
+        public DB_MobSkills Heal;
+        public DB_MobSkills HpToAttack;
+        public DB_MobSkills HpToMana;
+        public DB_MobSkills IqUp;
+        public DB_MobSkills SimpleMagic;
+        public DB_MobSkills SimpleMassAttack;
+        public DB_MobSkills MinDamageTarget;
+        public DB_MobSkills Rage10Percent;
+        public DB_MobSkills ResistPoison;
+        public DB_MobSkills ResistStan;
         public bool checkDefenceUp;
 
         public static PlayerAttack Instance
@@ -83,6 +83,26 @@ namespace Skills
         public void DefenceDown()//Снятие бафа на пдеф
         {
             GetComponent<PlayerHelper>().Stamina -= DefUP.Power;
+        }
+
+        public void HealSelf()
+        {
+            float w = Screen.width;
+            float h = Screen.height;
+            if (!Heal.IsUse)
+            {
+
+                GetComponent<PlayerHelper>().ManaCur -= Heal.Mana;
+                GetComponent<PlayerHelper>().HpCur += Heal.Power;
+
+                var damage = GetComponent<damage>();
+                damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
+
+                var msgTxt = YG2.envir.language == "en" ? "Defence UP" : "Защита Увеличена";
+                CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
+                Heal.IsUse = true;
+            }
+
         }
     }
 }
