@@ -11,6 +11,7 @@ namespace _SO
         public string SkillDescription="";
         public int Power;
         public int Shans;
+        public int Mana;
 
         [SerializeField] private string SkillNameRu="";
         [SerializeField] private string SkillNameEn="";

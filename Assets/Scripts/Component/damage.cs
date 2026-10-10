@@ -87,10 +87,6 @@ public class damage : MonoBehaviour, Idamage
             isGo = value;
         }
     }
-
-
-
-    public bool checkDefenceUp { get; private set; }
     public bool checkMassAttack { get; set; }
 
     _randomMob rm;
@@ -121,27 +117,7 @@ public class damage : MonoBehaviour, Idamage
         }
 
     }
-    public void DefenceUp()//Баф на пдеф
-    {
-        float w = Screen.width;
-        float h = Screen.height;
-        if (!checkDefenceUp)
-        {
-            mana = GetComponent<PlayerHelper>().ManaCur -= 50;
-            GetComponent<PlayerHelper>().Stamina += 4;
-            attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(AtPlay);
-            print("Атака магией 1");
-            var msgTxt= YG2.envir.language == "en" ? "Defence UP":"Защита Увеличена";
-            CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
-            checkDefenceUp = true;
-        }
-
-
-    }
-    public void DefenceDown()//Снятие бафа на пдеф
-    {
-        GetComponent<PlayerHelper>().Stamina -= 10;
-    }
+   
 
     public IEnumerator MassAttack()
     {
@@ -218,10 +194,10 @@ public class damage : MonoBehaviour, Idamage
     }
     void Update()
     {
-        if (rm.EnbBattle && checkDefenceUp)
+        if (rm.EnbBattle && PlayerAttack.Instance.checkDefenceUp)
         {
-            DefenceDown();
-            checkDefenceUp = false;
+            PlayerAttack.Instance.DefenceDown();
+            PlayerAttack.Instance.checkDefenceUp = false;
 
         }
         else if (rm.EnbBattle)

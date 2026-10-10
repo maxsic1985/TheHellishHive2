@@ -2,6 +2,7 @@
 //2. Выбираем  тип действия selectTypeAtack
 using UnityEngine;
 using System.Collections;
+using Skills;
 using UnityEngine.UI;
 
 public class PVP : MonoBehaviour
@@ -63,8 +64,8 @@ public class PVP : MonoBehaviour
                 case 1: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons();
                     GetComponent<damage>().typeAttack = 1; BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
                 case 2: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons();GetComponent<damage>().typeAttack = 2; BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
-                case 3: print("Защита увеличина"); GetComponent<damage>().DefenceUp(); break;//бафнуть во время битвы без выбора моба
-                case 4: print("Защита увеличина"); GetComponent<damage>().DefenceUp(); break;//бафнуть во время битвы без выбора моба
+                case 3: print("Защита увеличина"); PlayerAttack.Instance.DefenceUp(); break;//бафнуть во время битвы без выбора моба
+                case 4: GetComponent<damage>().checkMassAttack = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
                 case 5: GetComponent<damage>().checkMassAttack = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
                 default: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms(); BtnRun.SetActive(true); break;
             }
@@ -99,7 +100,7 @@ public class PVP : MonoBehaviour
                 mana1.GetComponent<Button>().enabled = false;
                 mana1.GetComponent<Image>().color = Color.gray;
             }
-            if (_expPayer >= 5 && _manaPlayer >= 50 && !GetComponent<damage>().checkDefenceUp)
+            if (_expPayer >= 5 && _manaPlayer >= 50 && !PlayerAttack.Instance.checkDefenceUp)
             {
                 mana2.GetComponent<Button>().enabled = true;
                 mana2.GetComponent<Image>().color = Color.white;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using _SO;
 using UnityEngine;
+using YG;
 
 namespace Skills
 {
@@ -18,6 +19,7 @@ namespace Skills
         [SerializeField] private DB_MobSkills Rage10Percent;
         [SerializeField] private DB_MobSkills ResistPoison;
         [SerializeField] private DB_MobSkills ResistStan;
+        public bool checkDefenceUp;
 
         public static PlayerAttack Instance
         {
@@ -56,6 +58,31 @@ namespace Skills
             //GameObject.FindObjectOfType<PVP>().selectTypeAtack = 3;
             PlayerHelper.Instance.ManaCur -= SimpleMassAttack.Power;
             return (PlayerHelper.Instance.Atack + PlayerHelper.Instance.Intelect);
+        }
+        
+        
+        public void DefenceUp()//Баф на пдеф
+        {
+            float w = Screen.width;
+            float h = Screen.height;
+            if (!checkDefenceUp)
+            {
+                GetComponent<PlayerHelper>().ManaCur -= DefUP.Mana;
+                GetComponent<PlayerHelper>().Stamina += DefUP.Power;
+                print("Атака магией 1");
+                var damage = GetComponent<damage>();
+               damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
+
+                var msgTxt= YG2.envir.language == "en" ? "Defence UP":"Защита Увеличена";
+                CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
+                checkDefenceUp = true;
+            }
+
+
+        }
+        public void DefenceDown()//Снятие бафа на пдеф
+        {
+            GetComponent<PlayerHelper>().Stamina -= DefUP.Power;
         }
     }
 }
