@@ -33,6 +33,7 @@ public class PVP : MonoBehaviour
     public GameObject MagicSimple;
     public GameObject MagicMass;
     public GameObject HealBtn;
+    public GameObject HPToAttackBtn;
 
     public GameObject BtnRun;
 
@@ -70,6 +71,7 @@ public class PVP : MonoBehaviour
                 case 3: print("Защита увеличина"); PlayerAttack.Instance.DefenceUp(); break;//бафнуть во время битвы без выбора моба
                 case 4: PlayerAttack.Instance.SimpleMassAttack.IsUse = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
                 case 5:  print("Heal"); PlayerAttack.Instance.HealSelf(); break;
+                case 6:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToAttack(); break;
                 default: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms(); BtnRun.SetActive(true); break;
             }
         }
@@ -134,6 +136,17 @@ public class PVP : MonoBehaviour
             {
                 HealBtn.GetComponent<Button>().enabled = false;
                 HealBtn.GetComponent<Image>().color = Color.gray;
+            }
+            
+            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.HpToAttack.IsUse)
+            {
+                HPToAttackBtn.GetComponent<Button>().enabled = true;
+                HPToAttackBtn.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                HPToAttackBtn.GetComponent<Button>().enabled = false;
+                HPToAttackBtn.GetComponent<Image>().color = Color.gray;
             }
             
             
