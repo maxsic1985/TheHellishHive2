@@ -1101,7 +1101,7 @@ public class SpeedHelper : MonoBehaviour
             if (AnimsSetDamageIsGone)
 
             {
-                if (endCorutine && !GetComponent<damage>().checkMassAttack && !GetComponent<damage>().IsGo && playerStep &&!endRound)
+                if (endCorutine && !PlayerAttack.Instance.SimpleMassAttack.IsUse && !GetComponent<damage>().IsGo && playerStep &&!endRound)
                 {
                     GameObject.FindGameObjectWithTag("Player").GetComponent<_randomMob>().ShowMenuBattle();
                 }

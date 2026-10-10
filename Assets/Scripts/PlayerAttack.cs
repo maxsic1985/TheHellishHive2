@@ -19,7 +19,7 @@ namespace Skills
         public DB_MobSkills Rage10Percent;
         public DB_MobSkills ResistPoison;
         public DB_MobSkills ResistStan;
-        public bool checkDefenceUp;
+       
 
         public static PlayerAttack Instance
         {
@@ -45,19 +45,14 @@ namespace Skills
         public int SimpleMagicAttack()
         {
             print("simpleMagic");
-            //GameObject.FindObjectOfType<PVP>().selectTypeAtack = 1;
-          //  GameObject.FindObjectOfType<PVP>().SelectTypeAttack();
-            
-            PlayerHelper.Instance.ManaCur -= SimpleMagic.Power;
-            return (PlayerHelper.Instance.Atack + PlayerHelper.Instance.Intelect / 2);
+            PlayerHelper.Instance.ManaCur -= SimpleMagic.Mana;
+            return (PlayerHelper.Instance.Intelect + SimpleMagic.Power);
         }
 
         public int MassAttack()
         {
-            print("simpleMagic");
-            //GameObject.FindObjectOfType<PVP>().selectTypeAtack = 3;
-            PlayerHelper.Instance.ManaCur -= SimpleMassAttack.Power;
-            return (PlayerHelper.Instance.Atack + PlayerHelper.Instance.Intelect);
+            PlayerHelper.Instance.ManaCur -= SimpleMassAttack.Mana;
+            return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power);
         }
         
         
@@ -65,7 +60,7 @@ namespace Skills
         {
             float w = Screen.width;
             float h = Screen.height;
-            if (!checkDefenceUp)
+            if (!DefUP.IsUse)
             {
                 GetComponent<PlayerHelper>().ManaCur -= DefUP.Mana;
                 GetComponent<PlayerHelper>().Stamina += DefUP.Power;
@@ -73,9 +68,9 @@ namespace Skills
                 var damage = GetComponent<damage>();
                damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
-                var msgTxt= YG2.envir.language == "en" ? "Defence UP":"Защита Увеличена";
+                var msgTxt= YG2.envir.language == "en" ? $"Defence UP + {DefUP.Power}":$"Защита Увеличена + {DefUP.Power}";
                 CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
-                checkDefenceUp = true;
+                DefUP.IsUse = true;
             }
 
 
@@ -83,6 +78,7 @@ namespace Skills
         public void DefenceDown()//Снятие бафа на пдеф
         {
             GetComponent<PlayerHelper>().Stamina -= DefUP.Power;
+            DefUP.IsUse = false;
         }
 
         public void HealSelf()
@@ -98,7 +94,7 @@ namespace Skills
                 var damage = GetComponent<damage>();
                 damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
-                var msgTxt = YG2.envir.language == "en" ? "Defence UP" : "Защита Увеличена";
+                var msgTxt = YG2.envir.language == "en" ? $"Heal+ {Heal.Power}" : $"Лечение+ {Heal.Power}";
                 CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
                 Heal.IsUse = true;
             }

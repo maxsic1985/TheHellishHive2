@@ -22,6 +22,7 @@ namespace _SO
 
         private void OnEnable()
         {
+            IsUse = false;
             switch (YG2.envir.language)
             {
                 case "en":

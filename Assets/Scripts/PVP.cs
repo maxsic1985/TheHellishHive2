@@ -68,7 +68,7 @@ public class PVP : MonoBehaviour
                     GetComponent<damage>().typeAttack = 1; BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
                 case 2: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons();GetComponent<damage>().typeAttack = 2; BtnRun.SetActive(false); break;//выбрать моба для нанесения урона
                 case 3: print("Защита увеличина"); PlayerAttack.Instance.DefenceUp(); break;//бафнуть во время битвы без выбора моба
-                case 4: GetComponent<damage>().checkMassAttack = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
+                case 4: PlayerAttack.Instance.SimpleMassAttack.IsUse = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
                 case 5:  print("Heal"); PlayerAttack.Instance.HealSelf(); break;
                 default: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms(); BtnRun.SetActive(true); break;
             }
@@ -104,7 +104,7 @@ public class PVP : MonoBehaviour
                 MagicSimple.GetComponent<Image>().color = Color.gray;
             }
             
-            if (_expPayer >= 5 && _manaPlayer >= 50 && !PlayerAttack.Instance.checkDefenceUp)
+            if (_expPayer >= 5 && _manaPlayer >= 50 && !PlayerAttack.Instance.DefUP.IsUse)
             {
                 DefUp.GetComponent<Button>().enabled = true;
                 DefUp.GetComponent<Image>().color = Color.white;
@@ -115,7 +115,7 @@ public class PVP : MonoBehaviour
                 DefUp.GetComponent<Button>().enabled = false;
                 DefUp.GetComponent<Image>().color = Color.gray;
             }
-            if (_expPayer >= 7 && _manaPlayer >= 30 && !GetComponent<damage>().checkMassAttack)
+            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.SimpleMassAttack.IsUse)
             {
                 MagicMass.GetComponent<Button>().enabled = true;
                 MagicMass.GetComponent<Image>().color = Color.white;

@@ -87,7 +87,6 @@ public class damage : MonoBehaviour, Idamage
             isGo = value;
         }
     }
-    public bool checkMassAttack { get; set; }
 
     _randomMob rm;
     #endregion
@@ -122,13 +121,13 @@ public class damage : MonoBehaviour, Idamage
     public IEnumerator MassAttack()
     {
         GameObject[] mobs = GameObject.FindGameObjectsWithTag("Mob");
-        if (!checkMassAttack)
+        if (!PlayerAttack.Instance.SimpleMassAttack.IsUse)
         {
             rm.hideMenuBattle();
             IsGo = true;
             for (int i = 0; i < mobs.Length; i++)
             {
-                checkMassAttack = true;
+                PlayerAttack.Instance.SimpleMassAttack.IsUse = true;
                 damToMob = PlayerAttack.Instance.MassAttack();
                 mobs[i].GetComponent<EnemyHP>().ImpactDamageOnMob(rm.effekt3);
                 print(ImpactDamageToMob());
@@ -144,7 +143,7 @@ public class damage : MonoBehaviour, Idamage
             sh.WhoIsDamag();
 
             rm.hideMenuBattle();
-            checkMassAttack = false;
+            PlayerAttack.Instance.SimpleMassAttack.IsUse = false;
         }
     }
 
@@ -163,7 +162,7 @@ public class damage : MonoBehaviour, Idamage
     /// </summary>
     /// <returns>Урон по мобу</returns>
     public int ImpactDamageToMob()
-    {if (!checkMassAttack)
+    {if (!PlayerAttack.Instance.SimpleMassAttack.IsUse)
         {
             GetDamageToMob();
         }
@@ -194,15 +193,15 @@ public class damage : MonoBehaviour, Idamage
     }
     void Update()
     {
-        if (rm.EnbBattle && PlayerAttack.Instance.checkDefenceUp)
+        if (rm.EnbBattle && PlayerAttack.Instance.DefUP.IsUse)
         {
             PlayerAttack.Instance.DefenceDown();
-            PlayerAttack.Instance.checkDefenceUp = false;
+            PlayerAttack.Instance.DefUP.IsUse = false;
 
         }
         else if (rm.EnbBattle)
         {
-            checkMassAttack = false;
+            PlayerAttack.Instance.SimpleMassAttack.IsUse = false;
         }
     }
     #endregion
