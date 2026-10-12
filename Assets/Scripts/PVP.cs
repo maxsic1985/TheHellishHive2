@@ -34,6 +34,11 @@ public class PVP : MonoBehaviour
     public GameObject MagicMass;
     public GameObject HealBtn;
     public GameObject HPToAttackBtn;
+    public GameObject HPToManaBtn;
+    public GameObject IQUpBtn;
+    public GameObject HPToManaBtn2;
+    public GameObject HPToManaBtn3;
+    public GameObject HPToManaBtn4;
 
     public GameObject BtnRun;
 
@@ -72,6 +77,10 @@ public class PVP : MonoBehaviour
                 case 4: PlayerAttack.Instance.SimpleMassAttack.IsUse = false; StartCoroutine(GetComponent<damage>().MassAttack()); BtnRun.SetActive(false); break;
                 case 5:  print("Heal"); PlayerAttack.Instance.HealSelf(); break;
                 case 6:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToAttack(); break;
+                case 7:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToMana(); break;
+                case 8:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToAttack(); break;
+                case 9:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToAttack(); break;
+                case 10:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToAttack(); break;
                 default: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms(); BtnRun.SetActive(true); break;
             }
         }
@@ -149,6 +158,27 @@ public class PVP : MonoBehaviour
                 HPToAttackBtn.GetComponent<Image>().color = Color.gray;
             }
             
+            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.HpToMana.IsUse)
+            {
+                HPToManaBtn.GetComponent<Button>().enabled = true;
+                HPToManaBtn.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                HPToManaBtn.GetComponent<Button>().enabled = false;
+                HPToManaBtn.GetComponent<Image>().color = Color.gray;
+            }
+            
+            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.IqUp.IsUse)
+            {
+                IQUpBtn.GetComponent<Button>().enabled = true;
+                IQUpBtn.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                IQUpBtn.GetComponent<Button>().enabled = false;
+                IQUpBtn.GetComponent<Image>().color = Color.gray;
+            }
             
             SelectTypeAttack(selectTypeAtack);
         }

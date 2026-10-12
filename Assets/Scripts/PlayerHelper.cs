@@ -72,6 +72,7 @@ public class PlayerHelper : MonoBehaviour
     public int baseAtack;
     public int baseStamina;
     public int baseSpeed;
+    public int baseIQ;
     public bool _blockOut;
     public bool _hasPoison;
     private ihp _ihp;
