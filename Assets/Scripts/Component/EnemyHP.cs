@@ -144,7 +144,7 @@ public class EnemyHP : MonoBehaviour, ihp
 
 
         _applyingDamage = player.GetComponent<damage>();
-        IQShans(player.GetComponent<PlayerHelper>().Stamina);
+    //    IQShans(player.GetComponent<PlayerHelper>().Stamina);
         print(_applyingDamage);
         if (transform.name == "KRABfull")
         {
@@ -250,16 +250,15 @@ public class EnemyHP : MonoBehaviour, ihp
         {
             _applyingDamage = mob.GetComponent<damage>(); //урон моба
             IQShans(mob.GetComponent<Mob>().IQ); //определение шанса крита моба
-            if (!krit)
-            {
+          
                 damage = _applyingDamage.ImpactDamageToPlayer() -
                          _playerHalper.Stamina;
-            }
-            else
-            {
-                damage = (_applyingDamage.ImpactDamageToPlayer() -
-                          _playerHalper.Stamina) * 2;
-            }
+          
+            // else
+            // {
+            //     damage = (_applyingDamage.ImpactDamageToPlayer() -
+            //               _playerHalper.Stamina) * 2;
+            // }
 
             if (damage > 0)
             {

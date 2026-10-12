@@ -34,24 +34,55 @@ namespace Skills
             }
         }
 
+        public bool IQShans(int iq)
+        {
+            int shans = Random.Range(0, 100);
+            if (shans > (100 - iq))
+            {
+                var msgTxt = YG2.envir.language == "en"
+                    ? $"Krit"
+                    : $"Крит";
+                CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2, Screen.height / 2),
+                    msgTxt, Color.red);
+            }
+            else
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
         public int SimpleAttack()
         {
-            print("simple");
-            //  GameObject.FindObjectOfType<PVP>().selectTypeAtack = 1;
-            //GameObject.FindObjectOfType<PVP>().SelectTypeAttack();
+            if (IQShans(PlayerHelper.Instance.baseIQ))
+            {
+                return PlayerHelper.Instance.Atack * 2;
+            }
+
             return PlayerHelper.Instance.Atack;
         }
 
         public int SimpleMagicAttack()
         {
-            print("simpleMagic");
             PlayerHelper.Instance.ManaCur -= SimpleMagic.Mana;
+            if (IQShans(PlayerHelper.Instance.baseIQ))
+            {
+                return (PlayerHelper.Instance.Intelect + SimpleMagic.Power) * 2;
+            }
+
             return (PlayerHelper.Instance.Intelect + SimpleMagic.Power);
         }
 
         public int MassAttack()
         {
             PlayerHelper.Instance.ManaCur -= SimpleMassAttack.Mana;
+            if (IQShans(PlayerHelper.Instance.baseIQ))
+            {
+                return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power)*2;
+            }
+
             return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power);
         }
 
@@ -81,7 +112,7 @@ namespace Skills
             GetComponent<PlayerHelper>().Stamina -= DefUP.Power;
             DefUP.IsUse = false;
         }
-        
+
         public void IQUp() //Баф на пдеф
         {
             float w = Screen.width;
@@ -90,7 +121,7 @@ namespace Skills
             {
                 GetComponent<PlayerHelper>().ManaCur -= IqUp.Mana;
                 GetComponent<PlayerHelper>().baseIQ += IqUp.Power;
-                
+
                 var damage = GetComponent<damage>();
                 damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
@@ -107,7 +138,7 @@ namespace Skills
             GetComponent<PlayerHelper>().baseIQ -= IqUp.Power;
             IqUp.IsUse = false;
         }
-        
+
 
         public void HealSelf()
         {
@@ -142,14 +173,15 @@ namespace Skills
                     var damage = GetComponent<damage>();
                     damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
-                    var msgTxt = YG2.envir.language == "en" ? $"Change HP to Attack + Power {HpToAttack.Power}/ - HP {HpToAttack.Power}" :
-                        $"Обмен здоровья на силу + Атака {HpToAttack.Power}/ - Здоровье {HpToAttack.Power}" ;
+                    var msgTxt = YG2.envir.language == "en"
+                        ? $"Change HP to Attack + Power {HpToAttack.Power}/ - HP {HpToAttack.Power}"
+                        : $"Обмен здоровья на силу + Атака {HpToAttack.Power}/ - Здоровье {HpToAttack.Power}";
                     CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
                     HpToAttack.IsUse = true;
                 }
             }
         }
-        
+
         public void SelfHPToMana()
         {
             float w = Screen.width;
@@ -165,8 +197,9 @@ namespace Skills
                     var damage = GetComponent<damage>();
                     damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
-                    var msgTxt = YG2.envir.language == "en" ? $"Change Mana to HP + MP {HpToMana.Power}/ - HP {HpToMana.Power}" :
-                        $"Обмен здоровья на ману + Мана {HpToMana.Power} - Здоровье {HpToMana.Power}";
+                    var msgTxt = YG2.envir.language == "en"
+                        ? $"Change Mana to HP + MP {HpToMana.Power}/ - HP {HpToMana.Power}"
+                        : $"Обмен здоровья на ману + Мана {HpToMana.Power} - Здоровье {HpToMana.Power}";
                     CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
                     HpToMana.IsUse = true;
                 }

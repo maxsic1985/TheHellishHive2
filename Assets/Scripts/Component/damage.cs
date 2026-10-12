@@ -131,7 +131,7 @@ public class damage : MonoBehaviour, Idamage
                 damToMob = PlayerAttack.Instance.MassAttack();
                 mobs[i].GetComponent<EnemyHP>().ImpactDamageOnMob(rm.effekt3);
                 print(ImpactDamageToMob());
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.4f);
             }
          //   mana = GetComponent<PlayerHelper>().ManaCur -= 30;
 

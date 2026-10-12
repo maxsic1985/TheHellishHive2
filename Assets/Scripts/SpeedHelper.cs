@@ -324,6 +324,11 @@ public class SpeedHelper : MonoBehaviour
                 PlayerAttack.Instance.HpToAttack.IsUse = false;
                 PlayerHelper.Instance.Atack -= PlayerAttack.Instance.HpToAttack.Power;
             }
+            if (PlayerAttack.Instance.HpToMana.IsUse)
+            {
+                PlayerAttack.Instance.HpToMana.IsUse = false;
+                PlayerHelper.Instance.Atack -= PlayerAttack.Instance.HpToMana.Power;
+            }
         }
         else
         {
