@@ -34,7 +34,7 @@ namespace Skills
             }
         }
 
-        public bool IQShans(int iq)
+        public bool GetKritShans(int iq)
         {
             int shans = Random.Range(0, 100);
             if (shans > (100 - iq))
@@ -56,7 +56,7 @@ namespace Skills
 
         public int SimpleAttack()
         {
-            if (IQShans(PlayerHelper.Instance.baseIQ))
+            if (GetKritShans(PlayerHelper.Instance.baseIQ))
             {
                 return PlayerHelper.Instance.Atack * 2;
             }
@@ -67,7 +67,7 @@ namespace Skills
         public int SimpleMagicAttack()
         {
             PlayerHelper.Instance.ManaCur -= SimpleMagic.Mana;
-            if (IQShans(PlayerHelper.Instance.baseIQ))
+            if (GetKritShans(PlayerHelper.Instance.baseIQ))
             {
                 return (PlayerHelper.Instance.Intelect + SimpleMagic.Power) * 2;
             }
@@ -78,7 +78,7 @@ namespace Skills
         public int MassAttack()
         {
             PlayerHelper.Instance.ManaCur -= SimpleMassAttack.Mana;
-            if (IQShans(PlayerHelper.Instance.baseIQ))
+            if (GetKritShans(PlayerHelper.Instance.baseIQ))
             {
                 return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power)*2;
             }
@@ -144,10 +144,10 @@ namespace Skills
         {
             float w = Screen.width;
             float h = Screen.height;
-            if (!Heal.IsUse)
+            if (!Heal.IsUse )
             {
-                GetComponent<PlayerHelper>().ManaCur -= Heal.Mana;
-                GetComponent<PlayerHelper>().HpCur += Heal.Power;
+                PlayerHelper.Instance.ManaCur -= Heal.Mana;
+                PlayerHelper.Instance.HpCur += Heal.Power;
 
                 var damage = GetComponent<damage>();
                 damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
@@ -158,7 +158,7 @@ namespace Skills
             }
         }
 
-        public void SelfHPToAttack()
+        public void HPToAttackSelf()
         {
             float w = Screen.width;
             float h = Screen.height;
@@ -182,7 +182,7 @@ namespace Skills
             }
         }
 
-        public void SelfHPToMana()
+        public void HPToManaSelf()
         {
             float w = Screen.width;
             float h = Screen.height;
@@ -205,5 +205,42 @@ namespace Skills
                 }
             }
         }
+        
+        public void RageBtnActivate() 
+        {
+            float w = Screen.width;
+            float h = Screen.height;
+            if (!Rage10Percent.IsUse)
+            {
+                
+                PlayerHelper.Instance.ManaCur -= Rage10Percent.Mana;
+               // PlayerHelper.Instance.Atack = PlayerHelper.Instance.Atack * Rage10Percent.Power;
+                
+                
+               
+
+                var damage = GetComponent<damage>();
+                damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
+
+                var msgTxt = YG2.envir.language == "en"
+                    ? $"Rage"
+                    : $"Ярость";
+                CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
+                Rage10Percent.IsUse = true;
+            }
+        }
+
+        public void RageActivate()
+        {
+            var attack = PlayerHelper.Instance.baseAtack;
+            PlayerHelper.Instance.Atack = attack * Rage10Percent.Power;
+        }
+        public void RageDeActivate()
+        {
+            var attack = PlayerHelper.Instance.baseAtack;
+            PlayerHelper.Instance.Atack = attack / Rage10Percent.Power;
+        }
+
+
     }
 }

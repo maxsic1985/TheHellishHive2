@@ -205,6 +205,12 @@ public class damage : MonoBehaviour, Idamage
             PlayerAttack.Instance.IqUp.IsUse = false;
 
         } 
+        if (rm.EnbBattle && PlayerAttack.Instance.Rage10Percent.IsUse)
+        {
+            PlayerAttack.Instance.RageDeActivate();
+            PlayerAttack.Instance.Rage10Percent.IsUse = false;
+
+        } 
         if (rm.EnbBattle)
         {
             PlayerAttack.Instance.SimpleMassAttack.IsUse = false;
