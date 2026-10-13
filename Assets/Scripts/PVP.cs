@@ -78,7 +78,7 @@ public class PVP : MonoBehaviour
                 case 5:  print("Heal"); PlayerAttack.Instance.HealSelf(); break;
                 case 6:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToAttack(); break;
                 case 7:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToMana(); break;
-                case 8:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToAttack(); break;
+                case 8:  print("HPTOAT"); PlayerAttack.Instance.IQUp(); break;
                 case 9:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToAttack(); break;
                 case 10:  print("HPTOAT"); PlayerAttack.Instance.SelfHPToAttack(); break;
                 default: GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms(); BtnRun.SetActive(true); break;
