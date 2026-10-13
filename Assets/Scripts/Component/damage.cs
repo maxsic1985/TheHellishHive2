@@ -108,8 +108,14 @@ public class damage : MonoBehaviour, Idamage
                 attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(AtPlay);
                 break;
             case 3:
-                damToMob = 0;//GetComponent<PlayerHelper>().Intelect
+                damToMob = 0;//PlayerAttack.Instance.StanAtack();
                 print("Отражение");
+              
+                break;
+            case 4:
+                damToMob =    PlayerAttack.Instance.StanAtack(GetComponent<_randomMob>().selectedMob);
+                Debug.Log(GetComponent<_randomMob>().selectedMob);
+                attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(AtPlay);
                 break;
             default:
                 break;

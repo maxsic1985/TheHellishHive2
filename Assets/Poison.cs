@@ -52,6 +52,7 @@ public class Poison : MonoBehaviour
 
     public void OnDestroy()
     {
+        if( PlayerHelper.Instance.HPtextBAR!=null)
         PlayerHelper.Instance.HPtextBAR.color = Color.white;
     }
 }

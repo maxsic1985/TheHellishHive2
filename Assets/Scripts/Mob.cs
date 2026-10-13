@@ -43,6 +43,9 @@ public class Mob : MonoBehaviour
     /// </summary>
     public int IQ;
 
+    public bool IsStaned;
+    
+    
     EnemyHP _enemyHp;
     private ISkill _skill;
     #endregion

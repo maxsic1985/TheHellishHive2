@@ -80,6 +80,7 @@ public class _randomMob : MonoBehaviour
     private int _killBoss = 0;
 
     private MenuManager MM;
+    public Mob selectedMob;
 
     public bool EnbBattle
     {
@@ -307,6 +308,7 @@ public class _randomMob : MonoBehaviour
     public void damagemobLeft()
     {
         var mob = GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<Mob>();
+        selectedMob = mob;
         if (mob != null)
         {
             if (this.GetComponent<damage>().typeAttack == 1)
@@ -316,6 +318,11 @@ public class _randomMob : MonoBehaviour
             else if (this.GetComponent<damage>().typeAttack == 2)
             {
                 CheckReflection(mob, effekt2);
+            }
+            else if (this.GetComponent<damage>().typeAttack == 4)
+            {
+                mob.Atack = 0;
+                mob.IsStaned = true;
             }
 
             this.GetComponent<damage>().IsGo = true;
@@ -329,6 +336,7 @@ public class _randomMob : MonoBehaviour
     public void damagenobRight()
     {
         var mob = GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<Mob>();
+        selectedMob = mob;
         if (mob != null)
         {
             if (this.GetComponent<damage>().typeAttack == 1)
@@ -338,6 +346,11 @@ public class _randomMob : MonoBehaviour
             else if (this.GetComponent<damage>().typeAttack == 2)
             {
                 CheckReflection(mob, effekt2);
+            }
+            else if (this.GetComponent<damage>().typeAttack == 4)
+            {
+                mob.Atack = 0;
+                mob.IsStaned = true;
             }
 
             this.GetComponent<damage>().IsGo = true;
@@ -351,6 +364,7 @@ public class _randomMob : MonoBehaviour
     public void damagenobCentr()
     {
         var mob = GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<Mob>();
+        selectedMob = mob;
         if (mob != null)
         {
             if (this.GetComponent<damage>().typeAttack == 1)
@@ -360,6 +374,11 @@ public class _randomMob : MonoBehaviour
             else if (this.GetComponent<damage>().typeAttack == 2)
             {
                 CheckReflection(mob, effekt2);
+            }
+            else if (this.GetComponent<damage>().typeAttack == 4)
+            {
+                mob.Atack = 0;
+                mob.IsStaned = true;
             }
 
             print("Centr");
@@ -405,6 +424,7 @@ public class _randomMob : MonoBehaviour
         hideMenuBattle();
         this.GetComponent<SpeedHelper>().WhoIsDamag();
         HideButtoms();
+        selectedMob = null;
     }
 
     //Спрятать кнопки Атака

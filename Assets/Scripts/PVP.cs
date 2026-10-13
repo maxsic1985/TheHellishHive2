@@ -2,7 +2,6 @@
 //2. Выбираем  тип действия selectTypeAtack
 
 using UnityEngine;
-using System.Collections;
 using Skills;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -34,7 +33,7 @@ public class PVP : MonoBehaviour
     public GameObject HPToManaBtn;
     public GameObject IQUpBtn;
     public GameObject RageBtn;
-    public GameObject HPToManaBtn3;
+     public GameObject StanBtn;
     public GameObject HPToManaBtn4;
 
     public GameObject BtnRun;
@@ -103,9 +102,13 @@ public class PVP : MonoBehaviour
                     PlayerAttack.Instance.RageBtnActivate();
                     break;
                 case 10:
-                    print("HPTOAT");
-                    PlayerAttack.Instance.HPToAttackSelf();
-                    break;
+                    GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons();
+                  
+                    // GetComponent<damage>().typeAttack = 1;
+                    
+                    GetComponent<damage>().typeAttack = 4;
+                    BtnRun.SetActive(false);
+                    break; //выбрать моба для нанесения урона
                 default:
                     GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms();
                     BtnRun.SetActive(true);
@@ -240,6 +243,18 @@ public class PVP : MonoBehaviour
                 RageBtn.GetComponent<Image>().color = Color.gray;
             }
 
+            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.Stan.IsUse)
+            {
+                StanBtn.GetComponent<Button>().enabled = true;
+                StanBtn.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                StanBtn.GetComponent<Button>().enabled = false;
+                StanBtn.GetComponent<Image>().color = Color.gray;
+            }
+            
+            
             SelectTypeAttack(selectTypeAtack);
         }
     }

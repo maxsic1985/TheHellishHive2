@@ -15,7 +15,7 @@ namespace Skills
         public DB_MobSkills IqUp;
         public DB_MobSkills SimpleMagic;
         public DB_MobSkills SimpleMassAttack;
-        public DB_MobSkills MinDamageTarget;
+        public DB_MobSkills Stan;
         public DB_MobSkills Rage10Percent;
         public DB_MobSkills ResistPoison;
         public DB_MobSkills ResistStan;
@@ -74,6 +74,14 @@ namespace Skills
 
             return (PlayerHelper.Instance.Intelect + SimpleMagic.Power);
         }
+        
+        public int StanAtack(Mob selected)
+        {
+            PlayerHelper.Instance.ManaCur -= Stan.Mana;
+            selected.IsStaned = true;
+            return (PlayerHelper.Instance.Intelect/2 + Stan.Power+ PlayerHelper.Instance.Atack);
+        }
+
 
         public int MassAttack()
         {
