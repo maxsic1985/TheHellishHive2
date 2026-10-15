@@ -75,7 +75,7 @@ namespace Skills
             return (PlayerHelper.Instance.Intelect + SimpleMagic.Power);
         }
         
-        public int StanAtack(Mob selected)
+        public int MinDamageForTargetMob(Mob selected)
         {
             PlayerHelper.Instance.ManaCur -= Stan.Mana;
             selected.IsStaned = true;

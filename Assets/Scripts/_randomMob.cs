@@ -309,6 +309,8 @@ public class _randomMob : MonoBehaviour
     {
         var mob = GameObject.FindGameObjectWithTag("Left").GetComponentInChildren<Mob>();
         selectedMob = mob;
+        var oldAttack = mob.Atack;
+        mob.Atack = oldAttack;
         if (mob != null)
         {
             if (this.GetComponent<damage>().typeAttack == 1)
@@ -321,8 +323,14 @@ public class _randomMob : MonoBehaviour
             }
             else if (this.GetComponent<damage>().typeAttack == 4)
             {
+                
                 mob.Atack = 0;
                 mob.IsStaned = true;
+                
+                mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
+                GetComponent<PVP>().selectPlayer = 0;
+                GetComponent<PVP>().selectTypeAtack = 0;
+               /// mob.Atack = oldAttack;
             }
 
             this.GetComponent<damage>().IsGo = true;
@@ -330,6 +338,7 @@ public class _randomMob : MonoBehaviour
             hideMenuBattle();
             this.GetComponent<SpeedHelper>().WhoIsDamag();
             HideButtoms();
+          
         }
     }
     
@@ -337,6 +346,8 @@ public class _randomMob : MonoBehaviour
     {
         var mob = GameObject.FindGameObjectWithTag("Right").GetComponentInChildren<Mob>();
         selectedMob = mob;
+        var oldAttack = mob.Atack;
+        mob.Atack = oldAttack;
         if (mob != null)
         {
             if (this.GetComponent<damage>().typeAttack == 1)
@@ -351,6 +362,11 @@ public class _randomMob : MonoBehaviour
             {
                 mob.Atack = 0;
                 mob.IsStaned = true;
+                
+                mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
+                GetComponent<PVP>().selectPlayer = 0;
+                GetComponent<PVP>().selectTypeAtack = 0;
+              //  mob.Atack = oldAttack;
             }
 
             this.GetComponent<damage>().IsGo = true;
@@ -365,6 +381,8 @@ public class _randomMob : MonoBehaviour
     {
         var mob = GameObject.FindGameObjectWithTag("Centr").GetComponentInChildren<Mob>();
         selectedMob = mob;
+        var oldAttack = mob.Atack;
+        mob.Atack = oldAttack;
         if (mob != null)
         {
             if (this.GetComponent<damage>().typeAttack == 1)
@@ -379,6 +397,11 @@ public class _randomMob : MonoBehaviour
             {
                 mob.Atack = 0;
                 mob.IsStaned = true;
+                
+                mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
+                GetComponent<PVP>().selectPlayer = 0;
+                GetComponent<PVP>().selectTypeAtack = 0;
+             //   mob.Atack = oldAttack;
             }
 
             print("Centr");
