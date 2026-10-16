@@ -10,7 +10,7 @@ internal class Skill_Stunn : MonoBehaviour, ISkill, IDestroible
     
     public void UseSkill()
     {
-        if (stunnCnt < 3)
+        if (stunnCnt < 3 && !PlayerHelper.Instance._hasStanResist)
         {
             Debug.LogWarning("i Can Stunn");
             var shans = GetComponent<Mob>()._DB.MobSkill.Shans;
@@ -20,7 +20,7 @@ internal class Skill_Stunn : MonoBehaviour, ISkill, IDestroible
                 stunnCnt++;
                 var msgTxt = YG2.envir.language == "en" ? "Stunn" : "Оглушен";
                 CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2, Screen.height / 1.5f), msgTxt, Color.cyan);
-                FindFirstObjectByType<SpeedHelper>().IsStunned = true;
+                PlayerHelper.Instance.HasStan = true;
             }
         }
         else

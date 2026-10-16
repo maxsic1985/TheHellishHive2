@@ -19,7 +19,7 @@ internal class Skill_Poison : MonoBehaviour, ISkill, IDestroible
     {
         if (_mob == null || _mob._DB == null) return;
 
-        if (PlayerHelper.Instance._hasPoison) return;
+        if (PlayerHelper.Instance._hasPoison||PlayerHelper.Instance._hasPoisonResist) return;
         var shans = _mob._DB.MobSkill.Shans;
         if (SkillServices.GetSkilСhance(shans))
         {

@@ -75,6 +75,9 @@ public class PlayerHelper : MonoBehaviour
     public int baseIQ;
     public bool _blockOut;
     public bool _hasPoison;
+    public bool _hasPoisonResist;
+    public bool HasStan;
+    public bool _hasStanResist;
     private ihp _ihp;
     private int curLevel;
     [SerializeField] private int lvlPlayer = 1; //уровень героя
@@ -117,6 +120,7 @@ public class PlayerHelper : MonoBehaviour
     /// def
     /// </summary>
     public int HpCur;
+
 
     public int Stamina
     {

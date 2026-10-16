@@ -903,7 +903,7 @@ public class SpeedHelper : MonoBehaviour
 
     private void CheckPossibleSkill(GameObject mob)
     {
-        if (mob.GetComponent<Skill_Stunn>() != null && !IsStunned)
+        if (mob.GetComponent<Skill_Stunn>() != null && !PlayerHelper.Instance.HasStan)
         {
             mob.GetComponent<Skill_Stunn>().UseSkill();
         }
@@ -1154,10 +1154,10 @@ public class SpeedHelper : MonoBehaviour
         }
         else
         {
-            if (IsStunned && endCorutine)
+            if (PlayerHelper.Instance.HasStan && endCorutine)
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<_randomMob>().EndRound();
-                IsStunned = false;
+                PlayerHelper.Instance.HasStan = false;
                 //  GameObject.FindGameObjectWithTag("Player").GetComponent<damage>().IsGo=true;
 
                 //  WhoIsGo(); 

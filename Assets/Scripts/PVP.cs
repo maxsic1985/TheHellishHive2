@@ -243,7 +243,7 @@ public class PVP : MonoBehaviour
                 RageBtn.GetComponent<Image>().color = Color.gray;
             }
 
-            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.Stan.IsUse)
+            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.SetMinimalDamage.IsUse)
             {
                 StanBtn.GetComponent<Button>().enabled = true;
                 StanBtn.GetComponent<Image>().color = Color.white;

@@ -324,13 +324,11 @@ public class _randomMob : MonoBehaviour
             else if (this.GetComponent<damage>().typeAttack == 4)
             {
                 
-                mob.Atack = 0;
                 mob.SetMinDamageDeBuf = true;
                 
                 mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
                 GetComponent<PVP>().selectPlayer = 0;
                 GetComponent<PVP>().selectTypeAtack = 0;
-               /// mob.Atack = oldAttack;
             }
 
             this.GetComponent<damage>().IsGo = true;
@@ -360,13 +358,11 @@ public class _randomMob : MonoBehaviour
             }
             else if (this.GetComponent<damage>().typeAttack == 4)
             {
-                mob.Atack = 0;
                 mob.SetMinDamageDeBuf = true;
                 
                 mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
                 GetComponent<PVP>().selectPlayer = 0;
                 GetComponent<PVP>().selectTypeAtack = 0;
-              //  mob.Atack = oldAttack;
             }
 
             this.GetComponent<damage>().IsGo = true;

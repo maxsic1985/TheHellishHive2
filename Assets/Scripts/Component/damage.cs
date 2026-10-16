@@ -216,6 +216,18 @@ public class damage : MonoBehaviour, Idamage
             PlayerAttack.Instance.Rage10Percent.IsUse = false;
 
         } 
+        if (rm.EnbBattle && PlayerAttack.Instance.ResistPoison.IsUse)
+        {
+            PlayerHelper.Instance._hasPoisonResist = false;
+            PlayerAttack.Instance.ResistPoison.IsUse = false;
+
+        } 
+        if (rm.EnbBattle && PlayerAttack.Instance.ResistStan.IsUse)
+        {
+            PlayerHelper.Instance._hasStanResist = false;
+            PlayerAttack.Instance.ResistStan.IsUse = false;
+
+        } 
         if (rm.EnbBattle)
         {
             PlayerAttack.Instance.SimpleMassAttack.IsUse = false;
