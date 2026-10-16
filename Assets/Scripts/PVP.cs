@@ -32,8 +32,10 @@ public class PVP : MonoBehaviour
     public GameObject HPToAttackBtn;
     public GameObject HPToManaBtn;
     public GameObject IQUpBtn;
-    public GameObject RageBtn;
-     public GameObject StanBtn;
+    public GameObject RageBtn; 
+    public GameObject MinDmgBtn;
+    public GameObject ResistPoisonBtn;
+    public GameObject ResisStanBtn;
     public GameObject HPToManaBtn4;
 
     public GameObject BtnRun;
@@ -109,6 +111,12 @@ public class PVP : MonoBehaviour
                     GetComponent<damage>().typeAttack = 4;
                     BtnRun.SetActive(false);
                     break; //выбрать моба для нанесения урона
+                case 11:
+                    PlayerAttack.Instance.ResistToPoison();
+                    break;
+                case 12:
+                    PlayerAttack.Instance.ResistToStan();
+                    break;
                 default:
                     GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().HideButtoms();
                     BtnRun.SetActive(true);
@@ -245,15 +253,36 @@ public class PVP : MonoBehaviour
 
             if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.SetMinimalDamage.IsUse)
             {
-                StanBtn.GetComponent<Button>().enabled = true;
-                StanBtn.GetComponent<Image>().color = Color.white;
+                MinDmgBtn.GetComponent<Button>().enabled = true;
+                MinDmgBtn.GetComponent<Image>().color = Color.white;
             }
             else
             {
-                StanBtn.GetComponent<Button>().enabled = false;
-                StanBtn.GetComponent<Image>().color = Color.gray;
+                MinDmgBtn.GetComponent<Button>().enabled = false;
+                MinDmgBtn.GetComponent<Image>().color = Color.gray;
             }
             
+            if (_expPayer >= 1 && _manaPlayer >= 30 && !PlayerAttack.Instance.ResistPoison.IsUse)
+            {
+                ResistPoisonBtn.GetComponent<Button>().enabled = true;
+                ResistPoisonBtn.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                ResistPoisonBtn.GetComponent<Button>().enabled = false;
+                ResistPoisonBtn.GetComponent<Image>().color = Color.gray;
+            }
+            
+            if (_expPayer >= 1 && _manaPlayer >= 30 && !PlayerAttack.Instance.ResistStan.IsUse)
+            {
+                ResisStanBtn.GetComponent<Button>().enabled = true;
+                ResisStanBtn.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                ResisStanBtn.GetComponent<Button>().enabled = false;
+                ResisStanBtn.GetComponent<Image>().color = Color.gray;
+            }
             
             SelectTypeAttack(selectTypeAtack);
         }
