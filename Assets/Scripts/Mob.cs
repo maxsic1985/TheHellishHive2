@@ -38,12 +38,13 @@ public class Mob : MonoBehaviour
     /// Атака моба
     /// </summary>
     public int Atack;
+    private int oldAtack;
     /// <summary>
     /// Шанс крита моба
     /// </summary>
     public int IQ;
 
-    public bool IsStaned;
+    public bool SetMinDamageDeBuf;
     
     
     EnemyHP _enemyHp;
@@ -74,7 +75,7 @@ public class Mob : MonoBehaviour
         set { expForMob = value; }
     }
     #endregion
-    #region Voids
+   
     void Start()
     {
         _enemyHp = GetComponent<EnemyHP>();
@@ -129,7 +130,19 @@ public class Mob : MonoBehaviour
         {
             Destroy(this.gameObject,1);
         }
-
+      //  if( SetMinDamageDeBuf && !PlayerAttack.Instance.IsGo ) ReSetMinDamage();
     }
-    #endregion
+
+    public void SetMinDamage()
+    {
+        oldAtack = Atack;
+        Atack = 1;
+    }
+    
+    public void ReSetMinDamage()
+    {
+        Atack =oldAtack;
+        SetMinDamageDeBuf = false;
+    }
+
 }

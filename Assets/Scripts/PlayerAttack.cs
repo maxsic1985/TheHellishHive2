@@ -19,8 +19,8 @@ namespace Skills
         public DB_MobSkills Rage10Percent;
         public DB_MobSkills ResistPoison;
         public DB_MobSkills ResistStan;
-
-
+      
+        public bool IsGo => GetComponent<damage>().IsGo;
         public static PlayerAttack Instance
         {
             get
@@ -33,6 +33,8 @@ namespace Skills
                 return instance;
             }
         }
+
+        public bool NewRound { get; set; }
 
         public bool GetKritShans(int iq)
         {
@@ -74,12 +76,13 @@ namespace Skills
 
             return (PlayerHelper.Instance.Intelect + SimpleMagic.Power);
         }
-        
+
         public int MinDamageForTargetMob(Mob selected)
         {
             PlayerHelper.Instance.ManaCur -= Stan.Mana;
-            selected.IsStaned = true;
-            return (PlayerHelper.Instance.Intelect/2 + Stan.Power+ PlayerHelper.Instance.Atack);
+            selected.SetMinDamageDeBuf = true;
+            selected.SetMinDamage();
+            return (PlayerHelper.Instance.Intelect / 2 + Stan.Power + PlayerHelper.Instance.Atack);
         }
 
 
@@ -88,7 +91,7 @@ namespace Skills
             PlayerHelper.Instance.ManaCur -= SimpleMassAttack.Mana;
             if (GetKritShans(PlayerHelper.Instance.baseIQ))
             {
-                return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power)*2;
+                return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power) * 2;
             }
 
             return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power);
@@ -152,7 +155,7 @@ namespace Skills
         {
             float w = Screen.width;
             float h = Screen.height;
-            if (!Heal.IsUse )
+            if (!Heal.IsUse)
             {
                 PlayerHelper.Instance.ManaCur -= Heal.Mana;
                 PlayerHelper.Instance.HpCur += Heal.Power;
@@ -213,19 +216,16 @@ namespace Skills
                 }
             }
         }
-        
-        public void RageBtnActivate() 
+
+        public void RageBtnActivate()
         {
             float w = Screen.width;
             float h = Screen.height;
             if (!Rage10Percent.IsUse)
             {
-                
                 PlayerHelper.Instance.ManaCur -= Rage10Percent.Mana;
-               // PlayerHelper.Instance.Atack = PlayerHelper.Instance.Atack * Rage10Percent.Power;
-                
-                
-               
+                // PlayerHelper.Instance.Atack = PlayerHelper.Instance.Atack * Rage10Percent.Power;
+
 
                 var damage = GetComponent<damage>();
                 damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
@@ -243,12 +243,11 @@ namespace Skills
             var attack = PlayerHelper.Instance.baseAtack;
             PlayerHelper.Instance.Atack = attack * Rage10Percent.Power;
         }
+
         public void RageDeActivate()
         {
             var attack = PlayerHelper.Instance.baseAtack;
             PlayerHelper.Instance.Atack = attack / Rage10Percent.Power;
         }
-
-
     }
 }

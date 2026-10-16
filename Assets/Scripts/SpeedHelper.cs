@@ -519,6 +519,7 @@ public class SpeedHelper : MonoBehaviour
             print("5");
             PlayerDamage();
         }
+        PlayerAttack.Instance.NewRound = false;
     }
 
     private void Playerfirst()
@@ -895,6 +896,8 @@ public class SpeedHelper : MonoBehaviour
                 default:
                     break;
             }
+
+         if(mob.GetComponent<Mob>().SetMinDamageDeBuf)   mob.GetComponent<Mob>().ReSetMinDamage();
         }
     }
 
@@ -1110,6 +1113,7 @@ public class SpeedHelper : MonoBehaviour
     {
         endCorutine = false;
         EndRound1 = false;
+        PlayerAttack.Instance.NewRound = true;
         StartCoroutine(WhoIsGo());
     }
 

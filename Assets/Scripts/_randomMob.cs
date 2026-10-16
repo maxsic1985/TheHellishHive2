@@ -325,7 +325,7 @@ public class _randomMob : MonoBehaviour
             {
                 
                 mob.Atack = 0;
-                mob.IsStaned = true;
+                mob.SetMinDamageDeBuf = true;
                 
                 mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
                 GetComponent<PVP>().selectPlayer = 0;
@@ -361,7 +361,7 @@ public class _randomMob : MonoBehaviour
             else if (this.GetComponent<damage>().typeAttack == 4)
             {
                 mob.Atack = 0;
-                mob.IsStaned = true;
+                mob.SetMinDamageDeBuf = true;
                 
                 mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
                 GetComponent<PVP>().selectPlayer = 0;
@@ -395,8 +395,8 @@ public class _randomMob : MonoBehaviour
             }
             else if (this.GetComponent<damage>().typeAttack == 4)
             {
-                mob.Atack = 0;
-                mob.IsStaned = true;
+              
+                mob.SetMinDamageDeBuf = true;
                 
                 mob.GetComponentInChildren<EnemyHP>().ImpactDamageOnMob(effekt1);
                 GetComponent<PVP>().selectPlayer = 0;

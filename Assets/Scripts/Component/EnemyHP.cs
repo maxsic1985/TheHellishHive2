@@ -141,10 +141,7 @@ public class EnemyHP : MonoBehaviour, ihp
             //CalcDamageToMob = 0;
             return;
         }
-
-
         _applyingDamage = player.GetComponent<damage>();
-    //    IQShans(player.GetComponent<PlayerHelper>().Stamina);
         print(_applyingDamage);
         if (transform.name == "KRABfull")
         {
