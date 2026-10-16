@@ -20,8 +20,10 @@ namespace Skills
         public DB_MobSkills Rage10Percent;
         public DB_MobSkills ResistPoison;
         public DB_MobSkills ResistStan;
-      
+        private int _oldAttack;
+
         public bool IsGo => GetComponent<damage>().IsGo;
+
         public static PlayerAttack Instance
         {
             get
@@ -83,13 +85,13 @@ namespace Skills
             PlayerHelper.Instance.ManaCur -= SetMinimalDamage.Mana;
             selected.SetMinDamageDeBuf = true;
             selected.SetMinDamage();
-            
+
             var msgTxt = YG2.envir.language == "en"
                 ? $"Set minimal damage for round"
                 : $"Минимальный урон на ход";
             CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2, Screen.height / 2),
                 msgTxt, Color.red);
-            
+
             return (PlayerHelper.Instance.Intelect / 2 + SetMinimalDamage.Power + PlayerHelper.Instance.Atack);
         }
 
@@ -242,23 +244,22 @@ namespace Skills
                     ? $"Rage"
                     : $"Ярость";
                 CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
+
                 Rage10Percent.IsUse = true;
             }
         }
 
         public void RageActivate()
         {
-            var attack = PlayerHelper.Instance.baseAtack;
-            PlayerHelper.Instance.Atack = attack * Rage10Percent.Power;
-            
+            _oldAttack = PlayerHelper.Instance.baseAtack;
+            PlayerHelper.Instance.Atack = Rage10Percent.Power * _oldAttack;
         }
 
         public void RageDeActivate()
         {
-            var attack = PlayerHelper.Instance.baseAtack;
-            PlayerHelper.Instance.Atack = attack / Rage10Percent.Power;
+            PlayerHelper.Instance.Atack = _oldAttack;
         }
-        
+
         public void ResistToPoison()
         {
             float w = Screen.width;
@@ -269,15 +270,15 @@ namespace Skills
                 var damage = GetComponent<damage>();
                 damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
-                    var msgTxt = YG2.envir.language == "en"
-                        ? $"Set resist to poison"
-                        : $"Сопротивление яду";
-                    CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
-                    PlayerHelper.Instance._hasPoisonResist = true;
-                    ResistPoison.IsUse = true;
+                var msgTxt = YG2.envir.language == "en"
+                    ? $"Set resist to poison"
+                    : $"Сопротивление яду";
+                CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
+                PlayerHelper.Instance._hasPoisonResist = true;
+                ResistPoison.IsUse = true;
             }
         }
-        
+
         public void ResistToStan()
         {
             float w = Screen.width;
@@ -296,5 +297,32 @@ namespace Skills
                 ResistStan.IsUse = true;
             }
         }
+        
+        public  void EndRoundActions()
+        {
+            Heal.IsUse = false;
+            if (HpToAttack.IsUse)
+            {
+                HpToAttack.IsUse = false;
+                PlayerHelper.Instance.Atack -= PlayerAttack.Instance.HpToAttack.Power;
+            }
+
+            if (HpToMana.IsUse)
+            {
+                HpToMana.IsUse = false;
+                PlayerHelper.Instance.Atack -= PlayerAttack.Instance.HpToMana.Power;
+            }
+        }
+        
+        public  void DeathActions()
+        {
+
+            if ( Rage10Percent.IsUse)
+            {
+                Rage10Percent.IsUse = false;
+                RageDeActivate();
+            }
+        }
+        
     }
 }

@@ -318,17 +318,7 @@ public class SpeedHelper : MonoBehaviour
         if (EndRound1 == true)
         {
             print("end round!!!");
-            PlayerAttack.Instance.Heal.IsUse = false;
-            if (PlayerAttack.Instance.HpToAttack.IsUse)
-            {
-                PlayerAttack.Instance.HpToAttack.IsUse = false;
-                PlayerHelper.Instance.Atack -= PlayerAttack.Instance.HpToAttack.Power;
-            }
-            if (PlayerAttack.Instance.HpToMana.IsUse)
-            {
-                PlayerAttack.Instance.HpToMana.IsUse = false;
-                PlayerHelper.Instance.Atack -= PlayerAttack.Instance.HpToMana.Power;
-            }
+            PlayerAttack.Instance.EndRoundActions();
         }
         else
         {
@@ -345,6 +335,8 @@ public class SpeedHelper : MonoBehaviour
         yield return new WaitForSeconds(3.2f); // время окончания раунда 
         endCorutine = true;
     }
+
+   
 
     public void CheckEndRound()
     {

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Skills;
 using UnityEngine.SceneManagement;
 using YG;
 
@@ -488,6 +489,8 @@ public class PlayerHelper : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         GoldCur = GoldCur / 2;
         HpCur = HpMax / 2;
+        PlayerAttack.Instance.EndRoundActions();
+        PlayerAttack.Instance.DeathActions();
         SaveHalper.Instance.Save();
         LoadManager.levelName = "GameMenu";
         SceneManager.LoadScene("LoadScene");

@@ -241,7 +241,7 @@ public class PVP : MonoBehaviour
                 }
                 else
                 {
-                    PlayerAttack.Instance.RageDeActivate();
+                   // PlayerAttack.Instance.RageDeActivate();
                     RageBtn.GetComponent<Image>().color = Color.gray;
                 }
             }
