@@ -21,6 +21,7 @@ namespace Skills
         public DB_MobSkills ResistPoison;
         public DB_MobSkills ResistStan;
         private int _oldAttack;
+        private bool rageActiveNow;
 
         public bool IsGo => GetComponent<damage>().IsGo;
 
@@ -63,10 +64,10 @@ namespace Skills
         {
             if (GetKritShans(PlayerHelper.Instance.baseIQ))
             {
-                return PlayerHelper.Instance.Atack * 2;
+                return PlayerHelper.Instance.AtackCur * 2;
             }
 
-            return PlayerHelper.Instance.Atack;
+            return PlayerHelper.Instance.AtackCur;
         }
 
         public int SimpleMagicAttack()
@@ -92,7 +93,7 @@ namespace Skills
             CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2, Screen.height / 2),
                 msgTxt, Color.red);
 
-            return (PlayerHelper.Instance.Intelect / 2 + SetMinimalDamage.Power + PlayerHelper.Instance.Atack);
+            return (PlayerHelper.Instance.Intelect / 2 + SetMinimalDamage.Power + PlayerHelper.Instance.AtackCur);
         }
 
 
@@ -189,7 +190,7 @@ namespace Skills
                 {
                     PlayerHelper.Instance.ManaCur -= HpToAttack.Mana;
                     PlayerHelper.Instance.HpCur -= HpToAttack.Power;
-                    PlayerHelper.Instance.Atack += HpToAttack.Power;
+                    PlayerHelper.Instance.AtackCur += HpToAttack.Power;
 
                     var damage = GetComponent<damage>();
                     damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
@@ -251,13 +252,16 @@ namespace Skills
 
         public void RageActivate()
         {
-            _oldAttack = PlayerHelper.Instance.baseAtack;
-            PlayerHelper.Instance.Atack = Rage10Percent.Power * _oldAttack;
+           if(rageActiveNow) return; 
+            _oldAttack = PlayerHelper.Instance.AtackCur;
+            PlayerHelper.Instance.AtackCur = Rage10Percent.Power * _oldAttack;
+            rageActiveNow = true;
         }
 
         public void RageDeActivate()
         {
-            PlayerHelper.Instance.Atack = _oldAttack;
+            PlayerHelper.Instance.AtackCur = _oldAttack;
+            rageActiveNow = false;
         }
 
         public void ResistToPoison()
@@ -304,13 +308,13 @@ namespace Skills
             if (HpToAttack.IsUse)
             {
                 HpToAttack.IsUse = false;
-                PlayerHelper.Instance.Atack -= PlayerAttack.Instance.HpToAttack.Power;
+                PlayerHelper.Instance.AtackCur -= PlayerAttack.Instance.HpToAttack.Power;
             }
 
             if (HpToMana.IsUse)
             {
                 HpToMana.IsUse = false;
-                PlayerHelper.Instance.Atack -= PlayerAttack.Instance.HpToMana.Power;
+                PlayerHelper.Instance.AtackCur -= PlayerAttack.Instance.HpToMana.Power;
             }
         }
         

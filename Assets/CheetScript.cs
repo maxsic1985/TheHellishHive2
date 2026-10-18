@@ -14,7 +14,7 @@ public class CheetScript : MonoBehaviour
 
         PlayerHelper.Instance.Speed = 0;
         PlayerHelper.Instance.Stamina = 0;
-        PlayerHelper.Instance.Atack = 0;
+        PlayerHelper.Instance.AtackCur = 0;
         PlayerHelper.Instance.Intelect = 0;
 
         PlayerHelper.Instance.LvlPlayer = 1;

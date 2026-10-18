@@ -26,8 +26,8 @@ namespace Skills
                 CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2, Screen.height / 1.5f), msgTxt,
                     Color.cyan);
                 
-                int damage = PlayerHelper.Instance.Atack - _mob.MobDefens;
-                Debug.LogWarning($"Attt+ {PlayerHelper.Instance.Atack}");
+                int damage = PlayerHelper.Instance.AtackCur - _mob.MobDefens;
+                Debug.LogWarning($"Attt+ {PlayerHelper.Instance.AtackCur}");
                 Debug.LogWarning($"defff+ {_mob.MobDefens}");
                 Debug.LogWarning($"Reflect+ {damage}");
                 PlayerHelper.Instance.GetComponent<EnemyHP>().TextDamageToPlayer(gameObject,damage.ToString(),Color.red);

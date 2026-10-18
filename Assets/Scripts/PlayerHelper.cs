@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using Skills;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using YG;
 
 public class PlayerHelper : MonoBehaviour
@@ -122,6 +123,7 @@ public class PlayerHelper : MonoBehaviour
     /// </summary>
     public int HpCur;
 
+    public int AtackCur;
 
     public int Stamina
     {
@@ -145,11 +147,7 @@ public class PlayerHelper : MonoBehaviour
     /// <summary>
     /// Физ Атака Героя
     /// </summary>
-    public int Atack
-    {
-        get { return atack; }
-        set { atack = value; }
-    }
+
 
     /// <summary>
     /// Накопленный опыт
@@ -542,9 +540,9 @@ public class PlayerHelper : MonoBehaviour
     {
         if (Application.loadedLevel != 1)
         {
-            this.Atack = atack + baseAtack;
-            this.Speed = speed + baseSpeed;
-            this.Stamina = stamina + baseStamina;
+            AtackCur = atack + baseAtack;
+            Speed = speed + baseSpeed;
+            Stamina = stamina + baseStamina;
             this.intellect = intellect + baseIntellect;
             if (statsText)
             {
@@ -552,15 +550,15 @@ public class PlayerHelper : MonoBehaviour
                 {
                     case "ru":
                         statsText.text = string.Format("Защ: {0}\nСкор: {1}\nИнт: {2}\nУрон: {3}", this.Stamina,
-                            this.Speed, this.intellect, this.Atack);
+                            this.Speed, this.intellect, this.AtackCur);
                         break;
                     case "en":
                         statsText.text = string.Format("Def: {0}\nSpeed: {1}\nInt: {2}\nDamage: {3}", this.Stamina,
-                            this.Speed, this.intellect, this.Atack);
+                            this.Speed, this.intellect, this.AtackCur);
                         break;
                     default:
                         statsText.text = string.Format("Защ: {0}\nСкор: {1}\nИнт: {2}\nУрон: {3}", this.Stamina,
-                            this.Speed, this.intellect, this.Atack);
+                            this.Speed, this.intellect, this.AtackCur);
                         break;
                 }
             }

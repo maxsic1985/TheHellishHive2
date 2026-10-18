@@ -12,7 +12,7 @@ public class PlayerStatsUIView : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        AttackText.text = PlayerHelper.Instance.Atack.ToString();
+        AttackText.text = PlayerHelper.Instance.AtackCur.ToString();
         DefText.text = PlayerHelper.Instance.Stamina.ToString();
         SpeedText.text = PlayerHelper.Instance.Speed.ToString();
         IntellectText.text = PlayerHelper.Instance.Intelect.ToString();
@@ -21,7 +21,7 @@ public class PlayerStatsUIView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AttackText.text = PlayerHelper.Instance.Atack.ToString();
+        AttackText.text = PlayerHelper.Instance.AtackCur.ToString();
         DefText.text = PlayerHelper.Instance.Stamina.ToString();
         SpeedText.text = PlayerHelper.Instance.Speed.ToString();
         IntellectText.text = PlayerHelper.Instance.Intelect.ToString();

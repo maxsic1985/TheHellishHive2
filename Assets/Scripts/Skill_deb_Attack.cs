@@ -22,13 +22,13 @@ internal class Skill_deb_Attack : MonoBehaviour, ISkill, IDestroible
     {
         if (_mob != null || _mob._DB != null)
         {
-            PlayerHelper.Instance.Atack -= _powerDebuff;
+            PlayerHelper.Instance.AtackCur -= _powerDebuff;
         }
     }
 
     public void ClearSkill()
     {
-        PlayerHelper.Instance.Atack += _powerDebuff;
+        PlayerHelper.Instance.AtackCur += _powerDebuff;
     }
 
     public void OnDestroy()
