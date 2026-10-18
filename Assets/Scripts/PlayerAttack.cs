@@ -59,8 +59,7 @@ namespace Skills
 
             return true;
         }
-
-
+        
         public int SimpleAttack()
         {
             if (GetKritShans(PlayerHelper.Instance.baseIQ))
@@ -96,11 +95,10 @@ namespace Skills
 
             return (PlayerHelper.Instance.Intelect / 2 + SetMinimalDamage.Power + PlayerHelper.Instance.AtackCur);
         }
-
-
+        
         public int MassAttack()
         {
-            PlayerHelper.Instance.ManaCur -= SimpleMassAttack.Mana;
+           
             if (GetKritShans(PlayerHelper.Instance.baseIQ))
             {
                 return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power) * 2;
@@ -108,8 +106,7 @@ namespace Skills
 
             return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power);
         }
-
-
+        
         public void DefenceUp() //Баф на пдеф
         {
             float w = Screen.width;
@@ -161,7 +158,6 @@ namespace Skills
             GetComponent<PlayerHelper>().baseIQ -= IqUp.Power;
             IqUp.IsUse = false;
         }
-
 
         public void HealSelf()
         {
@@ -327,6 +323,7 @@ namespace Skills
                 Rage10Percent.IsUse = false;
                 RageDeActivate();
             }
+            EndBattleActions();
         }
 
         public void EndBattleActions()

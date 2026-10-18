@@ -14,7 +14,13 @@ internal class Skill_ManaBurn : MonoBehaviour, ISkill, IDestroible
     {
         if (_mob == null || _mob._DB == null) return;
         if (PlayerHelper.Instance.ManaCur >= _mob._DB.MobSkill.Power)
+        {
             PlayerHelper.Instance.ManaCur -= _mob._DB.MobSkill.Power;
+        }
+        else
+        {
+            PlayerHelper.Instance.ManaCur = 0;
+        }
     }
 
     public void ClearSkill()

@@ -12,6 +12,7 @@ namespace _SO
         public int Power;
         public int Shans;
         public int Mana;
+        public int AccessLvl;
         public bool IsUse=false;
 
         [SerializeField] private string SkillNameRu="";
@@ -38,6 +39,12 @@ namespace _SO
                     SkillDescription = SkillDescriptionRu;
                     break;
             }
+        }
+
+        public bool CanUse()
+        {
+            if (PlayerHelper.Instance.LvlPlayer >= AccessLvl && PlayerHelper.Instance.manaCur >= Mana &&!IsUse) return true;
+            return false;
         }
     }
 }

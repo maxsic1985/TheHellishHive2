@@ -128,6 +128,7 @@ public class damage : MonoBehaviour, Idamage
         GameObject[] mobs = GameObject.FindGameObjectsWithTag("Mob");
         if (!PlayerAttack.Instance.SimpleMassAttack.IsUse)
         {
+            PlayerHelper.Instance.ManaCur -= PlayerAttack.Instance.SimpleMassAttack.Mana;
             rm.hideMenuBattle();
             IsGo = true;
             for (int i = 0; i < mobs.Length; i++)
@@ -136,7 +137,7 @@ public class damage : MonoBehaviour, Idamage
                 damToMob = PlayerAttack.Instance.MassAttack();
                 mobs[i].GetComponent<EnemyHP>().ImpactDamageOnMob(rm.effekt3);
                 print(ImpactDamageToMob());
-                yield return new WaitForSeconds(0.4f);
+                yield return new WaitForSeconds(0.2f);
             }
          //   mana = GetComponent<PlayerHelper>().ManaCur -= 30;
 

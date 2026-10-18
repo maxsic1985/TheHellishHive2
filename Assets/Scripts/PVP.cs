@@ -20,8 +20,8 @@ public class PVP : MonoBehaviour
 
     public Inventory battleInv;
 
-    private int _manaPlayer;
-    private int _expPayer;
+    private int manaPlayer;
+    private int lvlPlayer;
 
     public GameObject BtnSkills;
     public GameObject SImple;
@@ -105,9 +105,6 @@ public class PVP : MonoBehaviour
                     break;
                 case 10:
                     GameObject.FindObjectOfType<_randomMob>().GetComponent<_randomMob>().ShowButtons();
-                  
-                    // GetComponent<damage>().typeAttack = 1;
-                    
                     GetComponent<damage>().typeAttack = 4;
                     BtnRun.SetActive(false);
                     break; //выбрать моба для нанесения урона
@@ -134,7 +131,7 @@ public class PVP : MonoBehaviour
     {
         selectPlayer = 0;
         selectTypeAtack = 0;
-        print(_expPayer);
+        print(lvlPlayer);
     }
 
     void Update()
@@ -142,34 +139,29 @@ public class PVP : MonoBehaviour
         //Управление кнопками абилки
         if (BtnSkills.activeSelf)
         {
-            _manaPlayer = PlayerHelper.Instance.ManaCur;
-            _expPayer = PlayerHelper.Instance.LvlPlayer;
-            //простая абилка магическая
-            if (_expPayer >= 2 && _manaPlayer >= 10)
+            if (PlayerAttack.Instance.SimpleMagic.CanUse())
             {
                 MagicSimple.GetComponent<Button>().enabled = true;
                 MagicSimple.GetComponent<Image>().color = Color.white;
             }
-            //Увеличение защиты
             else
             {
                 MagicSimple.GetComponent<Button>().enabled = false;
                 MagicSimple.GetComponent<Image>().color = Color.gray;
             }
 
-            if (_expPayer >= 5 && _manaPlayer >= 50 && !PlayerAttack.Instance.DefUP.IsUse)
+            if (PlayerAttack.Instance.DefUP.CanUse())
             {
                 DefUp.GetComponent<Button>().enabled = true;
                 DefUp.GetComponent<Image>().color = Color.white;
             }
-            //Массуха
             else
             {
                 DefUp.GetComponent<Button>().enabled = false;
                 DefUp.GetComponent<Image>().color = Color.gray;
             }
 
-            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.SimpleMassAttack.IsUse)
+            if (PlayerAttack.Instance.SimpleMassAttack.CanUse())
             {
                 MagicMass.GetComponent<Button>().enabled = true;
                 MagicMass.GetComponent<Image>().color = Color.white;
@@ -180,7 +172,7 @@ public class PVP : MonoBehaviour
                 MagicMass.GetComponent<Image>().color = Color.gray;
             }
 
-            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.Heal.IsUse)
+            if (PlayerAttack.Instance.Heal.CanUse())
             {
                 HealBtn.GetComponent<Button>().enabled = true;
                 HealBtn.GetComponent<Image>().color = Color.white;
@@ -191,7 +183,7 @@ public class PVP : MonoBehaviour
                 HealBtn.GetComponent<Image>().color = Color.gray;
             }
 
-            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.HpToAttack.IsUse)
+            if (PlayerAttack.Instance.HpToAttack.CanUse())
             {
                 HPToAttackBtn.GetComponent<Button>().enabled = true;
                 HPToAttackBtn.GetComponent<Image>().color = Color.white;
@@ -202,7 +194,7 @@ public class PVP : MonoBehaviour
                 HPToAttackBtn.GetComponent<Image>().color = Color.gray;
             }
 
-            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.HpToMana.IsUse)
+            if (PlayerAttack.Instance.HpToMana.CanUse())
             {
                 HPToManaBtn.GetComponent<Button>().enabled = true;
                 HPToManaBtn.GetComponent<Image>().color = Color.white;
@@ -213,7 +205,7 @@ public class PVP : MonoBehaviour
                 HPToManaBtn.GetComponent<Image>().color = Color.gray;
             }
 
-            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.IqUp.IsUse)
+            if (PlayerAttack.Instance.IqUp.CanUse())
             {
                 IQUpBtn.GetComponent<Button>().enabled = true;
                 IQUpBtn.GetComponent<Image>().color = Color.white;
@@ -224,7 +216,7 @@ public class PVP : MonoBehaviour
                 IQUpBtn.GetComponent<Image>().color = Color.gray;
             }
 
-            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.Rage10Percent.IsUse)
+            if (PlayerAttack.Instance.Rage10Percent.CanUse())
             {
                 RageBtn.GetComponent<Button>().enabled = true;
                 RageBtn.GetComponent<Image>().color = Color.white;
@@ -251,7 +243,7 @@ public class PVP : MonoBehaviour
                 RageBtn.GetComponent<Image>().color = Color.gray;
             }
 
-            if (_expPayer >= 7 && _manaPlayer >= 30 && !PlayerAttack.Instance.SetMinimalDamage.IsUse)
+            if (PlayerAttack.Instance.SetMinimalDamage.CanUse())
             {
                 MinDmgBtn.GetComponent<Button>().enabled = true;
                 MinDmgBtn.GetComponent<Image>().color = Color.white;
@@ -262,7 +254,7 @@ public class PVP : MonoBehaviour
                 MinDmgBtn.GetComponent<Image>().color = Color.gray;
             }
             
-            if (_expPayer >= 1 && _manaPlayer >= 30 && !PlayerAttack.Instance.ResistPoison.IsUse)
+            if (PlayerAttack.Instance.ResistPoison.CanUse())
             {
                 ResistPoisonBtn.GetComponent<Button>().enabled = true;
                 ResistPoisonBtn.GetComponent<Image>().color = Color.white;
@@ -273,7 +265,7 @@ public class PVP : MonoBehaviour
                 ResistPoisonBtn.GetComponent<Image>().color = Color.gray;
             }
             
-            if (_expPayer >= 1 && _manaPlayer >= 30 && !PlayerAttack.Instance.ResistStan.IsUse)
+            if (PlayerAttack.Instance.ResistStan.CanUse())
             {
                 ResisStanBtn.GetComponent<Button>().enabled = true;
                 ResisStanBtn.GetComponent<Image>().color = Color.white;
