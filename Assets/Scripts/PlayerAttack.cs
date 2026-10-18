@@ -305,16 +305,16 @@ namespace Skills
         public  void EndRoundActions()
         {
             Heal.IsUse = false;
+            
             if (HpToAttack.IsUse)
             {
                 HpToAttack.IsUse = false;
-                PlayerHelper.Instance.AtackCur -= PlayerAttack.Instance.HpToAttack.Power;
+                PlayerHelper.Instance.AtackCur -= HpToAttack.Power;
             }
 
             if (HpToMana.IsUse)
             {
                 HpToMana.IsUse = false;
-                PlayerHelper.Instance.AtackCur -= PlayerAttack.Instance.HpToMana.Power;
             }
         }
         
