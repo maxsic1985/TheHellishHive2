@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Skills;
 using UnityEngine;
 
 public class Poison : MonoBehaviour
@@ -18,7 +19,7 @@ public class Poison : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PlayerHelper.Instance._hasPoison || _rm.EnbBattle) return;
+        if (!PlayerHelper.Instance._hasPoison || PlayerAttack.Instance.EnbBattle) return;
         if (_speedHelper.EndRound1 && _usedPoison == false)
         {
             SetDamagePoison();

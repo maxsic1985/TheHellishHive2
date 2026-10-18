@@ -1181,7 +1181,7 @@ public class SpeedHelper : MonoBehaviour
         {
         }
 
-        if (GetComponent<_randomMob>().EnbBattle)
+        if (PlayerAttack.Instance.EnbBattle)
         {
             i = 0;
         }

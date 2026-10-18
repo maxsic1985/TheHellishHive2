@@ -668,7 +668,7 @@ public class PlayerHelper : MonoBehaviour
                 Destroy(mobsonScene[i]);
             }
 
-            rm.EnbBattle = true;
+            PlayerAttack.Instance.EnbBattle = true;
             _pvp.selectTypeAtack = 0;
         }
         else //иначе пропускаем ход

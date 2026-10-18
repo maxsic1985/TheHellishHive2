@@ -70,7 +70,6 @@ public class _randomMob : MonoBehaviour
     public GameObject MenuNoBattle;
     public GameObject MenuBattle;
     public GameObject ButtonEndRound;
-    private bool enbBattle;
     public bool boosIsView;
     private bool isTransformToBattle;
     private float timer;
@@ -82,11 +81,7 @@ public class _randomMob : MonoBehaviour
     private MenuManager MM;
     public Mob selectedMob;
 
-    public bool EnbBattle
-    {
-        get { return enbBattle; }
-        set { enbBattle = value; }
-    }
+  
 
     public bool triggerBossBool { get; private set; }
 
@@ -713,7 +708,7 @@ public class _randomMob : MonoBehaviour
             addMob = false;
             mobIsKilled = true;
             ShowMenuNoBattle();
-            EnbBattle = true;
+            PlayerAttack.Instance.EnbBattle = true;
             // MobileControlCanvas.GetComponentInChildren<Canvas>().enabled = true;
             //показать меню боя   
             SaveHalper.Instance.Save();

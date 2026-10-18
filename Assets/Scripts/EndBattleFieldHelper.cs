@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Skills;
 using UnityStandardAssets.Characters.FirstPerson;
 /// <summary>
 /// Определяет вознаграждение за победу в битве
@@ -67,11 +68,8 @@ public class EndBattleFieldHelper : MonoBehaviour
             GivePriceName = GameObject.FindGameObjectWithTag("Mob").GetComponent<Mob>().PriceForMob.name.ToString();
         }
 
-        if (GetComponent<_randomMob>().EnbBattle)
+        if (PlayerAttack.Instance.EnbBattle)
         {
-
-
-
             giveExp = GetComponent<SpeedHelper>().TmpExpForBattle;
 
             giveGold = GetComponent<SpeedHelper>().TmpGoldForBattle;
@@ -81,7 +79,7 @@ public class EndBattleFieldHelper : MonoBehaviour
             GiveGoldText.text = giveGold.ToString();
             GiveEXPText.text = giveExp.ToString();
             GivePriceText.text = GivePriceName.ToString();
-            if (GetComponent<_randomMob>().EnbBattle & mu2 == 0) // для звука победы.
+            if (PlayerAttack.Instance.EnbBattle & mu2 == 0) // для звука победы.
             {
                 vicSorce.GetComponent<AudioSource>().PlayOneShot(muzonVic);
                 mu2 = 1;
@@ -97,7 +95,7 @@ public class EndBattleFieldHelper : MonoBehaviour
         GetComponent<PlayerHelper>().Exp += giveExp;
         PlayerPrefs.SetInt(gameObject.name + "CurExpt", GetComponent<PlayerHelper>().Exp);
         GetComponent<PlayerHelper>().GoldCur += giveGold;
-        GetComponent<_randomMob>().EnbBattle = false;
+        PlayerAttack.Instance.EnbBattle = false;
         GetComponent<SpeedHelper>().TmpGoldForBattle = 0;
         giveExp = GetComponent<SpeedHelper>().TmpExpForBattle = 0;
         //награждение итем в инвентарь за победу над монстром

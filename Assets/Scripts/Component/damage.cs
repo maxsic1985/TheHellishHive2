@@ -196,43 +196,6 @@ public class damage : MonoBehaviour, Idamage
         rm = FindObjectOfType<_randomMob>();
         sh = FindObjectOfType<SpeedHelper>();
     }
-    void Update()
-    {
-        if (rm.EnbBattle && PlayerAttack.Instance.DefUP.IsUse)
-        {
-            PlayerAttack.Instance.DefenceDown();
-            PlayerAttack.Instance.DefUP.IsUse = false;
-
-        }
-        if (rm.EnbBattle && PlayerAttack.Instance.IqUp.IsUse)
-        {
-            PlayerAttack.Instance.IQDown();
-            PlayerAttack.Instance.IqUp.IsUse = false;
-
-        } 
-        if (rm.EnbBattle && PlayerAttack.Instance.Rage10Percent.IsUse)
-        {
-            PlayerAttack.Instance.RageDeActivate();
-            PlayerAttack.Instance.Rage10Percent.IsUse = false;
-
-        } 
-        if (rm.EnbBattle && PlayerAttack.Instance.ResistPoison.IsUse)
-        {
-            PlayerHelper.Instance._hasPoisonResist = false;
-            PlayerAttack.Instance.ResistPoison.IsUse = false;
-
-        } 
-        if (rm.EnbBattle && PlayerAttack.Instance.ResistStan.IsUse)
-        {
-            PlayerHelper.Instance._hasStanResist = false;
-            PlayerAttack.Instance.ResistStan.IsUse = false;
-
-        } 
-        if (rm.EnbBattle)
-        {
-            PlayerAttack.Instance.SimpleMassAttack.IsUse = false;
-        }
-    }
     #endregion
 }
 
