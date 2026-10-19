@@ -14,6 +14,7 @@ namespace _SO
         public int Mana;
         public int AccessLvl;
         public bool IsUse=false;
+        public int MaxSkillLvl;
 
         [SerializeField] private string SkillNameRu="";
         [SerializeField] private string SkillNameEn="";
