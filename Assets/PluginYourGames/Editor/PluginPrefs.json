@@ -2,7 +2,7 @@
     "stringPrefs": [
         {
             "key": "SelectModuleToggle_YG2",
-            "value": "RewardedAdv;Authorization;Storage;Localization;Leaderboards;StickyAdv;EnvirData"
+            "value": "RewardedAdv;Authorization;Storage;Localization;Leaderboards;StickyAdv;EnvirData;YandexGames;PluginYG2;Payments"
         }
     ],
     "intPrefs": [
