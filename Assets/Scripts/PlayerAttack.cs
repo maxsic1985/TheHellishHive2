@@ -113,9 +113,9 @@ namespace Skills
             float h = Screen.height;
             if (!DefUP.IsUse)
             {
-                GetComponent<PlayerHelper>().ManaCur -= DefUP.Mana;
-                GetComponent<PlayerHelper>().Stamina += DefUP.Power;
-                print("Атака магией 1");
+                PlayerHelper.Instance.ManaCur -= DefUP.Mana;
+                PlayerHelper.Instance.Stamina += DefUP.Power;
+              
                 var damage = GetComponent<damage>();
                 damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
@@ -129,7 +129,7 @@ namespace Skills
 
         public void DefenceDown() //Снятие бафа на пдеф
         {
-            GetComponent<PlayerHelper>().Stamina -= DefUP.Power;
+            PlayerHelper.Instance.Stamina -= DefUP.Power;
             DefUP.IsUse = false;
         }
 
