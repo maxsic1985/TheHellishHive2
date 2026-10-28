@@ -92,13 +92,13 @@ namespace YG.EditorScr
         {
             bool enabled = !IsAutoRunEnabled();
             PluginPrefs.SetInt(AUTO_RUN_KEY, enabled ? 1 : 0);
-            Menu.SetChecked(AUTO_RUN_MENU_PATH, enabled);
+         //   Menu.SetChecked(AUTO_RUN_MENU_PATH, enabled);
         }
 
         [MenuItem(AUTO_RUN_MENU_PATH, true)]
         private static bool ValidateAutoRun()
         {
-            Menu.SetChecked(AUTO_RUN_MENU_PATH, IsAutoRunEnabled());
+        //    Menu.SetChecked(AUTO_RUN_MENU_PATH, IsAutoRunEnabled());
             return true;
         }
 
