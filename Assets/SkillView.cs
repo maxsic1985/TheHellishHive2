@@ -15,6 +15,7 @@ public class SkillView : MonoBehaviour
     public Text SkillMana;
     public Text SkillPower;
     public Text SkillMaxLvl;
+    public Text SkillCostUp;
     public Button UpSkillBtn;
 
 
@@ -69,5 +70,6 @@ public class SkillView : MonoBehaviour
         SkillMana.text = $"{manaTxt} {Skill.Mana.ToString()}";
         SkillPower.text = $"{powerTxt} {Skill.Power.ToString()}";
         SkillMaxLvl.text = $"{maxLvlTxt}{Skill.CurrentSkillLVL.ToString()}";
+        SkillCostUp.text = $"{Skill.UpLvlCost.ToString()}";
     }
 }
