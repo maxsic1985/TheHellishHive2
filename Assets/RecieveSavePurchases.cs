@@ -1,18 +1,24 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using YG;
 
 public class RecieveSavePurchases : MonoBehaviour
 {
+    public Text CoinsCnt;
+    [SerializeField] private string coinsKey = "coins";
     private void Start()
     {
-        Debug.LogWarning(YG2.GetState("coins"));
+        CoinsCnt.text = YG2.GetState(coinsKey).ToString();
+       
+        gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
         YG2.onPurchaseSuccess += SuccessPurchased;
         YG2.onPurchaseFailed += FailedPurchased;
+        CoinsCnt.text = YG2.GetState(coinsKey).ToString();
         
     }
 
@@ -24,9 +30,6 @@ public class RecieveSavePurchases : MonoBehaviour
 
     private void SuccessPurchased(string id)
     {
-        // Ваш код для обработки покупки, например:
-        string coinsKey = "coins";
-        
         int coins = YG2.GetState(coinsKey);
 
         if (id == "Coinsx5")
@@ -38,12 +41,16 @@ public class RecieveSavePurchases : MonoBehaviour
         else if (id == "Coinsx500")
             YG2.SetState(coinsKey, coins + 500);
         
-        Debug.LogWarning(YG2.GetState("coins"));
+        CoinsCnt.text = YG2.GetState(coinsKey).ToString();
     }
 
     private void FailedPurchased(string id)
     {
-        // Покупка не была совершена
+   
     }
 
+    private void Update()
+    {
+      //  CoinsCnt.text = YG2.GetState(coinsKey).ToString();
+    }
 }
