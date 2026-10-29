@@ -6,6 +6,7 @@ using YG;
 
 public class SkillView : MonoBehaviour
 {
+    public static Action ActionUpSkillLvl;
     public DB_MobSkills Skill;
 
     public Image Image;
@@ -40,6 +41,7 @@ public class SkillView : MonoBehaviour
     private void UpLvl()
     {
         Skill.UpLvl();
+        ActionUpSkillLvl?.Invoke();
         UpdateView();
     }
 
