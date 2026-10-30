@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using _SO;
+﻿using _SO;
 using UnityEngine;
-using UnityEngine.Serialization;
 using YG;
 
 namespace Skills
@@ -9,6 +7,7 @@ namespace Skills
     public class PlayerAttack : MonoBehaviour
     {
         private static PlayerAttack instance;
+        public DB_MobSkills SimpleSwordAttack;
         public DB_MobSkills DefUP;
         public DB_MobSkills Heal;
         public DB_MobSkills HpToAttack;
@@ -64,10 +63,10 @@ namespace Skills
         {
             if (GetKritShans(PlayerHelper.Instance.baseIQ))
             {
-                return PlayerHelper.Instance.AtackCur * 2;
+                return (PlayerHelper.Instance.AtackCur+SimpleSwordAttack.Power) * 2;
             }
 
-            return PlayerHelper.Instance.AtackCur;
+            return PlayerHelper.Instance.AtackCur+SimpleSwordAttack.Power;
         }
 
         public int SimpleMagicAttack()
