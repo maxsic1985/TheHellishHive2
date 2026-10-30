@@ -76,6 +76,7 @@ public class SkillView : MonoBehaviour
                 break;
         }
 
+        UpSkillBtn.interactable = Skill.CanUpSkillLvl();
         SkillName.text = Skill.SkillName;
         SkillDescription.text = Skill.SkillDescription;
         SkillMana.text = $"{manaTxt} {Skill.Mana.ToString()}";
