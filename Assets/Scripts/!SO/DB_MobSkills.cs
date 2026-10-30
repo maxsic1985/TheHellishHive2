@@ -11,10 +11,11 @@ namespace _SO
         public string SkillName = "";
         public string SkillDescription = "";
         public int Power;
-        public int UpStepPower;
         public int Shans;
-        public int UpStepShans;
         public int Mana;
+        public int UpStepPower;
+        public int UpStepShans;
+        public int UpStepMana=2;
         public int AccessLvl;
         public bool IsUse = false;
         public int MaxSkillLvl;
@@ -83,6 +84,7 @@ namespace _SO
             CurrentSkillLVL++;
             Power += UpStepPower;
             Shans += UpStepShans;
+            Mana += UpStepMana;
         }
     }
 }
