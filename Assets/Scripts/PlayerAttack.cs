@@ -58,15 +58,15 @@ namespace Skills
 
             return true;
         }
-        
+
         public int SimpleAttack()
         {
             if (GetKritShans(PlayerHelper.Instance.baseIQ))
             {
-                return (PlayerHelper.Instance.AtackCur+SimpleSwordAttack.Power) * 2;
+                return (PlayerHelper.Instance.AtackCur + SimpleSwordAttack.Power) * 2;
             }
 
-            return PlayerHelper.Instance.AtackCur+SimpleSwordAttack.Power;
+            return PlayerHelper.Instance.AtackCur + SimpleSwordAttack.Power;
         }
 
         public int SimpleMagicAttack()
@@ -83,21 +83,32 @@ namespace Skills
         public int MinDamageForTargetMob(Mob selected)
         {
             PlayerHelper.Instance.ManaCur -= SetMinimalDamage.Mana;
-            selected.SetMinDamageDeBuf = true;
-            selected.SetMinDamage();
+            if (GetKritShans(SetMinimalDamage.Power))
+            {
+                selected.SetMinDamageDeBuf = true;
+                selected.SetMinDamage();
 
-            var msgTxt = YG2.envir.language == "en"
-                ? $"Set minimal damage for round"
-                : $"Минимальный урон на ход";
-            CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2, Screen.height / 2),
-                msgTxt, Color.red);
+                var msgTxt = YG2.envir.language == "en"
+                    ? $"Set minimal damage for round"
+                    : $"Минимальный урон на ход";
+                CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2, Screen.height / 2),
+                    msgTxt, Color.green);
 
-            return (PlayerHelper.Instance.Intelect / 2 + SetMinimalDamage.Power + PlayerHelper.Instance.AtackCur);
+                return (PlayerHelper.Instance.AtackCur + SetMinimalDamage.Power / 5);
+            }
+            else
+            {
+                var msgTxt = YG2.envir.language == "en"
+                    ? $"Miss"
+                    : $"Не повезло";
+                CombatTextManager.Instance.CreateText(new Vector2(Screen.width / 2, Screen.height / 2),
+                    msgTxt, Color.red);
+                return PlayerHelper.Instance.AtackCur;
+            }
         }
-        
+
         public int MassAttack()
         {
-           
             if (GetKritShans(PlayerHelper.Instance.baseIQ))
             {
                 return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power) * 2;
@@ -105,7 +116,7 @@ namespace Skills
 
             return (PlayerHelper.Instance.Intelect + SimpleMassAttack.Power);
         }
-        
+
         public void DefenceUp() //Баф на пдеф
         {
             float w = Screen.width;
@@ -114,7 +125,7 @@ namespace Skills
             {
                 PlayerHelper.Instance.ManaCur -= DefUP.Mana;
                 PlayerHelper.Instance.Stamina += DefUP.Power;
-              
+
                 var damage = GetComponent<damage>();
                 damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
@@ -248,7 +259,7 @@ namespace Skills
 
         public void RageActivate()
         {
-           if(rageActiveNow) return; 
+            if (rageActiveNow) return;
             _oldAttack = PlayerHelper.Instance.AtackCur;
             PlayerHelper.Instance.AtackCur = Rage10Percent.Power * _oldAttack;
             rageActiveNow = true;
@@ -297,11 +308,11 @@ namespace Skills
                 ResistStan.IsUse = true;
             }
         }
-        
-        public  void EndRoundActions()
+
+        public void EndRoundActions()
         {
             Heal.IsUse = false;
-            
+
             if (HpToAttack.IsUse)
             {
                 HpToAttack.IsUse = false;
@@ -313,15 +324,15 @@ namespace Skills
                 HpToMana.IsUse = false;
             }
         }
-        
-        public  void DeathActions()
-        {
 
-            if ( Rage10Percent.IsUse)
+        public void DeathActions()
+        {
+            if (Rage10Percent.IsUse)
             {
                 Rage10Percent.IsUse = false;
                 RageDeActivate();
             }
+
             EndBattleActions();
         }
 
@@ -331,32 +342,32 @@ namespace Skills
             {
                 PlayerAttack.Instance.DefenceDown();
                 PlayerAttack.Instance.DefUP.IsUse = false;
-
             }
+
             if (EnbBattle && PlayerAttack.Instance.IqUp.IsUse)
             {
                 PlayerAttack.Instance.IQDown();
                 PlayerAttack.Instance.IqUp.IsUse = false;
+            }
 
-            } 
             if (EnbBattle && PlayerAttack.Instance.Rage10Percent.IsUse)
             {
                 PlayerAttack.Instance.RageDeActivate();
                 PlayerAttack.Instance.Rage10Percent.IsUse = false;
+            }
 
-            } 
             if (EnbBattle && PlayerAttack.Instance.ResistPoison.IsUse)
             {
                 PlayerHelper.Instance._hasPoisonResist = false;
                 PlayerAttack.Instance.ResistPoison.IsUse = false;
+            }
 
-            } 
             if (EnbBattle && PlayerAttack.Instance.ResistStan.IsUse)
             {
                 PlayerHelper.Instance._hasStanResist = false;
                 PlayerAttack.Instance.ResistStan.IsUse = false;
+            }
 
-            } 
             if (EnbBattle)
             {
                 PlayerAttack.Instance.SimpleMassAttack.IsUse = false;
@@ -367,6 +378,5 @@ namespace Skills
         {
             EndBattleActions();
         }
-        
     }
 }
