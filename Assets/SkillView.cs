@@ -27,14 +27,24 @@ public class SkillView : MonoBehaviour
 
     private void OnEnable()
     {
+        
         UpdateView();
         Image.sprite = Skill.SkillSprite;
 
-      
+
         if (UpSkillBtn != null)
         {
-            UpSkillBtn.onClick.AddListener(UpLvl);
-            UpdateView();
+            if (Skill.CanUpSkillLvl())
+            {
+                UpSkillBtn.interactable = true;
+                UpSkillBtn.onClick.AddListener(UpLvl);
+                UpdateView();
+       
+            }
+            else
+            {
+                UpSkillBtn.interactable = false;
+            }
         }
     }
 
@@ -47,7 +57,6 @@ public class SkillView : MonoBehaviour
 
     private void UpdateView()
     {
-       
         switch (YG2.envir.language)
         {
             case "en":
@@ -66,7 +75,7 @@ public class SkillView : MonoBehaviour
                 maxLvlTxt = "Level:";
                 break;
         }
-        
+
         SkillName.text = Skill.SkillName;
         SkillDescription.text = Skill.SkillDescription;
         SkillMana.text = $"{manaTxt} {Skill.Mana.ToString()}";

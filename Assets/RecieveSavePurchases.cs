@@ -11,13 +11,14 @@ public class RecieveSavePurchases : MonoBehaviour
     {
         CoinsCnt.text = YG2.GetState(coinsKey).ToString();
        
-        gameObject.SetActive(false);
+     //   gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
         YG2.onPurchaseSuccess += SuccessPurchased;
         YG2.onPurchaseFailed += FailedPurchased;
+        SkillView.ActionUpSkillLvl += CoinsViewUpdate;
         CoinsCnt.text = YG2.GetState(coinsKey).ToString();
         
     }
@@ -26,6 +27,7 @@ public class RecieveSavePurchases : MonoBehaviour
     {
         YG2.onPurchaseSuccess -= SuccessPurchased;
         YG2.onPurchaseFailed -= FailedPurchased;
+        SkillView.ActionUpSkillLvl -= CoinsViewUpdate;
     }
 
     private void SuccessPurchased(string id)
@@ -41,6 +43,11 @@ public class RecieveSavePurchases : MonoBehaviour
         else if (id == "Coinsx500")
             YG2.SetState(coinsKey, coins + 500);
         
+        CoinsViewUpdate();
+    }
+
+    private void CoinsViewUpdate()
+    {
         CoinsCnt.text = YG2.GetState(coinsKey).ToString();
     }
 
