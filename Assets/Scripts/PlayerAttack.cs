@@ -274,7 +274,7 @@ namespace Skills
         {
             float w = Screen.width;
             float h = Screen.height;
-            if (!ResistPoison.IsUse)
+            if (!ResistPoison.IsUse && !ResistPoison.Miss)
             {
                 PlayerHelper.Instance.ManaCur -= ResistPoison.Mana;
                 if (GetKritShans(ResistPoison.Power))
@@ -288,6 +288,7 @@ namespace Skills
                     CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
                     PlayerHelper.Instance._hasPoisonResist = true;
                     ResistPoison.IsUse = true;
+                    return;
                 }
                 else
                 {
@@ -295,6 +296,7 @@ namespace Skills
                         ? $"Miss"
                         : $"Не удалось";
                     CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.red);
+                    ResistPoison.Miss = true;
                     return;
                 }
             }
@@ -304,7 +306,8 @@ namespace Skills
         {
             float w = Screen.width;
             float h = Screen.height;
-            if (!ResistStan.IsUse)
+
+            if (!ResistStan.IsUse && !ResistStan.Miss)
             {
                 PlayerHelper.Instance.ManaCur -= ResistStan.Mana;
                 if (GetKritShans(ResistStan.Power))
@@ -325,15 +328,17 @@ namespace Skills
                         ? $"Miss"
                         : $"Не удалось";
                     CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.red);
+                    ResistStan.Miss = true;
                     return;
                 }
-                return;
             }
         }
 
         public void EndRoundActions()
         {
             Heal.IsUse = false;
+            ResistStan.Miss = false;
+            ResistPoison.Miss = false;
 
             if (HpToAttack.IsUse)
             {
@@ -378,7 +383,17 @@ namespace Skills
                 PlayerAttack.Instance.Rage10Percent.IsUse = false;
             }
 
-            if (EnbBattle && PlayerAttack.Instance.ResistPoison.IsUse)
+            if (EnbBattle && PlayerAttack.Instance.ResistPoison.Miss)
+            {
+                PlayerAttack.Instance.ResistPoison.Miss = false;
+            }
+
+            if (EnbBattle && PlayerAttack.Instance.ResistStan.Miss)
+            {
+                PlayerAttack.Instance.ResistStan.Miss = false;
+            }
+            
+            if (EnbBattle && PlayerAttack.Instance.ResistPoison.IsUse )
             {
                 PlayerHelper.Instance._hasPoisonResist = false;
                 PlayerAttack.Instance.ResistPoison.IsUse = false;
@@ -388,7 +403,9 @@ namespace Skills
             {
                 PlayerHelper.Instance._hasStanResist = false;
                 PlayerAttack.Instance.ResistStan.IsUse = false;
+   
             }
+            
 
             if (EnbBattle)
             {

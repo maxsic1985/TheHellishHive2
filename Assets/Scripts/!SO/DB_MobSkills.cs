@@ -18,6 +18,7 @@ namespace _SO
         public int UpStepMana=2;
         public int AccessLvl;
         public bool IsUse = false;
+        public bool Miss=false;
         public int MaxSkillLvl;
         public int CurrentSkillLVL = 1;
         public int StartUpLvlCost = 5;
@@ -54,7 +55,7 @@ namespace _SO
         public bool CanUse()
         {
             if (PlayerHelper.Instance.LvlPlayer >= AccessLvl && PlayerHelper.Instance.manaCur >= Mana &&
-                !IsUse) return true;
+                !IsUse && !Miss) return true;
             return false;
         }
 
