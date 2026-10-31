@@ -225,7 +225,7 @@ public class PVP : MonoBehaviour
             {
                 RageBtn.GetComponent<Button>().enabled = false;
                 RageBtn.GetComponent<Image>().color = Color.gray;
-                var calc10Percent = PlayerHelper.Instance.HpMax *   PlayerAttack.Instance.Rage10Percent.Shans/ 100;
+                var calc10Percent = PlayerHelper.Instance.HpMax *   PlayerAttack.Instance.Rage10Percent.Power/ 100;
                 if (PlayerHelper.Instance.HpCur <= calc10Percent)
                 {
                     PlayerAttack.Instance.RageActivate();

@@ -244,7 +244,6 @@ namespace Skills
                 PlayerHelper.Instance.ManaCur -= Rage10Percent.Mana;
                 // PlayerHelper.Instance.Atack = PlayerHelper.Instance.Atack * Rage10Percent.Power;
 
-
                 var damage = GetComponent<damage>();
                 damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
@@ -278,15 +277,26 @@ namespace Skills
             if (!ResistPoison.IsUse)
             {
                 PlayerHelper.Instance.ManaCur -= ResistPoison.Mana;
-                var damage = GetComponent<damage>();
-                damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
+                if (GetKritShans(ResistPoison.Power))
+                {
+                    var damage = GetComponent<damage>();
+                    damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
-                var msgTxt = YG2.envir.language == "en"
-                    ? $"Set resist to poison"
-                    : $"Сопротивление яду";
-                CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
-                PlayerHelper.Instance._hasPoisonResist = true;
-                ResistPoison.IsUse = true;
+                    var msgTxt = YG2.envir.language == "en"
+                        ? $"Set resist to poison"
+                        : $"Сопротивление яду";
+                    CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
+                    PlayerHelper.Instance._hasPoisonResist = true;
+                    ResistPoison.IsUse = true;
+                }
+                else
+                {
+                    var msgTxt = YG2.envir.language == "en"
+                        ? $"Miss"
+                        : $"Не удалось";
+                    CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.red);
+                    return;
+                }
             }
         }
 
@@ -297,15 +307,27 @@ namespace Skills
             if (!ResistStan.IsUse)
             {
                 PlayerHelper.Instance.ManaCur -= ResistStan.Mana;
-                var damage = GetComponent<damage>();
-                damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
+                if (GetKritShans(ResistStan.Power))
+                {
+                    var damage = GetComponent<damage>();
+                    damage.attackClipAudioSource.GetComponent<AudioSource>().PlayOneShot(damage.AtPlay);
 
-                var msgTxt = YG2.envir.language == "en"
-                    ? $"Set resist to stan"
-                    : $"Сопротивление обездвиживанию";
-                CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
-                PlayerHelper.Instance._hasStanResist = true;
-                ResistStan.IsUse = true;
+                    var msgTxt = YG2.envir.language == "en"
+                        ? $"Set resist to stan"
+                        : $"Сопротивление обездвиживанию";
+                    CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.green);
+                    PlayerHelper.Instance._hasStanResist = true;
+                    ResistStan.IsUse = true;
+                }
+                else
+                {
+                    var msgTxt = YG2.envir.language == "en"
+                        ? $"Miss"
+                        : $"Не удалось";
+                    CombatTextManager.Instance.CreateText(new Vector2(w / 2, h / 2), msgTxt, Color.red);
+                    return;
+                }
+                return;
             }
         }
 
