@@ -3,6 +3,10 @@
         {
             "key": "SelectModuleToggle_YG2",
             "value": "RewardedAdv;Authorization;Storage;Localization;Leaderboards;StickyAdv;EnvirData;PluginYG2;Payments;PlayerStats;YandexGames"
+        },
+        {
+            "key": "PluginYG_URLCloudInfo",
+            "value": "https://max-games.ru/public/pluginYG2/data.json"
         }
     ],
     "intPrefs": [

@@ -1,4 +1,5 @@
-﻿using YG;
+﻿using UnityEngine.EventSystems;
+using YG;
 
 namespace Services
 {
@@ -12,6 +13,8 @@ namespace Services
             public string ru, en;
 
             private Text textComponent;
+            public Image imageEn;
+            public Image imageRu;
 
             private void Start()
             {
@@ -22,15 +25,44 @@ namespace Services
                 {
                     case "ru":
                         textComponent.text = ru;
+                        if (imageEn && imageRu != null)
+                        {
+                            imageRu.enabled = true;
+                            imageEn.enabled = false;
+                        }
+
                         break;
                     case "en":
                         textComponent.text = en;
+                        if (imageEn && imageRu != null)
+                        {
+                            imageRu.enabled = false;
+                            imageEn.enabled = true;
+                        }
                         break;
                     default:
                         textComponent.text = ru;
                         break;
                 }
+                
             }
+
+            // public void SetColorText()
+            // {
+            //     var color=new Color(212,175,55,255);
+            //     textComponent.color = color;
+            // }
+            //
+            // public void OnPointerEnter(PointerEventData eventData)
+            // {
+            //    SetColorText();
+            // }
+            //
+            // public void OnPointerExit(PointerEventData eventData)
+            // {
+            //     Debug.Log($"Курсор ушёл с {gameObject.name}");
+            // }
+            
         }
     }
 }
