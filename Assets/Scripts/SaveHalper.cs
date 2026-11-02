@@ -39,7 +39,7 @@ public class SaveHalper : MonoBehaviour
     public int Task2Completed;
     public int Task3Completed;
     public int BossIsTrigger;
-    
+
 
     /// <summary>
     /// флаг новая игра, устанавливаетя при нажатии на кнопку новая игра, сбрасывает значение Savining в 0
@@ -73,23 +73,34 @@ public class SaveHalper : MonoBehaviour
     void Start()
     {
         //загрузить значение Savining из префаба
-
-        //В ГЛАВНОМ МЕНЮ БЛОКИРОВКА КНОПКИ ПРОДОЛЖИТЬ
+        // В ГЛАВНОМ МЕНЮ БЛОКИРОВКА КНОПКИ ПРОДОЛЖИТЬ
         if (Application.loadedLevel == 0)
         {
-            if (Savining == 0)
-            {
-                buttonContinius.enabled = false;
-                var button = buttonContinius;
-            }
+            buttonContinius.enabled = true;
+            // if (Savining == 0)
+            // {
+            //     buttonContinius.enabled = false;
+            //     var button = buttonContinius;
+            // }
         }
+
         //если имеется сохранение и загружаемая сцена не меню и не рынок то загрузить основную сцену с загрузкой инвентаря и прочим
-        else if (Savining == 1 && Application.loadedLevel == 2)
+        // if (Savining == 1 && Application.loadedLevel == 2)
+        // {
+        //     Load();
+        // } 
+        if (Application.loadedLevel == 1 && Savining==0)
         {
-            Load();
+            if (Savining == 0)
+                Save();
+          //  Load();
         }
         //ЗАГРУЖАЕМАЯ СЦЕНА РЫНОК И ИМЕЕТСЯ СОХРАНЕНИЕ ТО ЗАГРУЗИТЬ ИХ
         else if (Application.loadedLevel == 1 && Savining == 1)
+        {
+            Load();
+        }
+        else if (Application.loadedLevel == 2 && Savining == 1)
         {
             Load();
         }
@@ -104,18 +115,17 @@ public class SaveHalper : MonoBehaviour
     public void Save()
     {
         // SaveBag();
-      
-            PlayerPrefs.SetInt("Task1Completed", Task1Completed);
-            PlayerPrefs.SetInt("Task2Completed", Task2Completed);
-            PlayerPrefs.SetInt("Task3Completed", Task3Completed);
-        
+
+        PlayerPrefs.SetInt("Task1Completed", Task1Completed);
+        PlayerPrefs.SetInt("Task2Completed", Task2Completed);
+        PlayerPrefs.SetInt("Task3Completed", Task3Completed);
+
 
         PlayerPrefs.SetInt("quest1", savequest.quest1);
         PlayerPrefs.SetInt("triggSave", savequest2.triggSave);
-        
+
         PlayerPrefs.SetInt("TrigBoss", BossIsTrigger);
-        
-        
+
 
         PlayerPrefs.SetInt(gameObject.name + "Savining", Savining = 1);
         GameObject[] inventories = GameObject.FindGameObjectsWithTag("Inventory");
@@ -177,11 +187,10 @@ public class SaveHalper : MonoBehaviour
     /// </summary>
     public void Load()
     {
-            Task1Completed = PlayerPrefs.GetInt("Task1Completed");
-            Task2Completed = PlayerPrefs.GetInt("Task2Completed");
-            Task3Completed = PlayerPrefs.GetInt("Task3Completed");
-            BossIsTrigger = PlayerPrefs.GetInt("TrigBoss");
-        
+        Task1Completed = PlayerPrefs.GetInt("Task1Completed");
+        Task2Completed = PlayerPrefs.GetInt("Task2Completed");
+        Task3Completed = PlayerPrefs.GetInt("Task3Completed");
+        BossIsTrigger = PlayerPrefs.GetInt("TrigBoss");
 
 
         savequest2.triggSave = PlayerPrefs.GetInt("triggSave");
