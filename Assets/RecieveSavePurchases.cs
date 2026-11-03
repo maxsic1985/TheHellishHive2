@@ -10,6 +10,7 @@ public class RecieveSavePurchases : MonoBehaviour
     private void Start()
     {
         CoinsCnt.text = YG2.GetState(coinsKey).ToString();
+        gameObject.SetActive(false);
        
      //   gameObject.SetActive(false);
     }
