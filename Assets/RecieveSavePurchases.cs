@@ -35,13 +35,13 @@ public class RecieveSavePurchases : MonoBehaviour
     {
         int coins = YG2.GetState(coinsKey);
 
-        if (id == "Coinsx5")
+        if (id == "CoinsX5")
             YG2.SetState(coinsKey, coins + 5);
-        else if (id == "Coinsx10")
+        else if (id == "CoinsX10")
             YG2.SetState(coinsKey, coins + 10);
-        else if (id == "Coinsx100")
+        else if (id == "CoinsX100")
             YG2.SetState(coinsKey, coins + 100);
-        else if (id == "Coinsx500")
+        else if (id == "CoinsX500")
             YG2.SetState(coinsKey, coins + 500);
         
         CoinsViewUpdate();
