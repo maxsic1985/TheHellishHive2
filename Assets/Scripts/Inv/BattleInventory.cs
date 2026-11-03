@@ -25,7 +25,7 @@ public class BattleInventory : Inventory
         {
             if (!slotsMassive[i].isEmpty)
             {
-                content += i + "-" + slotsMassive[i].Items.Peek().Item.ItemName + ";";
+                content += i + "-" + slotsMassive[i].Items.Peek().Item.SpriteNeutral + ";";
             }
             PlayerPrefs.SetString("BattlePanel", content);
             PlayerPrefs.Save();
@@ -47,7 +47,7 @@ public class BattleInventory : Inventory
 
             GameObject loaditem = Instantiate(InventoryManager.Instance.itemObject);
             loaditem.AddComponent<ItemScript>();
-            loaditem.GetComponent<ItemScript>().Item = InventoryManager.Instance.ItemCont.Consumeables.Find(x => x.ItemName == itemName);
+            loaditem.GetComponent<ItemScript>().Item = InventoryManager.Instance.ItemCont.Consumeables.Find(x => x.SpriteNeutral == itemName);
             slotsMassive[index].AddItem(loaditem.GetComponent<ItemScript>());
         }
     }

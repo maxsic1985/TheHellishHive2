@@ -134,7 +134,7 @@ public class CharactersPanel : Inventory
         {
             if (!eqipmentSlots[i].isEmpty)
             {
-                content += i + "-" + eqipmentSlots[i].Items.Peek().Item.ItemName + ";";
+                content += i + "-" + eqipmentSlots[i].Items.Peek().Item.SpriteNeutral + ";";
             }
             PlayerPrefs.SetString("CharPanel", content);
             PlayerPrefs.Save();
@@ -160,12 +160,12 @@ public class CharactersPanel : Inventory
             // if (index == 1 || index == 2)  индекс формируется из content типа 2-кожанный браслет;
             if (index == 1)
             {
-                loaditem.GetComponent<ItemScript>().Item = InventoryManager.Instance.ItemCont.Weapons.Find(x => x.ItemName == itemName);
+                loaditem.GetComponent<ItemScript>().Item = InventoryManager.Instance.ItemCont.Weapons.Find(x => x.SpriteNeutral == itemName);
             }
 
             else
             {
-                loaditem.GetComponent<ItemScript>().Item = InventoryManager.Instance.ItemCont.Equipment.Find(x => x.ItemName == itemName);
+                loaditem.GetComponent<ItemScript>().Item = InventoryManager.Instance.ItemCont.Equipment.Find(x => x.SpriteNeutral == itemName);
             }
             eqipmentSlots[index].AddItem(loaditem.GetComponent<ItemScript>());
 
