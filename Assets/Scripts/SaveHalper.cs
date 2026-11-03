@@ -91,8 +91,7 @@ public class SaveHalper : MonoBehaviour
         // } 
         if (Application.loadedLevel == 1 && Savining==0)
         {
-            if (Savining == 0)
-                Save();
+          //  Save();
           //  Load();
         }
         //ЗАГРУЖАЕМАЯ СЦЕНА РЫНОК И ИМЕЕТСЯ СОХРАНЕНИЕ ТО ЗАГРУЗИТЬ ИХ
@@ -219,9 +218,9 @@ public class SaveHalper : MonoBehaviour
     public void ForButtonsContOrNewGame(bool newgame)
     {
         soundSFX2.PlayOneShot(SFX2);
-
+        Savining=  PlayerPrefs.GetInt(gameObject.name + "Savining");
         newGame = newgame;
-        if (!newGame) //ПРОДОЛЖИТЬ
+        if (Savining>0&&!newGame) //ПРОДОЛЖИТЬ
         {
             PlayerPrefs.SetInt(gameObject.name + "Savining", Savining = 1);
             LoadManager.levelName = "GameMenu";
