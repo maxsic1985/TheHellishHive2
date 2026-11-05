@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour
     /// <summary>  
     /// список всех слотов  
     /// </summary>  
-    private List<GameObject> allSlots;
+    [SerializeField] private List<GameObject> allSlots;
 
     /// <summary>  
     /// число пустых слотов  
@@ -133,7 +133,8 @@ public class Inventory : MonoBehaviour
         MM = FindObjectOfType<MenuManager>();
         _dropItemYes = false;
         isOpen = false;
-        CreateLayout(); //Создать инвентарь  
+      //  allSlots = new List<GameObject>();
+    //    CreateLayout(); //Создать инвентарь  
 
         InventoryManager.Instance.MovingSlot = GameObject.Find("MovingSlot").GetComponent<Slot>();
     }
@@ -373,8 +374,8 @@ public class Inventory : MonoBehaviour
         PlayerPrefs.SetFloat(gameObject.name + "slotPaddingLeft", slotPaddingLeft);
         PlayerPrefs.SetFloat(gameObject.name + "slotPaddingTop", slotPaddingTop);
         PlayerPrefs.SetFloat(gameObject.name + "slotSize", slotSize);
-        PlayerPrefs.SetFloat(gameObject.name + "xPos", inventoryRect.position.x);
-        PlayerPrefs.SetFloat(gameObject.name + "yPos", inventoryRect.position.y);
+    //    PlayerPrefs.SetFloat(gameObject.name + "xPos", inventoryRect.position.x);
+    //    PlayerPrefs.SetFloat(gameObject.name + "yPos", inventoryRect.position.y);
         PlayerPrefs.Save();
         Debug.Log("Save Inventory");
     }
@@ -392,10 +393,10 @@ public class Inventory : MonoBehaviour
         slotPaddingTop = PlayerPrefs.GetFloat(gameObject.name + "slotPaddingTop");
         slotSize = PlayerPrefs.GetFloat(gameObject.name + "slotSize");
 //Установить позицию инвентаря  
-        inventoryRect.position = new Vector3(PlayerPrefs.GetFloat(gameObject.name + "xPos"),
-            PlayerPrefs.GetFloat(gameObject.name + "yPos"), inventoryRect.position.z);
+     //   inventoryRect.position = new Vector3(PlayerPrefs.GetFloat(gameObject.name + "xPos"),
+    //        PlayerPrefs.GetFloat(gameObject.name + "yPos"), inventoryRect.position.z);
 //Пересоздать инвентарь  
-        CreateLayout();
+      //  CreateLayout();
 //объедянить строки  
         string[] splitContent = content.Split(';'); //0-MANA-3  
 //Парсинг строки  
