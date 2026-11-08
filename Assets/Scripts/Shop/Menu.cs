@@ -9,8 +9,10 @@ public class Menu : MonoBehaviour
     private Inventory _inv;
     public bool IsOpen
     {
-        get { return _animator.GetBool("IsOpen"); }
-        set { _animator.SetBool("IsOpen", value); }
+        // get { return _animator.GetBool("IsOpen"); }
+        // set { _animator.SetBool("IsOpen", value); }
+        get { return gameObject.activeSelf; }
+        set { gameObject.SetActive(value); }
     }
 
     public void Awake()
@@ -19,26 +21,29 @@ public class Menu : MonoBehaviour
         _canvasGroup = GetComponentInChildren<CanvasGroup>();
         var rect = GetComponent<RectTransform>();
         rect.offsetMax = rect.offsetMin = new Vector2(0, 0);
+        _inv = FindAnyObjectByType<Inventory>();
 
     }
     void Update()
     {
-        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))//не проигрывается анимация
-        {
-            _canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
-        }
-        else
-        {
-            _canvasGroup.blocksRaycasts = _canvasGroup.interactable = true;
-
-            if (_animator.name == "CharPanel" || _animator.name == "MagicPanel")
-            {
-                if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
-                {
-                    _inv = GetComponentInChildren<Inventory>();
-                    _inv.IsOpen = true;
-                }
-            }
-        }
+        if(gameObject.activeSelf)
+            _inv.IsOpen = true;
+        // if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))//не проигрывается анимация
+        // {
+        //     _canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
+        // }
+        // else
+        // {
+        //     _canvasGroup.blocksRaycasts = _canvasGroup.interactable = true;
+        //
+        //     if (_animator.name == "CharPanel" || _animator.name == "MagicPanel")
+        //     {
+        //         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))
+        //         {
+        //             _inv = GetComponentInChildren<Inventory>();
+        //             _inv.IsOpen = true;
+        //         }
+        //     }
+        // }
     }
 }
