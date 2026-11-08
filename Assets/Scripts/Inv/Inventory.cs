@@ -594,13 +594,14 @@ public class Inventory : MonoBehaviour
     {
         CanvasGroup cg = clicked.transform.parent.GetComponent<CanvasGroup>();
 
-        if (cg != null && cg.alpha > 0 || clicked.transform.parent.GetComponent<Inventory>().isOpen)
 
 // if (cg != null && cg.alpha > 0 || clicked.transform.parent.parent.GetComponent<CanvasGroup>().alpha>0)  
+        if (cg != null && cg.alpha > 0 || clicked.transform.parent.GetComponent<Inventory>().isOpen)
         {
             InventoryManager.Instance.Clicked = clicked; //привязываем статическому clicked текущий  
 
-            if (!InventoryManager.Instance.MovingSlot.isEmpty)
+           if (!InventoryManager.Instance.MovingSlot.isEmpty)
+            //if (InventoryManager.Instance.Clicked!=null)
             {
                 Slot tmp = clicked.GetComponent<Slot>();
 
