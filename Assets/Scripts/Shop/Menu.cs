@@ -9,15 +9,15 @@ public class Menu : MonoBehaviour
     private Inventory _inv;
     public bool IsOpen
     {
-        // get { return _animator.GetBool("IsOpen"); }
-        // set { _animator.SetBool("IsOpen", value); }
-        get { return gameObject.activeSelf; }
-        set { gameObject.SetActive(value); }
+         get { return _animator.GetBool("IsOpen"); }
+         set { _animator.SetBool("IsOpen", value); }
+     //   get { return (gameObject.activeSelf||_animator.GetBool("IsOpen")); }
+    //    set { gameObject.SetActive(value); }
     }
 
     public void Awake()
     {
-        _animator = GetComponent<Animator>();
+         _animator = GetComponent<Animator>();
         _canvasGroup = GetComponentInChildren<CanvasGroup>();
         var rect = GetComponent<RectTransform>();
         rect.offsetMax = rect.offsetMin = new Vector2(0, 0);
@@ -26,7 +26,7 @@ public class Menu : MonoBehaviour
     }
     void Update()
     {
-        if(gameObject.activeSelf)
+        if(this.gameObject.activeSelf)
             _inv.IsOpen = true;
         // if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))//не проигрывается анимация
         // {
