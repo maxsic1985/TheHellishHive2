@@ -347,6 +347,7 @@ public class Inventory : MonoBehaviour
     /// </summary>  
     public void HideToolTlp()
     {
+        if( InventoryManager.Instance.toolObject!=null)
         InventoryManager.Instance.toolObject.SetActive(false);
     }
 
@@ -626,8 +627,7 @@ public class Inventory : MonoBehaviour
 //назначения слота который будет перемещаться  
 // else if (InventoryManager.Instance.From == null && clicked.transform.parent.GetComponent<Inventory>().isOpen && !Input.GetKey(KeyCode.LeftShift))  
 
-            else if (InventoryManager.Instance.From == null &&
-                     clicked.transform.parent.GetComponent<Inventory>().isOpen && !Input.GetKey(KeyCode.LeftShift))
+            else if (InventoryManager.Instance.From == null)// &&clicked.transform.parent.GetComponent<Inventory>().isOpen && !Input.GetKey(KeyCode.LeftShift))
             {
                 if (!clicked.GetComponent<Slot>().isEmpty &&
                     !GameObject.Find("Hover")) //если выбранный слот не пустой  
