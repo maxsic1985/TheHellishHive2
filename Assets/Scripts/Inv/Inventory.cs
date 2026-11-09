@@ -920,7 +920,8 @@ public class Inventory : MonoBehaviour
     {
         if (canvasGroup.alpha > 0)
         {
-            StartCoroutine("FadeOut"); //скрыть инвентарь  
+          //  StartCoroutine("FadeOut"); //скрыть инвентарь  
+          canvasGroup.alpha = 0;
             PutItemBack(); //вернуть выбранный итем обратно  
             InventoryManager.Instance.From = null;
             InventoryManager.Instance.To = null;
@@ -933,7 +934,8 @@ public class Inventory : MonoBehaviour
         else
         {
             MM.StopControl();
-            StartCoroutine("FadeIn");
+           // StartCoroutine("FadeIn");
+           canvasGroup.alpha = 1;
             isOpen = true;
             sound2.GetComponent<AudioSource>().PlayOneShot(SFX);
             InventoryManager.Instance.From = null;

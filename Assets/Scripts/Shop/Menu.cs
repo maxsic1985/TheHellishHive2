@@ -26,8 +26,8 @@ public class Menu : MonoBehaviour
     }
     void Update()
     {
-        if(this.gameObject.activeSelf)
-            _inv.IsOpen = true;
+      //  if(this.gameObject.activeSelf)
+      //      _inv.IsOpen = true;
         // if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Open"))//не проигрывается анимация
         // {
         //     _canvasGroup.blocksRaycasts = _canvasGroup.interactable = false;
