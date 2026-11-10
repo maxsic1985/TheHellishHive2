@@ -16,18 +16,7 @@ public class MenuManager : MonoBehaviour
     public GameObject MenuPanel;
     private bool stoping=false;
     private _randomMob RM;
-    private static MenuManager instance;
-    public static MenuManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<MenuManager>();
-            }
-            return instance;
-        }
-    }
+   
     private void Start()
     {
         currentMenu = null;
@@ -45,7 +34,7 @@ public class MenuManager : MonoBehaviour
 
             for (int i = 0; i < panels.Length; i++)
             {
-                if (panels[0].alpha > 0 || panels[1].alpha > 0 || MenuPanel.activeSelf)//открыт инвентарь или панель игрока
+                if (MenuPanel.activeSelf)//открыт инвентарь или панель игрока
                 {
                     StopControl();
                 }
