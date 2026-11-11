@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using _SO;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
@@ -39,7 +41,7 @@ public class SaveHalper : MonoBehaviour
     public int Task2Completed;
     public int Task3Completed;
     public int BossIsTrigger;
-
+    [SerializeField] private List<DB_MobSkills> PlayerSkills;
 
     /// <summary>
     /// флаг новая игра, устанавливаетя при нажатии на кнопку новая игра, сбрасывает значение Savining в 0
@@ -68,6 +70,7 @@ public class SaveHalper : MonoBehaviour
     void Awake()
     {
         Savining = PlayerPrefs.GetInt(gameObject.name + "Savining");
+        PlayerSkills = new List<DB_MobSkills>();
     }
 
     void Start()
@@ -244,6 +247,10 @@ public class SaveHalper : MonoBehaviour
             PlayerPrefs.SetInt(gameObject.name + "Savining", Savining = 0);
             LoadManager.levelName = "GameMenu";
             SceneManager.LoadScene("LoadScene");
+            foreach (var skill in PlayerSkills)
+            {
+                skill.ResetLvl();
+            }
         }
     }
 

@@ -13,6 +13,9 @@ namespace _SO
         public int Power;
         public int Shans;
         public int Mana;
+        [SerializeField] private int InitPower;
+        [SerializeField] private int InitShans;
+        [SerializeField] private int InitMana;
         public int UpStepPower;
         public int UpStepShans;
         public int UpStepMana=2;
@@ -86,6 +89,14 @@ namespace _SO
             Power += UpStepPower;
             Shans += UpStepShans;
             Mana += UpStepMana;
+        }
+        
+        public void ResetLvl()
+        {
+            CurrentSkillLVL = 1;
+            Power = InitPower;
+            Shans = InitShans;
+            Mana = InitMana;
         }
     }
 }
