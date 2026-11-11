@@ -7,6 +7,20 @@ public class RecieveSavePurchases : MonoBehaviour
 {
     public Text CoinsCnt;
     [SerializeField] private string coinsKey = "coins";
+    private static RecieveSavePurchases instance;
+   
+    public static RecieveSavePurchases Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<RecieveSavePurchases>();
+            }
+            return instance;
+        }
+    }
+    
     private void Start()
     {
         CoinsCnt.text = YG2.GetState(coinsKey).ToString();
@@ -47,7 +61,7 @@ public class RecieveSavePurchases : MonoBehaviour
         CoinsViewUpdate();
     }
 
-    private void CoinsViewUpdate()
+    public void CoinsViewUpdate()
     {
         CoinsCnt.text = YG2.GetState(coinsKey).ToString();
     }

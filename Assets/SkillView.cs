@@ -25,6 +25,11 @@ public class SkillView : MonoBehaviour
     private string maxLvlTxt;
 
 
+    private void Update()
+    {
+        Skill.CanUpSkillLvl();
+    }
+
     private void OnEnable()
     {
         
@@ -53,10 +58,13 @@ public class SkillView : MonoBehaviour
         Skill.UpLvl();
         ActionUpSkillLvl?.Invoke();
         UpdateView();
+        
+        
     }
 
     private void UpdateView()
     {
+        RecieveSavePurchases.Instance.CoinsViewUpdate();
         switch (YG2.envir.language)
         {
             case "en":
