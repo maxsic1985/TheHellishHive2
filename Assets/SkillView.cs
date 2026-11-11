@@ -28,6 +28,21 @@ public class SkillView : MonoBehaviour
     private void Update()
     {
         Skill.CanUpSkillLvl();
+        
+        if (UpSkillBtn != null)
+        {
+            if (Skill.CanUpSkillLvl())
+            {
+                UpSkillBtn.interactable = true;
+                UpdateView();
+       
+            }
+            else
+            {
+                UpSkillBtn.interactable = false;
+            }
+        }
+        
     }
 
     private void OnEnable()

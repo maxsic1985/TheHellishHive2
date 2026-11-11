@@ -70,7 +70,7 @@ public class SaveHalper : MonoBehaviour
     void Awake()
     {
         Savining = PlayerPrefs.GetInt(gameObject.name + "Savining");
-        PlayerSkills = new List<DB_MobSkills>();
+      //  PlayerSkills = new List<DB_MobSkills>();
     }
 
     void Start()
@@ -242,15 +242,15 @@ public class SaveHalper : MonoBehaviour
         }
         else //НОВАЯ ИГРА
         {
+            foreach (var skill in PlayerSkills)
+            {
+                skill.ResetLvl();
+            }
             soundSFX2.PlayOneShot(SFX2);
             PlayerPrefs.DeleteAll();
             PlayerPrefs.SetInt(gameObject.name + "Savining", Savining = 0);
             LoadManager.levelName = "GameMenu";
             SceneManager.LoadScene("LoadScene");
-            foreach (var skill in PlayerSkills)
-            {
-                skill.ResetLvl();
-            }
         }
     }
 
