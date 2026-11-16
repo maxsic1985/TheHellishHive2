@@ -918,10 +918,10 @@ public class Inventory : MonoBehaviour
     /// </summary>  
     public void ShowInventory()
     {
-        if (canvasGroup.alpha > 0)
+        if (transform.parent.gameObject.activeSelf)
         {
           //  StartCoroutine("FadeOut"); //скрыть инвентарь  
-          canvasGroup.alpha = 0;
+         // canvasGroup.alpha = 0;
             PutItemBack(); //вернуть выбранный итем обратно  
             InventoryManager.Instance.From = null;
             InventoryManager.Instance.To = null;
@@ -935,7 +935,7 @@ public class Inventory : MonoBehaviour
         {
             MM.StopControl();
            // StartCoroutine("FadeIn");
-           canvasGroup.alpha = 1;
+          // canvasGroup.alpha = 1;
             isOpen = true;
             sound2.GetComponent<AudioSource>().PlayOneShot(SFX);
             InventoryManager.Instance.From = null;
