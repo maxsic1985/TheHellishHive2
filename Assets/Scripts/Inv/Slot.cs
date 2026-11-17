@@ -115,7 +115,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
         if (isEmpty)
         {
-            transform.parent.GetComponent<Inventory>().EmptySlots--;//убавить количество пустых слотов в инвентаре
+            gameObject.GetComponentInParent<Inventory>(true).EmptySlots--;
+         //   transform.parent.GetComponent<Inventory>().EmptySlots--;//убавить количество пустых слотов в инвентаре
         }
         items.Push(item);//в кучу добавить выбраный итем
         if (items.Count > 1)//если элемент в куче больше 1
@@ -179,7 +180,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         stackText.text = string.Empty;
         if (transform.parent != null)
         {
-            transform.parent.GetComponent<Inventory>().EmptySlots++;
+            var es = gameObject.GetComponentInParent<Inventory>(true);
+            es.EmptySlots++;
+            // transform.parent.GetComponent<Inventory>().EmptySlots++;
         }
     }
     /// <summary>

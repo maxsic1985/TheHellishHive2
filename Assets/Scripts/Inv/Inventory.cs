@@ -230,13 +230,15 @@ public class Inventory : MonoBehaviour
         ///создание иконки при перемещении слота  
         if (InventoryManager.Instance.HoverObject != null)
         {
-            Vector2 position;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                InventoryManager.Instance.canvas.transform as RectTransform, Input.mousePosition,
-                InventoryManager.Instance.canvas.worldCamera, out position);
-            position.Set(position.x, position.y - hoverYOffSet);
-            InventoryManager.Instance.HoverObject.transform.position =
-                InventoryManager.Instance.canvas.transform.TransformPoint(position);
+            Vector3 position=Input.mousePosition;
+            position.y = position.y - hoverYOffSet;
+        //    RectTransformUtility.ScreenPointToLocalPointInRectangle(s
+        //        InventoryManager.Instance.canvas.transform as RectTransform, Input.mousePosition,
+        //        InventoryManager.Instance.canvas.worldCamera, out position);
+        //    position.Set(position.x, position.y - hoverYOffSet);
+       //     InventoryManager.Instance.HoverObject.transform.position =
+           //     InventoryManager.Instance.canvas.transform.TransformPoint(position);
+           InventoryManager.Instance.HoverObject.transform.position = position;
         }
     }
 
@@ -593,11 +595,12 @@ public class Inventory : MonoBehaviour
     /// <param name="clicked">тапнутый слот</param>  
     public void MoveItem(GameObject clicked)
     {
-        CanvasGroup cg = clicked.transform.parent.GetComponent<CanvasGroup>();
+     //   CanvasGroup cg = clicked.transform.parent.GetComponent<CanvasGroup>();
 
 
 // if (cg != null && cg.alpha > 0 || clicked.transform.parent.parent.GetComponent<CanvasGroup>().alpha>0)  
-        if (cg != null && cg.alpha > 0 || clicked.transform.parent.GetComponent<Inventory>().isOpen)
+    //    if (cg != null && cg.alpha > 0 || clicked.transform.parent.GetComponent<Inventory>().isOpen)
+        if (true)
         {
             InventoryManager.Instance.Clicked = clicked; //привязываем статическому clicked текущий  
 
@@ -731,7 +734,7 @@ public class Inventory : MonoBehaviour
         hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x);
         hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y);
 //сделать перемещаемый объект дочерним от canvas  
-        InventoryManager.Instance.HoverObject.transform.SetParent(GameObject.Find("Canvas").transform, true);
+        InventoryManager.Instance.HoverObject.transform.SetParent(GameObject.Find("Canvas").transform, false);
 //подкорректировать размер  
         InventoryManager.Instance.HoverObject.transform.localScale =
             InventoryManager.Instance.Clicked.gameObject.transform.localScale;
