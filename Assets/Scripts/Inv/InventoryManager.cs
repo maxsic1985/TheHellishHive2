@@ -9,7 +9,7 @@ using YG;
 
 public class InventoryManager : MonoBehaviour
 {
-    #region Reference
+  
     /// <summary>
     /// ссылка на слот, для конструктора
     /// </summary>
@@ -88,7 +88,7 @@ public class InventoryManager : MonoBehaviour
   
 
 
-    #endregion
+
     private static InventoryManager instance;
     #region Properties
     public Slot To
