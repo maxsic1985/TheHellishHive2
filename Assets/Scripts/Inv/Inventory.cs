@@ -318,11 +318,10 @@ public class Inventory : MonoBehaviour
     }
 
     public void PointerEnter()
-    {
-        if (canvasGroup.alpha > 0)
-        {
+    { //if (canvasGroup.alpha > 0)
+    //   {
             mouseInside = true;
-        }
+     //   }
     }
 
     /// <summary>  
