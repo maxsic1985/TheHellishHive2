@@ -228,22 +228,22 @@ public class Inventory : MonoBehaviour
         }
 
         ///создание иконки при перемещении слота  
-        if (InventoryManager.Instance.HoverObject != null)
-        {
-            Vector3 position=Input.mousePosition;
-            position.y = position.y - hoverYOffSet;
-            position.x = position.x - hoverYOffSet;
-        //    RectTransformUtility.ScreenPointToLocalPointInRectangle(s
-        //        InventoryManager.Instance.canvas.transform as RectTransform, Input.mousePosition,
-        //        InventoryManager.Instance.canvas.worldCamera, out position);
-        //    position.Set(position.x, position.y - hoverYOffSet);
-       //     InventoryManager.Instance.HoverObject.transform.position =
-           //     InventoryManager.Instance.canvas.transform.TransformPoint(position);
-          InventoryManager.Instance.HoverObject.transform.position = (Vector2)position;
-          InventoryManager.Instance.HoverObject.transform.SetParent(GameObject.Find("NewInventory").transform);
-      // InventoryManager.Instance.HoverObject.transform.SetSiblingIndex(1);
-       InventoryManager.Instance.HoverObject.transform.SetAsLastSibling();
-        }
+      //   if (InventoryManager.Instance.HoverObject != null)
+      //   {
+      //       Vector3 position=Input.mousePosition;
+      //       position.y = position.y - hoverYOffSet;
+      //       position.x = position.x - hoverYOffSet;
+      //   //    RectTransformUtility.ScreenPointToLocalPointInRectangle(s
+      //   //        InventoryManager.Instance.canvas.transform as RectTransform, Input.mousePosition,
+      //   //        InventoryManager.Instance.canvas.worldCamera, out position);
+      //   //    position.Set(position.x, position.y - hoverYOffSet);
+      //  //     InventoryManager.Instance.HoverObject.transform.position =
+      //      //     InventoryManager.Instance.canvas.transform.TransformPoint(position);
+      //     InventoryManager.Instance.HoverObject.transform.position = (Vector2)position;
+      //     InventoryManager.Instance.HoverObject.transform.SetParent(GameObject.Find("NewInventory").transform);
+      // // InventoryManager.Instance.HoverObject.transform.SetSiblingIndex(1);
+      //  InventoryManager.Instance.HoverObject.transform.SetAsFirstSibling();
+      //  }
     }
 
     public void SetBoolForDrop()
@@ -734,8 +734,8 @@ public class Inventory : MonoBehaviour
         RectTransform hoverTransform = InventoryManager.Instance.HoverObject.GetComponent<RectTransform>();
         RectTransform clickedTransform = InventoryManager.Instance.Clicked.GetComponent<RectTransform>();
 //установить перемещаемому объекту размер такой же как и у выбранного слота  
-        hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x/4);
-        hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y/4);
+        hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, clickedTransform.sizeDelta.x/2);
+        hoverTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, clickedTransform.sizeDelta.y/2);
 //сделать перемещаемый объект дочерним от canvas  
         InventoryManager.Instance.HoverObject.transform.SetParent(GameObject.Find("Canvas").transform, false);
 //подкорректировать размер  
@@ -746,6 +746,8 @@ public class Inventory : MonoBehaviour
             InventoryManager.Instance.MovingSlot.Items.Count > 1
                 ? InventoryManager.Instance.MovingSlot.Items.Count.ToString()
                 : string.Empty;
+        
+        InventoryManager.Instance.HoverObject.transform.SetAsFirstSibling();
     }
 
     /// <summary>  
